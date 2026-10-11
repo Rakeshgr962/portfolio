@@ -1,707 +1,302 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Rakesh G R - Full-Stack Developer & Data Science Student specializing in AI, Cloud Computing, and Web Development">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Rakesh G R - Full-Stack Developer &amp; Data Science Student</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <!-- Loading Screen Styles -->
-    <style>
-        /* Loading Screen */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%; 
-            height: 100%;
-            background: #0a0a0a;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-        
-        .loading-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-        
-        .loading-logo {
-            margin-bottom: 30px;
-            font-size: 2.5rem;
-            font-weight: 800;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .loading-logo .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(102, 126, 234, 0.1);
-            border-top: 4px solid #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .loading-text {
-            font-size: 1.2rem;
-            color: #fff;
-            margin-bottom: 20px;
-            font-weight: 500;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .loading-progress {
-            width: 300px;
-            max-width: 80%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
-        
-        .loading-progress-bar {
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            width: 0%;
-            border-radius: 10px;
-            transition: width 0.3s ease;
-        }
-        
-        .loading-percentage {
-            font-size: 1rem;
-            color: #8b8b8b;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        /* Floating cards for loading screen */
-        .loading-card {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.2rem;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .loading-card:nth-child(1) {
-            top: 20%;
-            left: 15%;
-            animation-delay: 0s;
-        }
-        
-        .loading-card:nth-child(2) {
-            top: 70%;
-            left: 10%;
-            animation-delay: 0.5s;
-        }
-        
-        .loading-card:nth-child(3) {
-            top: 30%;
-            right: 15%;
-            animation-delay: 1s;
-        }
-        
-        .loading-card:nth-child(4) {
-            top: 80%;
-            right: 10%;
-            animation-delay: 1.5s;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-        
-        /* Hide content initially */
-        body.loading .main-content {
-            opacity: 0;
-            visibility: hidden;
-        }
-        
-        body.loaded .main-content {
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 0.5s ease 0.3s;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rakesh G R — AI/ML &amp; Full-Stack Developer</title>
+<meta name="description" content="Rakesh G R — B.Tech CSE (Data Science) student building ML systems, APIs and full-stack products with Python, TypeScript and Go. NASA Space Apps Challenge winner.">
+<meta name="theme-color" content="#0b0d12">
+<meta property="og:title" content="Rakesh G R — AI/ML &amp; Full-Stack Developer">
+<meta property="og:description" content="ML systems, APIs and full-stack products. Selected work: YamlAnchor, AIET UniSphere, PriceFlow, a live churn-prediction API.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rakeshgr.netlify.app">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0d12'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='700' fill='%237c9cff' text-anchor='middle'%3E%26gt;_%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
 </head>
-<body class="loading">
-    <!-- Loading Screen -->
-    <div id="loadingScreen" class="loading-screen">
-        <div class="loading-card">💻</div>
-        <div class="loading-card">🤖</div>
-        <div class="loading-card">☁️</div>
-        <div class="loading-card">🚀</div>
-        
-        <div class="loading-logo">
-            Rakesh<span class="gradient-text">GR</span>
-        </div>
-        
-        <div class="loading-spinner"></div>
-        
-        <div class="loading-text">Loading Portfolio...</div>
-        
-        <div class="loading-progress">
-            <div class="loading-progress-bar" id="loadingProgressBar"></div>
-        </div>
-        
-        <div class="loading-percentage" id="loadingPercentage">0%</div>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4V21H3V9.75Zm6.5 0h3.83v1.54h.05c.53-.96 1.84-1.97 3.78-1.97 4.04 0 4.79 2.5 4.79 5.75V21h-4v-5.1c0-1.22-.02-2.78-1.8-2.78-1.8 0-2.07 1.3-2.07 2.69V21h-4V9.75Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 6h18v12H3zM3 7l9 6 9-6"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/></g></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#top" aria-label="Home"><span class="logo-mark">&gt;_</span>rakesh<span class="dim">.gr</span></a>
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#featured">Featured</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="icon-btn" href="https://github.com/Rakeshgr962" target="_blank" rel="noopener" aria-label="GitHub profile"><svg><use href="#i-github"/></svg></a>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle colour theme"><svg class="ic-sun"><use href="#i-sun"/></svg><svg class="ic-moon"><use href="#i-moon"/></svg></button>
+      <button class="btn btn-sm" id="navResumeBtn" type="button"><svg><use href="#i-down"/></svg>Resume</button>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
     </div>
-    
-    <!-- Main Content (hidden initially) -->
-    <div class="main-content">
-        <!-- Navigation -->
-        <nav class="navbar" id="navbar">
-            <div class="nav-container">
-                <div class="nav-logo">
-                    <a href="#home">Rakesh<span class="gradient-text">GR</span></a>
-                </div>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#expertise" class="nav-link">Expertise</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#skills" class="nav-link">Skills</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                    <li><a href="https://github.com/Rakeshgr962" target="_blank" class="nav-github-link" aria-label="GitHub Profile" title="View my GitHub"><i class="fab fa-github"></i></a></li>
-                    <li class="nav-resume-item"><button class="nav-resume-btn" id="navResumeBtn" aria-label="Download my resume (PDF)" title="Download my resume (PDF)"><i class="fas fa-download"></i><span class="nav-resume-text">Resume</span></button></li>
-                </ul>
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
+  </div>
+</header>
 
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-bg-animation"></div>
-            <div class="hero-container">
-                <div class="hero-content">
-                    <div class="hero-badge">👋 Welcome to my portfolio</div>
-                    <h1 class="hero-title">
-                        Hi, I'm <span class="gradient-text">Rakesh G R</span>
-                    </h1>
-                    <p class="hero-subtitle typed-text">Full-Stack Developer &amp; Data Science Student</p>
-                    <p class="hero-description">
-                        Building innovative solutions with AI, Cloud Computing, and Full-Stack Development
-                    </p>
+<main id="main">
 
-                    <div class="hero-social">
-                        <a href="https://github.com/Rakeshgr962" target="_blank" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/rakesh-gr-74b3572a2/" target="_blank" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="mailto:rakeshgr223@gmail.com" aria-label="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="floating-card card-1">💻</div>
-                    <div class="floating-card card-2">🤖</div>
-                    <div class="floating-card card-3">☁️</div>
-                    <div class="floating-card card-4">🚀</div>
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <span></span>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="about section-padding">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <span class="section-tag">Get To Know Me</span>
-                    <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
-                </div>
-                <div class="about-content">
-                    <div class="about-text slide-in-left">
-                        <p class="about-bio">
-                            I'm a B.Tech Computer Science Engineering (Data Science) student at Alva's Institute of Engineering and Technology, passionate about creating innovative web applications and AI-driven solutions. With expertise in full-stack development, machine learning, and cloud computing, I've successfully completed projects ranging from e-commerce platforms to real-time environmental monitoring systems.
-                        </p>
-                        <div class="about-info">
-                            <div class="info-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Bangalore, India</span>
-                            </div>
-                            <div class="info-item">
-                                <i class="fas fa-envelope"></i>
-                                <span>rakeshgr223@gmail.com</span>
-                            </div>
-                            <div class="info-item">
-                                <i class="fas fa-phone"></i>
-                                <span>9035402276</span>
-                            </div>
-                        </div>
-                        <button class="btn btn-about-resume" id="aboutResumeBtn" aria-label="Download my resume (PDF)" title="Download my resume (PDF)">
-                            <span>Get My Resume</span>
-                            <i class="fas fa-download"></i>
-                        </button>
-                    </div>
-                    <div class="about-education slide-in-right">
-                        <h3>Education Timeline</h3>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content">
-                                    <span class="timeline-date">2023 - Present</span>
-                                    <h4>B.Tech in Computer Science Engineering (Data Science)</h4>
-                                    <p>Alva's Institute of Engineering and Technology, Mangalore</p>
-                                    <span class="timeline-grade">GPA: 7.6</span>
-                                </div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content">
-                                    <span class="timeline-date">2021 - 2023</span>
-                                    <h4>Pre-University in PCMB</h4>
-                                    <p>Jnana Jyothi Pu College, Bangalore</p>
-                                    <span class="timeline-grade">77%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Expertise Section -->
-        <section id="expertise" class="services section-padding">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <span class="section-tag">What I Offer</span>
-                    <h2 class="section-title">Power-Ups &amp; <span class="gradient-text">Abilities</span></h2>
-                </div>
-                <div class="services-grid">
-                    <div class="service-card scale-in" style="animation-delay: 0.1s">
-                        <div class="service-icon">💻</div>
-                        <h3>Full-Stack Web Development</h3>
-                        <p>Building responsive, scalable web applications using modern frameworks like React, Node.js, and Flask with MongoDB integration</p>
-                    </div>
-                    <div class="service-card scale-in" style="animation-delay: 0.2s">
-                        <div class="service-icon">🤖</div>
-                        <h3>Machine Learning &amp; AI</h3>
-                        <p>Developing intelligent solutions using CNN, transfer learning, and AI forecasting models for real-world applications</p>
-                    </div>
-                    <div class="service-card scale-in" style="animation-delay: 0.3s">
-                        <div class="service-icon">☁️</div>
-                        <h3>Cloud Computing</h3>
-                        <p>Deploying and managing cloud-based applications with expertise in cloud infrastructure and scalable architectures</p>
-                    </div>
-                    <div class="service-card scale-in" style="animation-delay: 0.4s">
-                        <div class="service-icon">🗄️</div>
-                        <h3>Database Management</h3>
-                        <p>Designing and implementing efficient databases using MongoDB and SQL for optimal data storage and retrieval</p>
-                    </div>
-                    <div class="service-card scale-in" style="animation-delay: 0.5s">
-                        <div class="service-icon">🔐</div>
-                        <h3>Cybersecurity</h3>
-                        <p>Implementing security best practices and conducting comprehensive security assessments for web applications</p>
-                    </div>
-                    <div class="service-card scale-in" style="animation-delay: 0.6s">
-                        <div class="service-icon">📊</div>
-                        <h3>Data Analysis</h3>
-                        <p>Analyzing complex datasets and creating data-driven insights for informed decision making and predictions</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="projects section-padding">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <span class="section-tag">My Portfolio</span>
-                    <h2 class="section-title"><span class="gradient-text">Projects</span></h2>
-                </div>
-                <div class="projects-grid">
-                    <div class="project-card project-featured slide-in-left">
-                        <div class="project-badge">🎯 FEATURED MISSION</div>
-                        <div class="project-image">
-                            <div class="project-placeholder" style="background: linear-gradient(135deg, #00d9ff 0%, #ff006e 100%);">
-                                <div class="project-icon">✈️</div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>Airport Baggage Handling System - RFID Solution</h3>
-                            <p>RFID-based baggage tracking system for Indian airports. Features real-time tracking, flight-specific verification, and instant passenger notifications. Eliminates baggage mishandling through automated verification preventing wrong flight loading. Achieves 99%+ accuracy vs 85-90% barcode systems.</p>
-                            <div class="project-stats">
-                                <div class="stat-item">
-                                    <div class="stat-value">99%+</div>
-                                    <div class="stat-label">Accuracy Rate</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-value">₹1.3B</div>
-                                    <div class="stat-label">Market by 2033</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-value">Real-time</div>
-                                    <div class="stat-label">Tracking</div>
-                                </div>
-                            </div>
-                            <div class="project-impact">
-                                <strong>Impact:</strong> Addresses $500M-$1.3B market gap. Prevents baggage loss, improves passenger satisfaction, reduces recovery costs by preventing misrouting.
-                            </div>
-                            <div class="project-tags">
-                                <span class="tag">RFID</span>
-                                <span class="tag">IoT</span>
-                                <span class="tag">Real-time Tracking</span>
-                                <span class="tag">Encryption</span>
-                                <span class="tag">Mobile Notifications</span>
-                                <span class="tag">System Design</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card slide-in-up">
-                        <div class="project-image">
-                            <div class="project-placeholder" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">🌍</div>
-                        </div>
-                        <div class="project-content">
-                            <h3>Atmos - AQI Dashboard</h3>
-                            <p>Web-based dashboard integrating real-time NASA TEMPO and OpenAQ data with interactive maps and AI forecasting models for pollution predictions.</p>
-                            <div class="project-tags">
-                                <span class="tag">React</span>
-                                <span class="tag">AI/ML</span>
-                                <span class="tag">Cloud Computing</span>
-                                <span class="tag">Data Visualization</span>
-                                <span class="tag">APIs</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card slide-in-up">
-                        <div class="project-image">
-                            <div class="project-placeholder" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">🛒</div>
-                        </div>
-                        <div class="project-content">
-                            <h3>AeroBuy E-Commerce</h3>
-                            <p>Full-stack e-commerce platform featuring product listings, user authentication, shopping cart, and secure order management.</p>
-                            <div class="project-tags">
-                                <span class="tag">Python Flask</span>
-                                <span class="tag">MongoDB</span>
-                                <span class="tag">JavaScript</span>
-                                <span class="tag">REST APIs</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card slide-in-right">
-                        <div class="project-image">
-                            <div class="project-placeholder" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">♻️</div>
-                        </div>
-                        <div class="project-content">
-                            <h3>Garbage Classification AI</h3>
-                            <p>Transfer learning application automating waste sorting into biodegradable, recyclable, and non-recyclable categories using pre-trained CNNs.</p>
-                            <div class="project-tags">
-                                <span class="tag">Python</span>
-                                <span class="tag">TensorFlow</span>
-                                <span class="tag">CNN</span>
-                                <span class="tag">ResNet</span>
-                                <span class="tag">VGG</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card slide-in-up">
-                        <div class="project-image">
-                            <div class="project-placeholder" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">🏥</div>
-                        </div>
-                        <div class="project-content">
-                            <h3>MID - Medical Imaging Detection</h3>
-                            <p>Deep learning binary classification using VGG16 transfer learning. Trained on 5,216 samples with advanced metrics evaluation.</p>
-                            <div class="project-info">
-                                <strong>Dataset:</strong> 5,216 Training | 624 Testing (2 Classes)
-                            </div>
-                            <div class="project-achievements">
-                                <div class="achievement-item">✓ VGG16 Transfer Learning</div>
-                                <div class="achievement-item">✓ Precision, Recall, ROC-AUC</div>
-                                <div class="achievement-item">✓ Large-scale Processing</div>
-                            </div>
-                            <div class="project-tags">
-                                <span class="tag">TensorFlow</span>
-                                <span class="tag">Keras</span>
-                                <span class="tag">VGG16</span>
-                                <span class="tag">Transfer Learning</span>
-                                <span class="tag">Scikit-learn</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="skills section-padding">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <span class="section-tag">Technical Expertise</span>
-                    <h2 class="section-title">My <span class="gradient-text">Skills</span></h2>
-                </div>
-                <div class="skills-container">
-                    <div class="skills-category slide-in-left">
-                        <h3><i class="fas fa-laptop-code"></i> Frontend</h3>
-                        <div class="skill-list">
-                            <span class="skill-badge">HTML/CSS</span>
-                            <span class="skill-badge">JavaScript</span>
-                            <span class="skill-badge">React</span>
-                            <span class="skill-badge">Responsive Design</span>
-                        </div>
-                    </div>
-                    <div class="skills-category slide-in-up">
-                        <h3><i class="fas fa-server"></i> Backend</h3>
-                        <div class="skill-list">
-                            <span class="skill-badge">Python</span>
-                            <span class="skill-badge">Flask</span>
-                            <span class="skill-badge">Node.js</span>
-                            <span class="skill-badge">REST APIs</span>
-                        </div>
-                    </div>
-                    <div class="skills-category slide-in-right">
-                        <h3><i class="fas fa-database"></i> Database</h3>
-                        <div class="skill-list">
-                            <span class="skill-badge">MongoDB</span>
-                            <span class="skill-badge">SQL</span>
-                            <span class="skill-badge">Database Design</span>
-                        </div>
-                    </div>
-                    <div class="skills-category slide-in-up">
-                        <h3><i class="fas fa-cogs"></i> Other</h3>
-                        <div class="skill-list">
-                            <span class="skill-badge">Machine Learning</span>
-                            <span class="skill-badge">TensorFlow &amp; Keras</span>
-                            <span class="skill-badge">Cloud Computing</span>
-                            <span class="skill-badge">Cybersecurity</span>
-                            <span class="skill-badge">Git &amp; Version Control</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact section-padding">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <span class="section-tag">Get In Touch</span>
-                    <h2 class="section-title">Contact <span class="gradient-text">Me</span></h2>
-                </div>
-                <div class="contact-content">
-                    <div class="contact-info slide-in-left">
-                        <h3>Let's work together!</h3>
-                        <p>I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!</p>
-                        <div class="contact-details">
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div>
-                                    <h4>Email</h4>
-                                    <p>rakeshgr223@gmail.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-phone"></i>
-                                </div>
-                                <div>
-                                    <h4>Phone</h4>
-                                    <p>9035402276</p>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div>
-                                    <h4>Location</h4>
-                                    <p>Bangalore, India</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="contact-social">
-                            <a href="https://github.com/Rakeshgr962" target="_blank" aria-label="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/rakesh-gr-74b3572a2/" target="_blank" aria-label="LinkedIn">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="mailto:rakeshgr223@gmail.com" aria-label="Email">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <form class="contact-form slide-in-right" id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Name *</label>
-                            <input type="text" id="name" name="name" required>
-                            <span class="error-message"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required>
-                            <span class="error-message"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone">
-                            <span class="error-message"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject *</label>
-                            <input type="text" id="subject" name="subject" required>
-                            <span class="error-message"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                            <span class="char-count"><span id="charCount">0</span>/500</span>
-                            <span class="error-message"></span>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-submit">
-                            <span>Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                        <div class="success-message" id="successMessage">
-                            <i class="fas fa-check-circle"></i>
-                            <p>Thank you! Your message has been sent successfully.</p>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-brand">
-                        <h3>Rakesh<span class="gradient-text">GR</span></h3>
-                        <p>Building innovative solutions with passion and dedication.</p>
-                    </div>
-                    <div class="footer-links">
-                        <h4>Quick Links</h4>
-                        <ul>
-                            <li><a href="#home">Home</a></li>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#expertise">Expertise</a></li>
-                            <li><a href="#projects">Projects</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-links">
-                        <h4>Connect</h4>
-                        <ul>
-                            <li><a href="https://www.linkedin.com/in/rakesh-gr-74b3572a2/" target="_blank">LinkedIn</a></li>
-                            <li><a href="mailto:rakeshgr223@gmail.com">Email</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-github">
-                        <h4>GitHub</h4>
-                        <a href="https://github.com/Rakeshgr962" target="_blank" class="github-profile-link">
-                            <i class="fab fa-github"></i>
-                            <span>Rakeshgr962</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>&copy; 2025 Rakesh G R. All rights reserved. Built with ❤️</p>
-                </div>
-            </div>
-        </footer>
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="status"><span class="pulse"></span>Open to internships from Dec 2026</p>
+      <h1>Rakesh G R</h1>
+      <p class="lead">I build ML systems, APIs and full-stack products. I'm a B.Tech CSE (Data Science) student working in <strong>Python</strong>, <strong>TypeScript</strong> and <strong>Go</strong>.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#projects">View projects</a>
+        <a class="btn" href="https://github.com/Rakeshgr962" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg>GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/rakesh-gr-74b3572a2/" target="_blank" rel="noopener"><svg><use href="#i-linkedin"/></svg>LinkedIn</a>
+      </div>
     </div>
+    <div class="term" role="img" aria-label="Profile summary rendered as code">
+      <div class="term-bar"><i></i><i></i><i></i><span>profile.ts</span></div>
+<pre><code><span class="k">const</span> <span class="v">rakesh</span> = {
+  <span class="p">role</span>:    <span class="s">"B.Tech CSE (Data Science)"</span>,
+  <span class="p">school</span>:  <span class="s">"Alva's Institute of Engg. &amp; Tech"</span>,
+  <span class="p">focus</span>:   [<span class="s">"ML/AI"</span>, <span class="s">"Backend APIs"</span>, <span class="s">"Full-stack"</span>],
+  <span class="p">stack</span>:   [<span class="s">"Python"</span>, <span class="s">"TypeScript"</span>, <span class="s">"Go"</span>, <span class="s">"React"</span>],
+  <span class="p">infra</span>:   [<span class="s">"Docker"</span>, <span class="s">"GitHub Actions"</span>, <span class="s">"Postgres"</span>],
+  <span class="p">won</span>:     <span class="s">"NASA Space Apps Challenge"</span>,
+  <span class="p">seeking</span>: <span class="s">"internships"</span>,
+};</code></pre>
+    </div>
+  </div>
+  <div class="wrap">
+    <ul class="facts">
+      <li><strong>NASA Space Apps</strong><span>Challenge winner</span></li>
+      <li><strong>89.24%</strong><span>waste-classifier test accuracy</span></li>
+      <li><strong>~81%</strong><span>churn model accuracy, served by a live API</span></li>
+      <li><strong>Go · TS · Python</strong><span>across public repos</span></li>
+    </ul>
+  </div>
+</section>
 
-    <script src="app.js"></script>
-    
-    <!-- Loading Screen Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const loadingScreen = document.getElementById('loadingScreen');
-            const progressBar = document.getElementById('loadingProgressBar');
-            const percentageText = document.getElementById('loadingPercentage');
-            const body = document.body;
-            
-            let progress = 0;
-            const targetProgress = 100;
-            const increment = 2;
-            const intervalTime = 30;
-            
-            // Simulate loading progress
-            const progressInterval = setInterval(() => {
-                progress += increment;
-                
-                // Add some randomness to make it feel more natural
-                if (progress > 80) {
-                    progress += Math.random() * 0.5;
-                }
-                
-                if (progress >= targetProgress) {
-                    progress = targetProgress;
-                    clearInterval(progressInterval);
-                    
-                    // Wait a bit then hide loading screen
-                    setTimeout(() => {
-                        loadingScreen.classList.add('hidden');
-                        body.classList.remove('loading');
-                        body.classList.add('loaded');
-                        
-                        // Remove loading screen from DOM after transition
-                        setTimeout(() => {
-                            loadingScreen.style.display = 'none';
-                        }, 500);
-                    }, 300);
-                }
-                
-                // Update progress bar and percentage
-                progressBar.style.width = `${progress}%`;
-                percentageText.textContent = `${Math.min(100, Math.round(progress))}%`;
-                
-            }, intervalTime);
-            
-            // Ensure page loads even if there's an issue with progress simulation
-            window.addEventListener('load', function() {
-                clearInterval(progressInterval);
-                progress = 100;
-                progressBar.style.width = '100%';
-                percentageText.textContent = '100%';
-                
-                setTimeout(() => {
-                    loadingScreen.classList.add('hidden');
-                    body.classList.remove('loading');
-                    body.classList.add('loaded');
-                    
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                    }, 500);
-                }, 500);
-            });
-        });
-    </script>
+<section class="section" id="about">
+  <div class="wrap">
+    <header class="sec-head"><h2>About</h2></header>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a B.Tech student in Computer Science Engineering (Data Science) at Alva's Institute of Engineering and Technology, Mangalore. My core is machine learning and data science, and I keep pulling that work toward real software: typed APIs, background workers, Docker, CI/CD, and interfaces people can use.</p>
+        <p>I like projects that run end to end: a trained model behind an endpoint, a pipeline that tells you why it failed, a database with sensible access rules. I'd rather ship something small and honest than something large and vague.</p>
+        <div class="about-links">
+          <button class="btn" id="aboutResumeBtn" type="button"><svg><use href="#i-down"/></svg>Download résumé</button>
+          <span class="loc">Bangalore / Mangalore, India</span>
+        </div>
+      </div>
+      <div class="tl" aria-label="Education and recognition">
+        <div class="tl-item"><span class="tl-date">2023 to present</span><h3>B.Tech, CSE (Data Science)</h3><p>Alva's Institute of Engineering and Technology, Mangalore</p><span class="chip chip-mono">GPA 7.6</span></div>
+        <div class="tl-item"><span class="tl-date">2021 to 2023</span><h3>Pre-University (PCMB)</h3><p>Jnana Jyothi PU College, Bangalore</p><span class="chip chip-mono">77%</span></div>
+        <div class="tl-item"><span class="tl-date">Recognition</span><h3>NASA Space Apps Challenge, winner</h3><p>Built Atmos, an air-quality dashboard using NASA TEMPO and OpenAQ data.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="featured">
+  <div class="wrap">
+    <header class="sec-head"><h2>Flagship project</h2></header>
+    <article class="feat">
+      <div class="feat-body">
+        <div class="feat-top"><span class="lang"><i style="--c:#3178c6"></i>TypeScript + Go</span><span class="chip">Developer tooling</span><span class="chip">MIT</span></div>
+        <h3>YamlAnchor</h3>
+        <p class="feat-sub">A local-first tool that scans a repo, generates its GitHub Actions workflow, and runs that pipeline in Docker <em>before</em> you push, so CI failures show up on your machine first.</p>
+        <ul class="ticks">
+          <li><b>AST-based scan</b> detects languages, build tools and test runners across Go, TypeScript and Python projects.</li>
+          <li><b>Tailored workflow generation</b> that reflects what is actually in the repo, not a generic template.</li>
+          <li><b>Local simulation</b> runs each step in isolated Docker containers and streams logs to the UI over NDJSON.</li>
+          <li><b>Secret scanner and self-healing</b> flags exposed credentials, pinpoints the failing step and suggests a fix.</li>
+        </ul>
+        <div class="tags"><span>Go</span><span>Next.js (App Router)</span><span>TypeScript</span><span>Tailwind</span><span>Docker</span><span>GitHub Actions</span><span>NDJSON streaming</span></div>
+        <div class="cta">
+          <a class="btn btn-primary" href="https://github.com/Rakeshgr962/YamlAnchor" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg>View source</a>
+        </div>
+      </div>
+      <div class="feat-diagram" role="img" aria-label="Architecture: Studio UI talks to a Go backend that scans, generates and simulates in Docker">
+<pre><code><span class="c">// architecture</span>
+
+  <span class="n">Studio UI</span>  <span class="d">(Next.js)</span>
+      │  REST + NDJSON stream
+      ▼
+  <span class="n">Go backend</span>
+   ├─ <span class="g">scanner</span>    AST analysis
+   ├─ <span class="g">generator</span>  workflow YAML
+   ├─ <span class="g">secrets</span>    scan + vault mock
+   └─ <span class="g">simulator</span>  Docker orchestration
+         │
+         ▼
+   <span class="n">Docker daemon</span>
+   isolated step containers</code></pre>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <div class="wrap">
+    <header class="sec-head"><h2>More projects</h2></header>
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button class="filter active" data-filter="all" type="button">All</button>
+      <button class="filter" data-filter="ml" type="button">ML / AI</button>
+      <button class="filter" data-filter="web" type="button">Full-stack</button>
+      <button class="filter" data-filter="backend" type="button">Backend</button>
+      <button class="filter" data-filter="systems" type="button">Systems</button>
+    </div>
+    <div class="grid" id="projectGrid">
+
+      <article class="card" data-cat="web">
+        <div class="card-top"><span class="lang"><i style="--c:#3178c6"></i>TypeScript</span><span class="state">In development</span></div>
+        <h3>AIET UniSphere</h3>
+        <p>Campus platform for Alva's Institute: a React 19 + Vite app on Supabase (Auth, Postgres, Storage, Realtime) with authorization enforced by Row Level Security. Foundation, routing and Supabase integration are done; auth, roles and modules are in progress.</p>
+        <div class="tags"><span>React 19</span><span>TypeScript</span><span>Vite</span><span>Supabase</span><span>RLS</span></div>
+        <div class="links"><a href="https://github.com/Aiet-Unisphere/AIET-UniSphere" target="_blank" rel="noopener">Source<svg><use href="#i-ext"/></svg></a></div>
+      </article>
+
+      <article class="card" data-cat="ml backend">
+        <div class="card-top"><span class="lang"><i style="--c:#3572a5"></i>Python</span><span class="state live">Live API</span></div>
+        <h3>Customer Churn Prediction API</h3>
+        <p>XGBoost classifier on the 7,043-record Telco dataset with leakage columns removed, tracked in MLflow and served through FastAPI in Docker on Render. About 81% accuracy, 77% precision and 68% recall on a held-out 20% split.</p>
+        <div class="tags"><span>XGBoost</span><span>FastAPI</span><span>MLflow</span><span>Docker</span><span>Render</span></div>
+        <div class="links"><a href="https://github.com/Rakeshgr962/Customer-churn-" target="_blank" rel="noopener">Source<svg><use href="#i-ext"/></svg></a><a href="https://customer-churn-72v1.onrender.com" target="_blank" rel="noopener">Live API<svg><use href="#i-ext"/></svg></a></div>
+      </article>
+
+      <article class="card" data-cat="backend ml">
+        <div class="card-top"><span class="lang"><i style="--c:#3572a5"></i>Python</span><span class="state">Assignment build</span></div>
+        <h3>GlitrAI Mini Content Engine</h3>
+        <p>Async job pipeline: a FastAPI endpoint accepts a product and returns a job ID immediately, while a background worker asks Groq for an image prompt, generates the image and records status in Postgres. The UI polls for completion, and failures are stored with an error message.</p>
+        <div class="tags"><span>FastAPI</span><span>PostgreSQL</span><span>SQLAlchemy</span><span>Groq LLM</span><span>Docker</span></div>
+        <div class="links"><a href="https://github.com/Rakeshgr962/glitrai-mini-content-engine" target="_blank" rel="noopener">Source<svg><use href="#i-ext"/></svg></a></div>
+      </article>
+
+      <article class="card" data-cat="web backend ml">
+        <div class="card-top"><span class="lang"><i style="--c:#3178c6"></i>TypeScript</span><span class="state">Foundation built</span></div>
+        <h3>PriceFlow</h3>
+        <p>Dynamic-pricing SaaS for e-commerce merchants. The foundation is in place: FastAPI with versioned routers, SQLAlchemy and Alembic, a React + Vite + Tailwind dashboard, PostgreSQL and Redis via Docker Compose, and smoke tests on both sides. Scraper, workers and ML modules are still to come.</p>
+        <div class="tags"><span>FastAPI</span><span>React</span><span>PostgreSQL</span><span>Redis</span><span>Alembic</span><span>Pytest / Vitest</span></div>
+        <div class="links"><a href="https://github.com/Rakeshgr962/PriceFlow-Agent" target="_blank" rel="noopener">Source<svg><use href="#i-ext"/></svg></a></div>
+      </article>
+
+      <article class="card" data-cat="ml web">
+        <div class="card-top"><span class="lang"><i style="--c:#3178c6"></i>TypeScript</span><span class="state">Internship prototype</span></div>
+        <h3>EcoSort AI</h3>
+        <p>Waste-segregation assistant built for the 1M1B × IBM SkillsBuild AI for Sustainability internship (SDG 12). A transparent rule-based classifier with a confidence and uncertainty readout, a local knowledge assistant, Vitest coverage, and an optional IBM Granite mode via watsonx.ai.</p>
+        <div class="tags"><span>React 19</span><span>TypeScript</span><span>Vite</span><span>Tailwind</span><span>Vitest</span></div>
+        <div class="links"><a href="https://github.com/Rakeshgr962/AI-EcoSort" target="_blank" rel="noopener">Source<svg><use href="#i-ext"/></svg></a></div>
+      </article>
+
+      <article class="card" data-cat="ml">
+        <div class="card-top"><span class="lang"><i style="--c:#da5b0b"></i>Jupyter</span><span class="state">89.24% test accuracy</span></div>
+        <h3>Garbage Classification</h3>
+        <p>Transfer-learning image classifier built on EfficientNetB0 that sorts waste into categories, with a Gradio web interface for trying it on new images.</p>
+        <div class="tags"><span>TensorFlow</span><span>EfficientNetB0</span><span>Gradio</span><span>Computer vision</span></div>
+        <div class="links"><a href="https://github.com/Rakeshgr962/GarbageClassfication" target="_blank" rel="noopener">Source<svg><use href="#i-ext"/></svg></a></div>
+      </article>
+
+      <article class="card" data-cat="ml web">
+        <div class="card-top"><span class="lang"><i style="--c:#f1e05a"></i>JavaScript</span><span class="state">NASA Space Apps winner</span></div>
+        <h3>Atmos: AQI Dashboard</h3>
+        <p>Air-quality dashboard that combines NASA TEMPO and OpenAQ data with interactive maps and forecasting models for pollution prediction. Built for the NASA Space Apps Challenge.</p>
+        <div class="tags"><span>React</span><span>Time-series ML</span><span>ETL</span><span>Data viz</span></div>
+      </article>
+
+      <article class="card" data-cat="web backend">
+        <div class="card-top"><span class="lang"><i style="--c:#e34c26"></i>HTML / Python</span><span class="state">MIT</span></div>
+        <h3>AeroBuy</h3>
+        <p>Full-stack e-commerce store with a product catalogue, user authentication, shopping cart and order checkout, backed by MongoDB.</p>
+        <div class="tags"><span>Flask</span><span>MongoDB</span><span>Bootstrap</span><span>jQuery</span></div>
+        <div class="links"><a href="https://github.com/Rakeshgr962/AeroBuy" target="_blank" rel="noopener">Source<svg><use href="#i-ext"/></svg></a></div>
+      </article>
+
+      <article class="card" data-cat="systems">
+        <div class="card-top"><span class="lang"><i style="--c:#3572a5"></i>Python</span><span class="state">Performance</span></div>
+        <h3>Dense Matrix Multiplication</h3>
+        <p>Parallel-processing micro project on optimising dense matrix multiplication, focused on performance engineering and benchmarking.</p>
+        <div class="tags"><span>Parallel processing</span><span>Benchmarking</span><span>Optimisation</span></div>
+        <div class="links"><a href="https://github.com/Rakeshgr962/Dense-Matrix-Multiplication" target="_blank" rel="noopener">Source<svg><use href="#i-ext"/></svg></a></div>
+      </article>
+
+      <article class="card" data-cat="systems">
+        <div class="card-top"><span class="lang"><i style="--c:#f34b7d"></i>C++</span><span class="state">System design</span></div>
+        <h3>Distributed Baggage Tracking</h3>
+        <p>RFID-based baggage tracking design for airports: flight-specific verification at loading and passenger notifications, aimed at preventing baggage being loaded onto the wrong flight.</p>
+        <div class="tags"><span>C++</span><span>RFID</span><span>IoT</span><span>System design</span></div>
+      </article>
+
+    </div>
+    <p class="more">Everything else is on <a href="https://github.com/Rakeshgr962?tab=repositories" target="_blank" rel="noopener">GitHub</a>.</p>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="wrap">
+    <header class="sec-head"><h2>Toolbox</h2></header>
+    <div class="skills">
+      <div class="skill-group"><h3>languages</h3><div class="tags"><span>Python</span><span>TypeScript</span><span>JavaScript</span><span>Go</span><span>C++</span><span>SQL</span></div></div>
+      <div class="skill-group"><h3>ml / ai</h3><div class="tags"><span>XGBoost</span><span>TensorFlow / Keras</span><span>scikit-learn</span><span>MLflow</span><span>Transfer learning</span><span>LLM APIs (Groq)</span></div></div>
+      <div class="skill-group"><h3>backend</h3><div class="tags"><span>FastAPI</span><span>Flask</span><span>Node / Express</span><span>REST</span><span>SQLAlchemy</span><span>Alembic</span></div></div>
+      <div class="skill-group"><h3>frontend</h3><div class="tags"><span>React</span><span>Next.js</span><span>Vite</span><span>Tailwind CSS</span><span>HTML / CSS</span></div></div>
+      <div class="skill-group"><h3>data</h3><div class="tags"><span>PostgreSQL</span><span>MongoDB</span><span>Redis</span><span>Supabase</span><span>Pandas</span></div></div>
+      <div class="skill-group"><h3>devops &amp; tools</h3><div class="tags"><span>Docker</span><span>GitHub Actions</span><span>Render</span><span>Vercel / Netlify</span><span>Git</span><span>Pytest / Vitest</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="wrap">
+    <header class="sec-head"><h2>Contact</h2></header>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>I'm looking for internships in software engineering and ML/AI. If you have a role, a project or a question, send a message and I'll reply.</p>
+        <ul class="contact-list">
+          <li><svg><use href="#i-mail"/></svg><a href="mailto:rakeshgr223@gmail.com">rakeshgr223@gmail.com</a></li>
+          <li><svg><use href="#i-github"/></svg><a href="https://github.com/Rakeshgr962" target="_blank" rel="noopener">github.com/Rakeshgr962</a></li>
+          <li><svg><use href="#i-linkedin"/></svg><a href="https://www.linkedin.com/in/rakesh-gr-74b3572a2/" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+      <form class="form" id="contactForm" novalidate>
+        <div class="fg"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required><span class="error-message" role="alert"></span></div>
+        <div class="fg"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required><span class="error-message" role="alert"></span></div>
+        <div class="fg"><label for="subject">Subject</label><input id="subject" name="subject" type="text" required><span class="error-message" role="alert"></span></div>
+        <div class="fg"><label for="message">Message <span class="count"><span id="charCount">0</span>/500</span></label><textarea id="message" name="message" rows="5" required></textarea><span class="error-message" role="alert"></span></div>
+        <input class="hp" type="text" id="website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-primary btn-submit" type="submit">Send message</button>
+        <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap foot-in">
+    <p>© <span id="year">2026</span> Rakesh G R. Built with plain HTML, CSS and JS.</p>
+    <p><a href="https://github.com/Rakeshgr962/portfolio" target="_blank" rel="noopener">View source</a></p>
+  </div>
+</footer>
+
+<script src="app.js" defer></script>
 </body>
 </html>
