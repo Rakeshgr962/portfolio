@@ -29,6 +29,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Three.js Ambient Particle Field & Film Grain -->
+    <canvas id="bg-particle-canvas" aria-hidden="true"></canvas>
+    <div class="film-grain-overlay" aria-hidden="true"></div>
+
     <!-- Global Scroll Progress Indicator -->
     <div id="scroll-progress" aria-hidden="true"></div>
 
@@ -99,24 +103,24 @@
 
     <main id="main-content">
         <!-- ==================================================================
-             HERO SECTION: Editorial Narrative & Architectural Spec Sheet
+             HERO SECTION: Editorial Narrative & Three.js 3D Constellation
              ================================================================== -->
         <section class="hero-section" id="hero">
             <div class="container">
-                <div class="hero-status-pill">
+                <div class="hero-status-pill reveal-on-scroll">
                     <span class="status-dot"></span>
                     <span>Open for AI/ML, Full-Stack &amp; Systems Internships (Dec 2026)</span>
                 </div>
 
-                <h1 class="hero-headline">
+                <h1 class="hero-headline reveal-on-scroll">
                     Engineering <span class="editorial-italic">intelligent systems</span> with verified technical depth.
                 </h1>
 
-                <p class="hero-subdeck">
+                <p class="hero-subdeck reveal-on-scroll">
                     Final-year CS (Data Science) engineer at Alva's Institute of Engineering &amp; Technology. I build software where machine learning pairs with production interfaces, high-performance C11/OpenMP compute kernels, and robust developer tooling—not just isolated notebooks.
                 </p>
 
-                <div class="hero-actions">
+                <div class="hero-actions reveal-on-scroll">
                     <a href="#work" class="btn-primary">
                         <span>Explore Selected Work</span>
                         <i class="fas fa-arrow-down" aria-hidden="true"></i>
@@ -138,7 +142,7 @@
                 </div>
 
                 <!-- Engineering Spec Sheet Strip -->
-                <div class="hero-specs-grid">
+                <div class="hero-specs-grid reveal-on-scroll">
                     <div class="spec-item">
                         <span class="spec-kicker">Core Domains</span>
                         <span class="spec-value">Systems, Applied ML, Full-Stack</span>
@@ -160,15 +164,28 @@
                         <span class="spec-note">Measured benchmarks only</span>
                     </div>
                 </div>
+
+                <!-- Three.js Interactive 3D Tech Constellation -->
+                <div class="hero-constellation-container reveal-on-scroll" id="hero-constellation-box">
+                    <div class="constellation-header">
+                        <i class="fas fa-network-wired" style="color: var(--accent-cobalt);"></i>
+                        <span>Interactive 3D Tech Constellation (Three.js)</span>
+                    </div>
+                    <canvas id="constellation-canvas"></canvas>
+                    <div class="constellation-hint">
+                        <i class="fas fa-mouse-pointer"></i> Drag to rotate · Hover or click nodes to explore verified systems
+                    </div>
+                    <div class="constellation-node-info" id="constellation-node-info" style="display: none;"></div>
+                </div>
             </div>
         </section>
 
         <!-- ==================================================================
-             SECTION B: SELECTED WORK (EDITORIAL SHOWCASES)
+             SECTION B: SELECTED WORK (EDITORIAL SHOWCASES & FILTER BAR)
              ================================================================== -->
         <section class="section-padding" id="work">
             <div class="container">
-                <div class="editorial-header">
+                <div class="editorial-header reveal-on-scroll">
                     <div class="header-meta">
                         <span class="section-index">01 / Portfolio</span>
                         <span class="section-label">Selected Engineering Projects</span>
@@ -179,8 +196,28 @@
                     </p>
                 </div>
 
+                <!-- Interactive Category Filter Bar -->
+                <div class="project-filter-bar reveal-on-scroll" id="project-filter-bar">
+                    <button type="button" class="filter-btn active" data-filter="all">
+                        <span>All Works</span>
+                        <span class="filter-count">5</span>
+                    </button>
+                    <button type="button" class="filter-btn" data-filter="systems">
+                        <span>Systems &amp; DevOps</span>
+                        <span class="filter-count">2</span>
+                    </button>
+                    <button type="button" class="filter-btn" data-filter="ml">
+                        <span>Machine Learning &amp; AI</span>
+                        <span class="filter-count">2</span>
+                    </button>
+                    <button type="button" class="filter-btn" data-filter="fullstack">
+                        <span>Full-Stack Platforms</span>
+                        <span class="filter-count">1</span>
+                    </button>
+                </div>
+
                 <!-- PROJECT 01: AIET-UniSphere -->
-                <article class="featured-project-card">
+                <article class="featured-project-card reveal-on-scroll" data-category="fullstack">
                     <div class="project-card-grid">
                         <div class="project-narrative">
                             <div>
@@ -234,7 +271,7 @@
                 </article>
 
                 <!-- PROJECT 02: YamlAnchor -->
-                <article class="featured-project-card">
+                <article class="featured-project-card reveal-on-scroll" data-category="systems">
                     <div class="project-card-grid">
                         <div class="project-narrative">
                             <div>
@@ -288,7 +325,7 @@
                 </article>
 
                 <!-- PROJECT 03: Dense Matrix Multiplication -->
-                <article class="featured-project-card">
+                <article class="featured-project-card reveal-on-scroll" data-category="systems">
                     <div class="project-card-grid">
                         <div class="project-narrative">
                             <div>
@@ -341,7 +378,7 @@
                 </article>
 
                 <!-- PROJECT 04: Customer Churn Prediction API -->
-                <article class="featured-project-card">
+                <article class="featured-project-card reveal-on-scroll" data-category="ml">
                     <div class="project-card-grid">
                         <div class="project-narrative">
                             <div>
@@ -388,34 +425,57 @@
                             </div>
                         </div>
                         <div class="project-stage">
+                            <!-- Churn Model Validation Matrix & Live Interactive Estimator -->
                             <div class="matrix-chart-card">
                                 <div class="chart-header">
                                     <span class="chart-title"><i class="fas fa-chart-line"></i> Model Validation Matrix (Telco 7,043)</span>
                                 </div>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
-                                    <div style="background: var(--bg-subtle); padding: 12px; border-radius: 6px; border: 1px solid var(--border-hairline);">
-                                        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Overall Accuracy</div>
-                                        <div style="font-size: 24px; font-weight: 700; color: var(--text-ink);">81%</div>
-                                        <div style="font-size: 11px; color: var(--text-muted);">80/20 Stratified Split</div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
+                                    <div style="background: var(--bg-subtle); padding: 10px; border-radius: 6px; border: 1px solid var(--border-hairline);">
+                                        <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Overall Accuracy</div>
+                                        <div style="font-size: 20px; font-weight: 700; color: var(--text-ink);" class="counter-num" data-target="81">81%</div>
+                                        <div style="font-size: 10px; color: var(--text-muted);">80/20 Stratified Split</div>
                                     </div>
-                                    <div style="background: var(--bg-subtle); padding: 12px; border-radius: 6px; border: 1px solid var(--border-hairline);">
-                                        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Precision</div>
-                                        <div style="font-size: 24px; font-weight: 700; color: var(--accent-cobalt);">77%</div>
-                                        <div style="font-size: 11px; color: var(--text-muted);">Low False Positive Rate</div>
+                                    <div style="background: var(--bg-subtle); padding: 10px; border-radius: 6px; border: 1px solid var(--border-hairline);">
+                                        <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Precision</div>
+                                        <div style="font-size: 20px; font-weight: 700; color: var(--accent-cobalt);" class="counter-num" data-target="77">77%</div>
+                                        <div style="font-size: 10px; color: var(--text-muted);">Low False Positive Rate</div>
                                     </div>
-                                    <div style="background: var(--bg-subtle); padding: 12px; border-radius: 6px; border: 1px solid var(--border-hairline);">
-                                        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Recall</div>
-                                        <div style="font-size: 24px; font-weight: 700; color: var(--accent-amber);">68%</div>
-                                        <div style="font-size: 11px; color: var(--text-muted);">Threshold Tuning Target</div>
+                                    <div style="background: var(--bg-subtle); padding: 10px; border-radius: 6px; border: 1px solid var(--border-hairline);">
+                                        <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Recall</div>
+                                        <div style="font-size: 20px; font-weight: 700; color: var(--accent-amber);" class="counter-num" data-target="68">68%</div>
+                                        <div style="font-size: 10px; color: var(--text-muted);">Threshold Tuning Target</div>
                                     </div>
-                                    <div style="background: var(--bg-subtle); padding: 12px; border-radius: 6px; border: 1px solid var(--border-hairline);">
-                                        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase;">F1-Score</div>
-                                        <div style="font-size: 24px; font-weight: 700; color: var(--accent-emerald);">72%</div>
-                                        <div style="font-size: 11px; color: var(--text-muted);">Balanced Evaluation</div>
+                                    <div style="background: var(--bg-subtle); padding: 10px; border-radius: 6px; border: 1px solid var(--border-hairline);">
+                                        <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase;">F1-Score</div>
+                                        <div style="font-size: 20px; font-weight: 700; color: var(--accent-emerald);" class="counter-num" data-target="72">72%</div>
+                                        <div style="font-size: 10px; color: var(--text-muted);">Balanced Evaluation</div>
                                     </div>
                                 </div>
-                                <div class="benchmark-insight">
-                                    <strong>Engineering Integrity:</strong> The 68% recall rate indicates ~32% of churners are initially unflagged; in business operations, adjusting decision thresholds balances retention costs against missed churners.
+
+                                <!-- Interactive Decision Boundary Predictor Widget -->
+                                <div class="churn-interactive-widget" id="churn-widget">
+                                    <div style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--text-ink); margin-bottom: 8px;">
+                                        <i class="fas fa-sliders-h"></i> Interactive Decision Boundary Tester
+                                    </div>
+                                    <div class="churn-slider-row">
+                                        <div class="churn-slider-label">
+                                            <span>Tenure (Months)</span>
+                                            <span id="churn-tenure-val">12 mo</span>
+                                        </div>
+                                        <input type="range" class="churn-range-input" id="churn-tenure-slider" min="1" max="72" value="12">
+                                    </div>
+                                    <div class="churn-slider-row">
+                                        <div class="churn-slider-label">
+                                            <span>Monthly Charges ($)</span>
+                                            <span id="churn-charges-val">$75/mo</span>
+                                        </div>
+                                        <input type="range" class="churn-range-input" id="churn-charges-slider" min="20" max="120" value="75">
+                                    </div>
+                                    <div class="churn-prediction-badge churn-risk" id="churn-result-badge">
+                                        <span>Model Classification:</span>
+                                        <span id="churn-result-text">High Churn Risk (64%)</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -423,7 +483,7 @@
                 </article>
 
                 <!-- PROJECT 05: Garbage Classification & AI-EcoSort -->
-                <article class="featured-project-card">
+                <article class="featured-project-card reveal-on-scroll" data-category="ml">
                     <div class="project-card-grid">
                         <div class="project-narrative">
                             <div>
@@ -478,16 +538,16 @@
                                 <div class="chart-header">
                                     <span class="chart-title"><i class="fas fa-recycle"></i> 6 Waste Categories &amp; Rule Engine</span>
                                 </div>
-                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px;">
-                                    <div style="background: var(--bg-subtle); padding: 10px; border-radius: 4px; text-align: center; font-family: var(--font-mono); font-size: 11px;">Cardboard</div>
-                                    <div style="background: var(--bg-subtle); padding: 10px; border-radius: 4px; text-align: center; font-family: var(--font-mono); font-size: 11px;">Glass</div>
-                                    <div style="background: var(--bg-subtle); padding: 10px; border-radius: 4px; text-align: center; font-family: var(--font-mono); font-size: 11px;">Metal</div>
-                                    <div style="background: var(--bg-subtle); padding: 10px; border-radius: 4px; text-align: center; font-family: var(--font-mono); font-size: 11px;">Paper</div>
-                                    <div style="background: var(--bg-subtle); padding: 10px; border-radius: 4px; text-align: center; font-family: var(--font-mono); font-size: 11px;">Plastic</div>
-                                    <div style="background: var(--bg-subtle); padding: 10px; border-radius: 4px; text-align: center; font-family: var(--font-mono); font-size: 11px;">Trash</div>
+                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px;" id="waste-cat-grid">
+                                    <button type="button" class="dim-toggle-btn active" data-cat="Cardboard" style="padding: 8px;">Cardboard</button>
+                                    <button type="button" class="dim-toggle-btn" data-cat="Glass" style="padding: 8px;">Glass</button>
+                                    <button type="button" class="dim-toggle-btn" data-cat="Metal" style="padding: 8px;">Metal</button>
+                                    <button type="button" class="dim-toggle-btn" data-cat="Paper" style="padding: 8px;">Paper</button>
+                                    <button type="button" class="dim-toggle-btn" data-cat="Plastic" style="padding: 8px;">Plastic</button>
+                                    <button type="button" class="dim-toggle-btn" data-cat="Trash" style="padding: 8px;">Trash</button>
                                 </div>
-                                <div class="benchmark-insight">
-                                    <strong>Responsible AI Principle:</strong> The web interface explicitly clarifies that image upload is a preview component, directing users to rule-based classification with confidence intervals.
+                                <div class="benchmark-insight" id="waste-cat-desc">
+                                    <strong>Cardboard:</strong> Dry recyclable material. Clean corrugated boxes; flattened before municipal collection.
                                 </div>
                             </div>
                         </div>
@@ -501,7 +561,7 @@
              ================================================================== -->
         <section class="section-padding" id="shelf" style="background: var(--bg-canvas); border-top: 1px solid var(--border-hairline);">
             <div class="container">
-                <div class="editorial-header">
+                <div class="editorial-header reveal-on-scroll">
                     <div class="header-meta">
                         <span class="section-index">02 / Project Shelf</span>
                         <span class="section-label">Foundation &amp; Supporting Systems</span>
@@ -512,7 +572,7 @@
                     </p>
                 </div>
 
-                <div class="supporting-shelf">
+                <div class="supporting-shelf reveal-on-scroll">
                     <div class="shelf-row shelf-header-row">
                         <span>Project &amp; Purpose</span>
                         <span>Maturity Status</span>
@@ -636,7 +696,7 @@
              ================================================================== -->
         <section class="section-padding" id="approach" style="border-top: 1px solid var(--border-hairline);">
             <div class="container">
-                <div class="editorial-header">
+                <div class="editorial-header reveal-on-scroll">
                     <div class="header-meta">
                         <span class="section-index">03 / Philosophy</span>
                         <span class="section-label">Engineering Approach</span>
@@ -648,7 +708,7 @@
                 </div>
 
                 <div class="approach-grid">
-                    <div class="approach-card">
+                    <div class="approach-card reveal-on-scroll">
                         <span class="approach-index">01 / DISCIPLINE</span>
                         <h3>Problem First, Stack Second</h3>
                         <p>
@@ -656,7 +716,7 @@
                         </p>
                     </div>
 
-                    <div class="approach-card">
+                    <div class="approach-card reveal-on-scroll">
                         <span class="approach-index">02 / PRODUCTION AI</span>
                         <h3>ML with Real Interfaces</h3>
                         <p>
@@ -664,7 +724,7 @@
                         </p>
                     </div>
 
-                    <div class="approach-card">
+                    <div class="approach-card reveal-on-scroll">
                         <span class="approach-index">03 / HARDWARE EMPATHY</span>
                         <h3>Hardware-Aware Performance</h3>
                         <p>
@@ -672,7 +732,7 @@
                         </p>
                     </div>
 
-                    <div class="approach-card">
+                    <div class="approach-card reveal-on-scroll">
                         <span class="approach-index">04 / DEFENSE IN DEPTH</span>
                         <h3>Database-Enforced Security</h3>
                         <p>
@@ -688,7 +748,7 @@
              ================================================================== -->
         <section class="section-padding" id="capabilities" style="background: var(--bg-canvas); border-top: 1px solid var(--border-hairline);">
             <div class="container">
-                <div class="editorial-header">
+                <div class="editorial-header reveal-on-scroll">
                     <div class="header-meta">
                         <span class="section-index">04 / Skills</span>
                         <span class="section-label">Evidence-Based Technical Matrix</span>
@@ -701,7 +761,7 @@
 
                 <div class="capabilities-grid">
                     <!-- Languages -->
-                    <div class="capability-group">
+                    <div class="capability-group reveal-on-scroll">
                         <div class="capability-header">
                             <i class="fas fa-code capability-icon"></i>
                             <h3 class="capability-title">Languages</h3>
@@ -746,7 +806,7 @@
                     </div>
 
                     <!-- Systems, Cloud & DevOps -->
-                    <div class="capability-group">
+                    <div class="capability-group reveal-on-scroll">
                         <div class="capability-header">
                             <i class="fas fa-server capability-icon"></i>
                             <h3 class="capability-title">Systems &amp; DevOps</h3>
@@ -784,7 +844,7 @@
                     </div>
 
                     <!-- Machine Learning & Vision -->
-                    <div class="capability-group">
+                    <div class="capability-group reveal-on-scroll">
                         <div class="capability-header">
                             <i class="fas fa-brain capability-icon"></i>
                             <h3 class="capability-title">Machine Learning &amp; AI</h3>
@@ -829,7 +889,7 @@
              ================================================================== -->
         <section class="section-padding" id="about" style="border-top: 1px solid var(--border-hairline);">
             <div class="container">
-                <div class="editorial-header">
+                <div class="editorial-header reveal-on-scroll">
                     <div class="header-meta">
                         <span class="section-index">05 / Background</span>
                         <span class="section-label">Identity &amp; Trajectory</span>
@@ -838,7 +898,7 @@
                 </div>
 
                 <div class="about-grid">
-                    <div class="about-prose">
+                    <div class="about-prose reveal-on-scroll">
                         <p>
                             I'm a final-year Computer Science Engineering student specializing in <strong>Data Science</strong> at Alva's Institute of Engineering and Technology, Mangalore. My engineering work is grounded in a simple conviction: <strong>software should be honest about what it can and cannot do.</strong>
                         </p>
@@ -853,7 +913,7 @@
                         </p>
                     </div>
 
-                    <div class="about-sidebar">
+                    <div class="about-sidebar reveal-on-scroll">
                         <h4 class="sidebar-heading">Education &amp; Milestones</h4>
                         <div class="education-timeline">
                             <div class="edu-item">
@@ -883,7 +943,7 @@
              ================================================================== -->
         <section class="section-padding" id="contact" style="background: var(--bg-canvas); border-top: 1px solid var(--border-hairline);">
             <div class="container">
-                <div class="editorial-header">
+                <div class="editorial-header reveal-on-scroll">
                     <div class="header-meta">
                         <span class="section-index">06 / Inquiries</span>
                         <span class="section-label">Start a Conversation</span>
@@ -895,7 +955,7 @@
                 </div>
 
                 <div class="contact-grid">
-                    <div>
+                    <div class="reveal-on-scroll">
                         <p style="font-size: 1.0625rem; line-height: 1.65; color: var(--text-body); margin-bottom: 24px;">
                             I am currently based in Mangalore &amp; Bangalore, India, and open to remote, hybrid, or on-site engineering roles worldwide.
                         </p>
@@ -905,7 +965,12 @@
                                 <div class="contact-meta-icon"><i class="fas fa-envelope"></i></div>
                                 <div>
                                     <div class="contact-meta-label">Primary Email</div>
-                                    <a href="mailto:rakeshgr962@gmail.com" class="contact-meta-val">rakeshgr962@gmail.com</a>
+                                    <div style="display: flex; align-items: center;">
+                                        <a href="mailto:rakeshgr962@gmail.com" class="contact-meta-val" id="primary-email-link">rakeshgr962@gmail.com</a>
+                                        <button type="button" class="btn-copy-email" id="btn-copy-email" title="Copy email address to clipboard">
+                                            <i class="fas fa-copy"></i> <span>Copy</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="contact-meta-item">
@@ -924,15 +989,18 @@
                             </div>
                         </div>
 
-                        <div style="margin-top: 32px;">
-                            <button type="button" class="btn-secondary action-download-resume" style="width: 100%; justify-content: center;">
-                                <i class="fas fa-download"></i> Download Verified Resume (PDF)
+                        <div style="margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap;">
+                            <button type="button" class="btn-secondary action-download-resume">
+                                <i class="fas fa-download"></i> Download Resume (PDF)
                             </button>
+                            <a href="assets/resume/Rakesh_GR_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                                <i class="fas fa-external-link-alt"></i> Preview PDF
+                            </a>
                         </div>
                     </div>
 
                     <!-- Contact Form connected to Serverless Handler -->
-                    <form class="editorial-form" id="contact-form">
+                    <form class="editorial-form reveal-on-scroll" id="contact-form">
                         <div class="form-row-2">
                             <div class="form-field">
                                 <label for="contact-name">Your Name *</label>
@@ -1016,6 +1084,17 @@
         </div>
     </footer>
 
+    <!-- Floating Back to Top Control -->
+    <button type="button" class="back-to-top-btn" id="back-to-top-btn" aria-label="Scroll Back to Top">
+        <i class="fas fa-arrow-up"></i>
+        <span>Top</span>
+    </button>
+
+    <!-- Copy Feedback Toast -->
+    <div class="copy-feedback-toast" id="copy-toast">
+        <i class="fas fa-check-circle"></i> Email copied to clipboard
+    </div>
+
     <!-- ==================================================================
          CASE STUDY SLIDE-OVER MODAL DRAWER
          ================================================================== -->
@@ -1030,7 +1109,9 @@
         </div>
     </div>
 
-    <!-- Application Script -->
+    <!-- Core Interactive Libraries: Three.js & GSAP -->
+    <script src="assets/js/three.min.js"></script>
+    <script src="assets/js/gsap.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
