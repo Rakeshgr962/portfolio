@@ -1,412 +1,822 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Rakesh G R - Full-Stack Developer & Data Science Student specializing in AI, Cloud Computing, and Web Development">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Rakesh G R - Full-Stack Developer &amp; Data Science Student</title>
+    <title>Rakesh G R — AI/ML Engineer &amp; Full-Stack Systems Developer</title>
+    <meta name="description" content="Portfolio of Rakesh G R. B.Tech CS (Data Science) student building intelligent systems, high-performance C11/OpenMP compute kernels, Go developer tooling, and production full-stack platforms.">
+    <meta name="author" content="Rakesh G R">
+    <link rel="canonical" href="https://rakeshgr.netlify.app">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rakeshgr.netlify.app">
+    <meta property="og:title" content="Rakesh G R — AI/ML Engineer &amp; Full-Stack Systems Developer">
+    <meta property="og:description" content="Building AI-powered applications, high-performance systems, and honest software. Explore verified project case studies and code repositories.">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Rakesh G R — Portfolio">
+    <meta property="twitter:description" content="AI/ML Engineer &amp; Full-Stack Developer. Verified flagships: YamlAnchor, Dense Matrix Multiplication, AIET-UniSphere.">
+
+    <!-- Editorial Typography: Newsreader + Plus Jakarta Sans + JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Editorial Stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <!-- Loading Screen Styles -->
-    <style>
-        /* Loading Screen */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%; 
-            height: 100%;
-            background: #0a0a0a;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-        
-        .loading-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-        
-        .loading-logo {
-            margin-bottom: 30px;
-            font-size: 2.5rem;
-            font-weight: 800;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .loading-logo .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(102, 126, 234, 0.1);
-            border-top: 4px solid #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .loading-text {
-            font-size: 1.2rem;
-            color: #fff;
-            margin-bottom: 20px;
-            font-weight: 500;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .loading-progress {
-            width: 300px;
-            max-width: 80%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
-        
-        .loading-progress-bar {
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            width: 0%;
-            border-radius: 10px;
-            transition: width 0.3s ease;
-        }
-        
-        .loading-percentage {
-            font-size: 1rem;
-            color: #8b8b8b;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        /* Floating cards for loading screen */
-        .loading-card {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.2rem;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .loading-card:nth-child(1) {
-            top: 20%;
-            left: 15%;
-            animation-delay: 0s;
-        }
-        
-        .loading-card:nth-child(2) {
-            top: 70%;
-            left: 10%;
-            animation-delay: 0.5s;
-        }
-        
-        .loading-card:nth-child(3) {
-            top: 30%;
-            right: 15%;
-            animation-delay: 1s;
-        }
-        
-        .loading-card:nth-child(4) {
-            top: 80%;
-            right: 10%;
-            animation-delay: 1.5s;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-        
-        /* Hide content initially */
-        body.loading .main-content {
-            opacity: 0;
-            visibility: hidden;
-        }
-        
-        body.loaded .main-content {
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 0.5s ease 0.3s;
-        }
-    </style>
 </head>
-<body class="loading">
-    <!-- Loading Screen -->
-    <div id="loadingScreen" class="loading-screen">
-        <div class="loading-card">💻</div>
-        <div class="loading-card">🤖</div>
-        <div class="loading-card">☁️</div>
-        <div class="loading-card">🚀</div>
-        
-        <div class="loading-logo">
-            Rakesh<span class="gradient-text">GR</span>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        </div>
-        
-        <div class="loading-spinner"></div>
-        
-        <div class="loading-text">Loading Portfolio...</div>
-        
-        <div class="loading-progress">
-            <div class="loading-progress-bar" id="loadingProgressBar"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        </div>
-        
-        <div class="loading-percentage" id="loadingPercentage">0%</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
-    
-    <!-- Main Content (hidden initially) -->
-    <div class="main-content">
-        <!-- Navigation -->
-        <nav class="navbar" id="navbar">
-            <div class="nav-container">
-                <div class="nav-logo">
-                    <a href="#home">Rakesh<span class="gradient-text">GR</span></a>
-                </div>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#home" class="nav-link active">Home</a></li>
+<body>
+    <!-- Global Scroll Progress Indicator -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Site Navigation -->
+    <header class="site-nav" id="site-nav">
+        <div class="container nav-wrapper">
+            <div class="nav-brand">
+                <a href="#hero" class="brand-title">Rakesh G R</a>
+                <span class="brand-spec">AI / Systems / Full-Stack</span>
+            </div>
+
+            <nav aria-label="Primary Navigation">
+                <ul class="nav-menu">
+                    <li><a href="#work" class="nav-link active">Selected Work</a></li>
+                    <li><a href="#approach" class="nav-link">Approach</a></li>
+                    <li><a href="#capabilities" class="nav-link">Capabilities</a></li>
+                    <li><a href="#shelf" class="nav-link">Archive</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#expertise" class="nav-link">Expertise</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#skills" class="nav-link">Skills</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
-                    <li><a href="https://github.com/Rakeshgr962" target="_blank" class="nav-github-link" aria-label="GitHub Profile" title="View my GitHub"><i class="fab fa-github"></i></a></li>
-                    <li class="nav-resume-item"><button class="nav-resume-btn" id="navResumeBtn" aria-label="Download my resume (PDF)" title="Download my resume (PDF)"><i class="fas fa-download"></i><span class="nav-resume-text">Resume</span></button></li>
                 </ul>
-                <div class="hamburger" id="hamburger">
+            </nav>
+
+            <div class="nav-actions">
+                <button type="button" class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle visual theme">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn-resume-nav action-download-resume" title="Download Resume (PDF)">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    <span>Resume</span>
+                </button>
+                <button type="button" class="nav-hamburger" id="nav-hamburger" aria-label="Open mobile navigation menu">
                     <span></span>
                     <span></span>
                     <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Menu">
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="brand-title">Rakesh G R</span>
+                <button type="button" id="mobile-drawer-close" aria-label="Close menu" style="font-size: 1.25rem; color: var(--text-ink); cursor: pointer;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="#work">Selected Work</a></li>
+                <li><a href="#approach">Engineering Approach</a></li>
+                <li><a href="#capabilities">Technical Capabilities</a></li>
+                <li><a href="#shelf">Project Shelf</a></li>
+                <li><a href="#about">About &amp; Background</a></li>
+                <li><a href="#contact">Contact Me</a></li>
+            </ul>
+        </div>
+        <div>
+            <button type="button" class="btn-primary action-download-resume" style="width: 100%; justify-content: center; margin-bottom: 12px;">
+                <i class="fas fa-file-pdf"></i> Download Resume
+            </button>
+            <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-align: center;">
+                Alva's Institute of Engineering &amp; Technology
+            </p>
+        </div>
+    </aside>
+
+    <main id="main-content">
+        <!-- ==================================================================
+             HERO SECTION: Editorial Narrative & Architectural Spec Sheet
+             ================================================================== -->
+        <section class="hero-section" id="hero">
+            <div class="container">
+                <div class="hero-status-pill">
+                    <span class="status-dot"></span>
+                    <span>Open for AI/ML, Full-Stack &amp; Systems Internships (Dec 2026)</span>
+                </div>
+
+                <h1 class="hero-headline">
+                    Engineering <span class="editorial-italic">intelligent systems</span> with verified technical depth.
+                </h1>
+
+                <p class="hero-subdeck">
+                    Final-year CS (Data Science) engineer at Alva's Institute of Engineering &amp; Technology. I build software where machine learning pairs with production interfaces, high-performance C11/OpenMP compute kernels, and robust developer tooling—not just isolated notebooks.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#work" class="btn-primary">
+                        <span>Explore Selected Work</span>
+                        <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                    </a>
+                    <a href="#contact" class="btn-secondary">
+                        <span>Get in Touch</span>
+                    </a>
+                    <div class="hero-social-links">
+                        <a href="https://github.com/Rakeshgr962" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Inspect GitHub Profile">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/rakesh-gr" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Connect on LinkedIn">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                        </a>
+                        <a href="mailto:rakeshgr962@gmail.com" class="social-icon-btn" aria-label="Send Direct Email">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Engineering Spec Sheet Strip -->
+                <div class="hero-specs-grid">
+                    <div class="spec-item">
+                        <span class="spec-kicker">Core Domains</span>
+                        <span class="spec-value">Systems, Applied ML, Full-Stack</span>
+                        <span class="spec-note">End-to-end architectures</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-kicker">Academic Credential</span>
+                        <span class="spec-value">B.Tech CSE (Data Science)</span>
+                        <span class="spec-note">Alva's Institute (AIET), Mangalore</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-kicker">Verified Codebase</span>
+                        <span class="spec-value">18 Public Repositories</span>
+                        <span class="spec-note">GitHub: Rakeshgr962</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-kicker">Engineering Ethos</span>
+                        <span class="spec-value">Honest &amp; Defensible</span>
+                        <span class="spec-note">Measured benchmarks only</span>
+                    </div>
                 </div>
             </div>
-        </nav>
+        </section>
 
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-bg-animation"></div>
-            <div class="hero-container">
-                <div class="hero-content">
-                    <div class="hero-badge">👋 Welcome to my portfolio</div>
-                    <h1 class="hero-title">
-                        Hi, I'm <span class="gradient-text">Rakesh G R</span>
-                    </h1>
-                    <p class="hero-subtitle typed-text">Full-Stack Developer &amp; Data Science Student</p>
-                    <p class="hero-description">
-                        Building innovative solutions with AI, Cloud Computing, and Full-Stack Development
+        <!-- ==================================================================
+             SECTION B: SELECTED WORK (EDITORIAL SHOWCASES)
+             ================================================================== -->
+        <section class="section-padding" id="work">
+            <div class="container">
+                <div class="editorial-header">
+                    <div class="header-meta">
+                        <span class="section-index">01 / Portfolio</span>
+                        <span class="section-label">Selected Engineering Projects</span>
+                    </div>
+                    <h2 class="editorial-title">Featured Systems &amp; Case Studies</h2>
+                    <p class="editorial-deck">
+                        Each featured project represents verified, inspectable code on GitHub with defensible metrics, real architectural decisions, and honest disclosures of trade-offs.
                     </p>
+                </div>
 
-                    <div class="hero-social">
-                        <a href="https://github.com/Rakeshgr962" target="_blank" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/rakesh-gr-74b3572a2/" target="_blank" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="mailto:rakeshgr223@gmail.com" aria-label="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
+                <!-- PROJECT 01: AIET-UniSphere -->
+                <article class="featured-project-card">
+                    <div class="project-card-grid">
+                        <div class="project-narrative">
+                            <div>
+                                <div class="project-prehead">
+                                    <span class="project-tier-tag tier-flagship">Flagship · Campus Platform</span>
+                                    <span class="project-role-tag">Full-Stack &amp; Security Architecture</span>
+                                </div>
+                                <h3 class="project-name">AIET-UniSphere</h3>
+                                <p class="project-one-liner">
+                                    A role-aware campus academic platform for Alva's Institute of Engineering &amp; Technology built with React 19, TypeScript, and database-enforced Row Level Security (RLS).
+                                </p>
+                                <div class="project-breakdown">
+                                    <div class="breakdown-item">
+                                        <span class="breakdown-bullet">/</span>
+                                        <span>Eliminates fragile API middleware by enforcing role authorization (Student, Faculty, HOD, Admin) directly in PostgreSQL RLS policies evaluated on authenticated JWT sessions.</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span class="breakdown-bullet">/</span>
+                                        <span>Modular workspace architecture under <code>src/</code> with dedicated role directories, automated database migrations, and strict CI code linting.</span>
+                                    </div>
+                                </div>
+                                <div class="project-defense-metric">
+                                    <div class="metric-heading">Defensible Architecture Metric</div>
+                                    <div class="metric-body">100% Database-Enforced Row-Level Security · 4 Distinct Role Workspaces · Zero Custom Server Attack Surface</div>
+                                </div>
+                                <div class="project-stack-pills">
+                                    <span class="stack-pill">React 19</span>
+                                    <span class="stack-pill">TypeScript</span>
+                                    <span class="stack-pill">Vite</span>
+                                    <span class="stack-pill">Supabase Auth</span>
+                                    <span class="stack-pill">PostgreSQL RLS</span>
+                                    <span class="stack-pill">Oxlint CI</span>
+                                </div>
+                            </div>
+                            <div class="project-card-actions">
+                                <button type="button" class="btn-case-study" data-case-study="aiet-unisphere">
+                                    <span>Read Case Study</span>
+                                    <i class="fas fa-file-alt" aria-hidden="true"></i>
+                                </button>
+                                <a href="https://github.com/Aiet-Unisphere/AIET-UniSphere" target="_blank" rel="noopener noreferrer" class="btn-repo-link">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
+                                    <span>View Repository</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-stage">
+                            <!-- Interactive Role & Security Architecture Visualizer Mount -->
+                            <div id="architecture-visualizer-mount"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="hero-image">
-                    <div class="floating-card card-1">💻</div>
-                    <div class="floating-card card-2">🤖</div>
-                    <div class="floating-card card-3">☁️</div>
-                    <div class="floating-card card-4">🚀</div>
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <span></span>
+                </article>
+
+                <!-- PROJECT 02: YamlAnchor -->
+                <article class="featured-project-card">
+                    <div class="project-card-grid">
+                        <div class="project-narrative">
+                            <div>
+                                <div class="project-prehead">
+                                    <span class="project-tier-tag tier-flagship">Flagship · Developer Tooling</span>
+                                    <span class="project-role-tag">Go Backend &amp; Container Orchestration</span>
+                                </div>
+                                <h3 class="project-name">YamlAnchor</h3>
+                                <p class="project-one-liner">
+                                    Local CI/CD pipeline simulator that scans repositories via AST parsing, synthesizes GitHub Actions workflows, and dry-runs them in local Docker containers.
+                                </p>
+                                <div class="project-breakdown">
+                                    <div class="breakdown-item">
+                                        <span class="breakdown-bullet">/</span>
+                                        <span>Stops the wasteful "commit-push-fail-tweak-push-fail" cycle by dry-running multi-stage CI steps locally with streaming NDJSON container logs.</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span class="breakdown-bullet">/</span>
+                                        <span>Multi-language AST analysis (Go, TypeScript, Python) with local secret interception and intelligent error remediation suggestions.</span>
+                                    </div>
+                                </div>
+                                <div class="project-defense-metric">
+                                    <div class="metric-heading">Defensible Architecture Metric</div>
+                                    <div class="metric-body">Zero Remote Test Commits · Sub-Second AST Dependency Analysis · Local Docker Runner Simulation</div>
+                                </div>
+                                <div class="project-stack-pills">
+                                    <span class="stack-pill">Go 1.22</span>
+                                    <span class="stack-pill">Next.js App Router</span>
+                                    <span class="stack-pill">TypeScript</span>
+                                    <span class="stack-pill">Docker SDK</span>
+                                    <span class="stack-pill">AST Analysis</span>
+                                    <span class="stack-pill">NDJSON Stream</span>
+                                </div>
+                            </div>
+                            <div class="project-card-actions">
+                                <button type="button" class="btn-case-study" data-case-study="yamlanchor">
+                                    <span>Read Case Study</span>
+                                    <i class="fas fa-file-alt" aria-hidden="true"></i>
+                                </button>
+                                <a href="https://github.com/Rakeshgr962/YamlAnchor" target="_blank" rel="noopener noreferrer" class="btn-repo-link">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
+                                    <span>View Repository</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-stage">
+                            <!-- Interactive Terminal Simulator Mount -->
+                            <div id="terminal-simulator-mount"></div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PROJECT 03: Dense Matrix Multiplication -->
+                <article class="featured-project-card">
+                    <div class="project-card-grid">
+                        <div class="project-narrative">
+                            <div>
+                                <div class="project-prehead">
+                                    <span class="project-tier-tag tier-flagship">Flagship · Systems &amp; HPC</span>
+                                    <span class="project-role-tag">C11, Cache Tiling &amp; OpenMP</span>
+                                </div>
+                                <h3 class="project-name">Dense Matrix Multiplication</h3>
+                                <p class="project-one-liner">
+                                    An empirical high-performance computing study of CPU cache hierarchies, loop reordering, cache blocking, and OpenMP collapse(2) parallelization.
+                                </p>
+                                <div class="project-breakdown">
+                                    <div class="breakdown-item">
+                                        <span class="breakdown-bullet">/</span>
+                                        <span>Evaluates 6 C11 compute kernels with 64-byte aligned memory allocation, warmups, median filtering, and an 81-test verification suite (&epsilon; &lt; 10<sup>-9</sup>).</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span class="breakdown-bullet">/</span>
+                                        <span>Proves an ~12.6x speedup achieved purely through loop reordering (<code>ikj</code> over <code>ijk</code>) by converting column-strided cache thrashing into sequential spatial locality.</span>
+                                    </div>
+                                </div>
+                                <div class="project-defense-metric">
+                                    <div class="metric-heading">Defensible Performance Metric</div>
+                                    <div class="metric-body">~12.6x Speedup via ikj Reordering · Optimal Tile Sizes 64 &amp; 128 · 46.8 GFLOPS OpenMP Throughput</div>
+                                </div>
+                                <div class="project-stack-pills">
+                                    <span class="stack-pill">C11</span>
+                                    <span class="stack-pill">OpenMP collapse(2)</span>
+                                    <span class="stack-pill">GCC -O3</span>
+                                    <span class="stack-pill">Python Benchmarking</span>
+                                    <span class="stack-pill">Cache Analysis</span>
+                                </div>
+                            </div>
+                            <div class="project-card-actions">
+                                <button type="button" class="btn-case-study" data-case-study="dense-matrix">
+                                    <span>Read Case Study</span>
+                                    <i class="fas fa-file-alt" aria-hidden="true"></i>
+                                </button>
+                                <a href="https://github.com/Rakeshgr962/Dense-Matrix-Multiplication" target="_blank" rel="noopener noreferrer" class="btn-repo-link">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
+                                    <span>View Repository</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-stage">
+                            <!-- Interactive Benchmark Chart Mount -->
+                            <div id="matrix-chart-mount"></div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PROJECT 04: Customer Churn Prediction API -->
+                <article class="featured-project-card">
+                    <div class="project-card-grid">
+                        <div class="project-narrative">
+                            <div>
+                                <div class="project-prehead">
+                                    <span class="project-tier-tag tier-strong">Strong · ML in Production</span>
+                                    <span class="project-role-tag">Applied ML &amp; FastAPI Backend</span>
+                                </div>
+                                <h3 class="project-name">Customer Churn Prediction API</h3>
+                                <p class="project-one-liner">
+                                    Production XGBoost classifier on 7,043 Telco records served via containerized FastAPI, tracked with MLflow, and deployed as a cloud Docker service.
+                                </p>
+                                <div class="project-breakdown">
+                                    <div class="breakdown-item">
+                                        <span class="breakdown-bullet">/</span>
+                                        <span>Eliminates target leakage by explicitly purging post-event columns (Churn Score, Status, Reason) that falsely inflate Kaggle notebook scores.</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span class="breakdown-bullet">/</span>
+                                        <span>Production-ready inference endpoint with Pydantic validation schemas, MLflow run logging, and reproducible Docker containerization.</span>
+                                    </div>
+                                </div>
+                                <div class="project-defense-metric">
+                                    <div class="metric-heading">Defensible ML Metrics</div>
+                                    <div class="metric-body">81% Accuracy · 77% Precision · 68% Recall (Transparently Disclosed Trade-off) · Leakage-Free Data Pipeline</div>
+                                </div>
+                                <div class="project-stack-pills">
+                                    <span class="stack-pill">Python</span>
+                                    <span class="stack-pill">XGBoost</span>
+                                    <span class="stack-pill">FastAPI</span>
+                                    <span class="stack-pill">MLflow</span>
+                                    <span class="stack-pill">Docker</span>
+                                    <span class="stack-pill">Render</span>
+                                </div>
+                            </div>
+                            <div class="project-card-actions">
+                                <button type="button" class="btn-case-study" data-case-study="customer-churn">
+                                    <span>Read Case Study</span>
+                                    <i class="fas fa-file-alt" aria-hidden="true"></i>
+                                </button>
+                                <a href="https://github.com/Rakeshgr962/Customer-churn-" target="_blank" rel="noopener noreferrer" class="btn-repo-link">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
+                                    <span>View Repository</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-stage">
+                            <div class="matrix-chart-card">
+                                <div class="chart-header">
+                                    <span class="chart-title"><i class="fas fa-chart-line"></i> Model Validation Matrix (Telco 7,043)</span>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                                    <div style="background: var(--bg-subtle); padding: 12px; border-radius: 6px; border: 1px solid var(--border-hairline);">
+                                        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Overall Accuracy</div>
+                                        <div style="font-size: 24px; font-weight: 700; color: var(--text-ink);">81%</div>
+                                        <div style="font-size: 11px; color: var(--text-muted);">80/20 Stratified Split</div>
+                                    </div>
+                                    <div style="background: var(--bg-subtle); padding: 12px; border-radius: 6px; border: 1px solid var(--border-hairline);">
+                                        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Precision</div>
+                                        <div style="font-size: 24px; font-weight: 700; color: var(--accent-cobalt);">77%</div>
+                                        <div style="font-size: 11px; color: var(--text-muted);">Low False Positive Rate</div>
+                                    </div>
+                                    <div style="background: var(--bg-subtle); padding: 12px; border-radius: 6px; border: 1px solid var(--border-hairline);">
+                                        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Recall</div>
+                                        <div style="font-size: 24px; font-weight: 700; color: var(--accent-amber);">68%</div>
+                                        <div style="font-size: 11px; color: var(--text-muted);">Threshold Tuning Target</div>
+                                    </div>
+                                    <div style="background: var(--bg-subtle); padding: 12px; border-radius: 6px; border: 1px solid var(--border-hairline);">
+                                        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase;">F1-Score</div>
+                                        <div style="font-size: 24px; font-weight: 700; color: var(--accent-emerald);">72%</div>
+                                        <div style="font-size: 11px; color: var(--text-muted);">Balanced Evaluation</div>
+                                    </div>
+                                </div>
+                                <div class="benchmark-insight">
+                                    <strong>Engineering Integrity:</strong> The 68% recall rate indicates ~32% of churners are initially unflagged; in business operations, adjusting decision thresholds balances retention costs against missed churners.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PROJECT 05: Garbage Classification & AI-EcoSort -->
+                <article class="featured-project-card">
+                    <div class="project-card-grid">
+                        <div class="project-narrative">
+                            <div>
+                                <div class="project-prehead">
+                                    <span class="project-tier-tag tier-strong">Strong · Vision &amp; Responsible AI</span>
+                                    <span class="project-role-tag">Deep Learning &amp; Web Assistant</span>
+                                </div>
+                                <h3 class="project-name">Waste Classification &amp; AI-EcoSort</h3>
+                                <p class="project-one-liner">
+                                    EfficientNetB0 transfer-learning classifier for 6 waste categories paired with AI-EcoSort, an accessible sustainability assistant built for the 1M1B IBM SkillsBuild program.
+                                </p>
+                                <div class="project-breakdown">
+                                    <div class="breakdown-item">
+                                        <span class="breakdown-bullet">/</span>
+                                        <span>Trained EfficientNetB0 backbone on public waste benchmarks, achieving 89.24% test accuracy across cardboard, glass, metal, paper, plastic, and trash.</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span class="breakdown-bullet">/</span>
+                                        <span>Engineered AI-EcoSort with honest Responsible AI design: deterministic text rule classification with confidence meters, uncertainty warnings, and Vitest test coverage.</span>
+                                    </div>
+                                </div>
+                                <div class="project-defense-metric">
+                                    <div class="metric-heading">Defensible Evaluation Metric</div>
+                                    <div class="metric-body">89.24% Benchmark Accuracy · 6 Discrete Waste Categories · Deterministic Rule Engine with Vitest Coverage</div>
+                                </div>
+                                <div class="project-stack-pills">
+                                    <span class="stack-pill">TensorFlow</span>
+                                    <span class="stack-pill">EfficientNetB0</span>
+                                    <span class="stack-pill">Gradio Demo</span>
+                                    <span class="stack-pill">React 19</span>
+                                    <span class="stack-pill">TypeScript</span>
+                                    <span class="stack-pill">Vitest</span>
+                                </div>
+                            </div>
+                            <div class="project-card-actions">
+                                <button type="button" class="btn-case-study" data-case-study="garbage-classification">
+                                    <span>Read Case Study</span>
+                                    <i class="fas fa-file-alt" aria-hidden="true"></i>
+                                </button>
+                                <a href="https://github.com/Rakeshgr962/GarbageClassfication" target="_blank" rel="noopener noreferrer" class="btn-repo-link">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
+                                    <span>Vision Model</span>
+                                </a>
+                                <a href="https://github.com/Rakeshgr962/AI-EcoSort" target="_blank" rel="noopener noreferrer" class="btn-repo-link">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
+                                    <span>AI-EcoSort UI</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-stage">
+                            <div class="matrix-chart-card">
+                                <div class="chart-header">
+                                    <span class="chart-title"><i class="fas fa-recycle"></i> 6 Waste Categories &amp; Rule Engine</span>
+                                </div>
+                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px;">
+                                    <div style="background: var(--bg-subtle); padding: 10px; border-radius: 4px; text-align: center; font-family: var(--font-mono); font-size: 11px;">Cardboard</div>
+                                    <div style="background: var(--bg-subtle); padding: 10px; border-radius: 4px; text-align: center; font-family: var(--font-mono); font-size: 11px;">Glass</div>
+                                    <div style="background: var(--bg-subtle); padding: 10px; border-radius: 4px; text-align: center; font-family: var(--font-mono); font-size: 11px;">Metal</div>
+                                    <div style="background: var(--bg-subtle); padding: 10px; border-radius: 4px; text-align: center; font-family: var(--font-mono); font-size: 11px;">Paper</div>
+                                    <div style="background: var(--bg-subtle); padding: 10px; border-radius: 4px; text-align: center; font-family: var(--font-mono); font-size: 11px;">Plastic</div>
+                                    <div style="background: var(--bg-subtle); padding: 10px; border-radius: 4px; text-align: center; font-family: var(--font-mono); font-size: 11px;">Trash</div>
+                                </div>
+                                <div class="benchmark-insight">
+                                    <strong>Responsible AI Principle:</strong> The web interface explicitly clarifies that image upload is a preview component, directing users to rule-based classification with confidence intervals.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="about section-padding">
+        <!-- ==================================================================
+             SECTION C: SUPPORTING WORK & ARCHIVE SHELF
+             ================================================================== -->
+        <section class="section-padding" id="shelf" style="background: var(--bg-canvas); border-top: 1px solid var(--border-hairline);">
             <div class="container">
-                <div class="section-header fade-in">
-                    <span class="section-tag">Get To Know Me</span>
-                    <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+                <div class="editorial-header">
+                    <div class="header-meta">
+                        <span class="section-index">02 / Project Shelf</span>
+                        <span class="section-label">Foundation &amp; Supporting Systems</span>
+                    </div>
+                    <h2 class="editorial-title">Supporting Repositories &amp; Explorations</h2>
+                    <p class="editorial-deck">
+                        Earlier architectures, foundation scaffolds, and backend experiments that support my technical journey.
+                    </p>
                 </div>
-                <div class="about-content">
-                    <div class="about-text slide-in-left">
-                        <p class="about-bio">
-                            I'm a B.Tech Computer Science Engineering (Data Science) student at Alva's Institute of Engineering and Technology, passionate about creating innovative web applications and AI-driven solutions. With expertise in full-stack development, machine learning, and cloud computing, I've successfully completed projects ranging from e-commerce platforms to real-time environmental monitoring systems.
+
+                <div class="supporting-shelf">
+                    <div class="shelf-row shelf-header-row">
+                        <span>Project &amp; Purpose</span>
+                        <span>Maturity Status</span>
+                        <span>Technology Stack</span>
+                        <span>Source Code</span>
+                    </div>
+
+                    <!-- PriceFlow-Agent -->
+                    <div class="shelf-row">
+                        <div class="shelf-title-col">
+                            <h4>PriceFlow-Agent</h4>
+                            <p>Dynamic pricing SaaS foundation: versioned routers, global error middleware, and Docker Compose orchestration.</p>
+                        </div>
+                        <div>
+                            <span class="shelf-status-tag tag-foundation">Foundation (Batch 0)</span>
+                        </div>
+                        <div class="shelf-tech-pills">
+                            <span class="stack-pill">FastAPI</span>
+                            <span class="stack-pill">React TS</span>
+                            <span class="stack-pill">PostgreSQL</span>
+                            <span class="stack-pill">Redis</span>
+                            <span class="stack-pill">Docker</span>
+                        </div>
+                        <div>
+                            <a href="https://github.com/Rakeshgr962/PriceFlow-Agent" target="_blank" rel="noopener noreferrer" class="shelf-link">
+                                <span>Inspect Repo</span> <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- GlitrAI Mini Content Engine -->
+                    <div class="shelf-row">
+                        <div class="shelf-title-col">
+                            <h4>GlitrAI Mini Content Engine</h4>
+                            <p>Asynchronous LLM content pipeline: Groq API prompt generation with fallback image synthesis and PostgreSQL job queues.</p>
+                        </div>
+                        <div>
+                            <span class="shelf-status-tag tag-active">Active Supporting</span>
+                        </div>
+                        <div class="shelf-tech-pills">
+                            <span class="stack-pill">FastAPI</span>
+                            <span class="stack-pill">Groq LLM</span>
+                            <span class="stack-pill">PostgreSQL</span>
+                            <span class="stack-pill">Pollinations API</span>
+                        </div>
+                        <div>
+                            <a href="https://github.com/Rakeshgr962/glitrai-mini-content-engine" target="_blank" rel="noopener noreferrer" class="shelf-link">
+                                <span>Inspect Repo</span> <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- AeroBuy -->
+                    <div class="shelf-row">
+                        <div class="shelf-title-col">
+                            <h4>AeroBuy E-Commerce</h4>
+                            <p>Full-stack web store with product categories, session-based cart auth, and orders over 4 MongoDB collections.</p>
+                        </div>
+                        <div>
+                            <span class="shelf-status-tag tag-active">Completed Web App</span>
+                        </div>
+                        <div class="shelf-tech-pills">
+                            <span class="stack-pill">Python Flask</span>
+                            <span class="stack-pill">MongoDB</span>
+                            <span class="stack-pill">Jinja2</span>
+                            <span class="stack-pill">Bootstrap</span>
+                        </div>
+                        <div>
+                            <a href="https://github.com/Rakeshgr962/AeroBuy" target="_blank" rel="noopener noreferrer" class="shelf-link">
+                                <span>Inspect Repo</span> <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Arthasetu -->
+                    <div class="shelf-row">
+                        <div class="shelf-title-col">
+                            <h4>Arthasetu Financial Portal</h4>
+                            <p>Client-side investment planning suite with iterative monthly compounding SIP calculations and portfolio allocation tools.</p>
+                        </div>
+                        <div>
+                            <span class="shelf-status-tag tag-active">Deployed Static Tool</span>
+                        </div>
+                        <div class="shelf-tech-pills">
+                            <span class="stack-pill">Vanilla JS</span>
+                            <span class="stack-pill">HTML5/CSS3</span>
+                            <span class="stack-pill">Vercel Deploy</span>
+                        </div>
+                        <div>
+                            <a href="https://github.com/Rakeshgr962/arthasetu-website" target="_blank" rel="noopener noreferrer" class="shelf-link">
+                                <span>Inspect Repo</span> <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- AR-World -->
+                    <div class="shelf-row">
+                        <div class="shelf-title-col">
+                            <h4>AR-World Builder Documentation</h4>
+                            <p>Comprehensive spatial-design architecture proposal, system report (.docx), and presentation video for 3D world creation.</p>
+                        </div>
+                        <div>
+                            <span class="shelf-status-tag tag-docs">Research / Docs Only</span>
+                        </div>
+                        <div class="shelf-tech-pills">
+                            <span class="stack-pill">Spatial UI Design</span>
+                            <span class="stack-pill">Architecture Specs</span>
+                        </div>
+                        <div>
+                            <a href="https://github.com/Rakeshgr962/AR-World" target="_blank" rel="noopener noreferrer" class="shelf-link">
+                                <span>Inspect Docs</span> <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION D: ENGINEERING APPROACH (MANIFESTO)
+             ================================================================== -->
+        <section class="section-padding" id="approach" style="border-top: 1px solid var(--border-hairline);">
+            <div class="container">
+                <div class="editorial-header">
+                    <div class="header-meta">
+                        <span class="section-index">03 / Philosophy</span>
+                        <span class="section-label">Engineering Approach</span>
+                    </div>
+                    <h2 class="editorial-title">How I Build Software Systems</h2>
+                    <p class="editorial-deck">
+                        Four core principles that dictate my technical choices across machine learning, backend design, and high-performance engineering.
+                    </p>
+                </div>
+
+                <div class="approach-grid">
+                    <div class="approach-card">
+                        <span class="approach-index">01 / DISCIPLINE</span>
+                        <h3>Problem First, Stack Second</h3>
+                        <p>
+                            We don't reach for distributed microservices or LLMs when a rule-based engine or PostgreSQL Row Level Security solves the problem with zero maintenance overhead. The simplest architecture that guarantees correctness is always the right one.
                         </p>
-                        <div class="about-info">
-                            <div class="info-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Bangalore, India</span>
+                    </div>
+
+                    <div class="approach-card">
+                        <span class="approach-index">02 / PRODUCTION AI</span>
+                        <h3>ML with Real Interfaces</h3>
+                        <p>
+                            Jupyter notebooks are valuable for proving hypotheses, but real engineering begins when models are decoupled from research artifacts: wrapped in typed FastAPI endpoints, protected against data leakage, containerized with Docker, and tested against real inputs.
+                        </p>
+                    </div>
+
+                    <div class="approach-card">
+                        <span class="approach-index">03 / HARDWARE EMPATHY</span>
+                        <h3>Hardware-Aware Performance</h3>
+                        <p>
+                            Scaling cloud compute is expensive; understanding cache hierarchies is free. As demonstrated in my matrix multiplication study, optimizing memory stride access and loop tiling delivers an ~12x speedup before spinning up a single multi-core thread.
+                        </p>
+                    </div>
+
+                    <div class="approach-card">
+                        <span class="approach-index">04 / DEFENSE IN DEPTH</span>
+                        <h3>Database-Enforced Security</h3>
+                        <p>
+                            Application-level authorization checks are vulnerable to developer oversight. In multi-tenant systems like AIET-UniSphere, data boundaries are codified directly in PostgreSQL RLS policies, making authorization bypass impossible at the API tier.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION E: TECHNICAL CAPABILITIES MATRIX
+             ================================================================== -->
+        <section class="section-padding" id="capabilities" style="background: var(--bg-canvas); border-top: 1px solid var(--border-hairline);">
+            <div class="container">
+                <div class="editorial-header">
+                    <div class="header-meta">
+                        <span class="section-index">04 / Skills</span>
+                        <span class="section-label">Evidence-Based Technical Matrix</span>
+                    </div>
+                    <h2 class="editorial-title">Verified Capabilities</h2>
+                    <p class="editorial-deck">
+                        Technologies and tools I have actively written, benchmarked, and shipped in public repositories—not just listed on a resume.
+                    </p>
+                </div>
+
+                <div class="capabilities-grid">
+                    <!-- Languages -->
+                    <div class="capability-group">
+                        <div class="capability-header">
+                            <i class="fas fa-code capability-icon"></i>
+                            <h3 class="capability-title">Languages</h3>
+                        </div>
+                        <div class="capability-list">
+                            <div class="capability-item">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Python</span>
+                                    <span class="cap-evidence-tag">High Proficiency</span>
+                                </div>
+                                <span class="cap-desc">FastAPI, XGBoost, MLflow, benchmark orchestrators, data pipelines</span>
                             </div>
-                            <div class="info-item">
-                                <i class="fas fa-envelope"></i>
-                                <span>rakeshgr223@gmail.com</span>
+                            <div class="capability-item">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">TypeScript / JavaScript</span>
+                                    <span class="cap-evidence-tag">High Proficiency</span>
+                                </div>
+                                <span class="cap-desc">React 19, Next.js, Node.js, Vite, typed service layers</span>
                             </div>
-                            <div class="info-item">
-                                <i class="fas fa-phone"></i>
-                                <span>9035402276</span>
+                            <div class="capability-item">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">C11</span>
+                                    <span class="cap-evidence-tag">Verified Systems</span>
+                                </div>
+                                <span class="cap-desc">OpenMP collapse(2), cache tiling, aligned memory allocation</span>
+                            </div>
+                            <div class="capability-item">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Go</span>
+                                    <span class="cap-evidence-tag">Developer Tooling</span>
+                                </div>
+                                <span class="cap-desc">AST codebase parser, Docker SDK orchestration, YamlAnchor</span>
+                            </div>
+                            <div class="capability-item">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">SQL</span>
+                                    <span class="cap-evidence-tag">Database Security</span>
+                                </div>
+                                <span class="cap-desc">PostgreSQL migrations, Row Level Security (RLS) policies</span>
                             </div>
                         </div>
-                        <button class="btn btn-about-resume" id="aboutResumeBtn" aria-label="Download my resume (PDF)" title="Download my resume (PDF)">
-                            <span>Get My Resume</span>
-                            <i class="fas fa-download"></i>
-                        </button>
                     </div>
-                    <div class="about-education slide-in-right">
-                        <h3>Education Timeline</h3>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content">
-                                    <span class="timeline-date">2023 - Present</span>
-                                    <h4>B.Tech in Computer Science Engineering (Data Science)</h4>
-                                    <p>Alva's Institute of Engineering and Technology, Mangalore</p>
-                                    <span class="timeline-grade">GPA: 7.6</span>
+
+                    <!-- Systems, Cloud & DevOps -->
+                    <div class="capability-group">
+                        <div class="capability-header">
+                            <i class="fas fa-server capability-icon"></i>
+                            <h3 class="capability-title">Systems &amp; DevOps</h3>
+                        </div>
+                        <div class="capability-list">
+                            <div class="capability-item">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Docker &amp; Containers</span>
+                                    <span class="cap-evidence-tag">Verified in 4 Repos</span>
                                 </div>
+                                <span class="cap-desc">Multi-stage builds, Docker Compose (Postgres/Redis), runner simulation</span>
                             </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content">
-                                    <span class="timeline-date">2021 - 2023</span>
-                                    <h4>Pre-University in PCMB</h4>
-                                    <p>Jnana Jyothi Pu College, Bangalore</p>
-                                    <span class="timeline-grade">77%</span>
+                            <div class="capability-item">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">CI/CD &amp; GitHub Actions</span>
+                                    <span class="cap-evidence-tag">Tool Author</span>
                                 </div>
+                                <span class="cap-desc">Workflow synthesis, runner simulation, linting &amp; test workflows</span>
+                            </div>
+                            <div class="capability-item">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">High-Performance Computing</span>
+                                    <span class="cap-evidence-tag">Empirical Study</span>
+                                </div>
+                                <span class="cap-desc">Loop tiling, memory stride optimization, CPU cache hierarchy utilization</span>
+                            </div>
+                            <div class="capability-item">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Cloud Deployment</span>
+                                    <span class="cap-evidence-tag">Live Apps</span>
+                                </div>
+                                <span class="cap-desc">Render container deploys, Vercel serverless functions, Netlify</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Machine Learning & Vision -->
+                    <div class="capability-group">
+                        <div class="capability-header">
+                            <i class="fas fa-brain capability-icon"></i>
+                            <h3 class="capability-title">Machine Learning &amp; AI</h3>
+                        </div>
+                        <div class="capability-list">
+                            <div class="capability-item">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Classical Machine Learning</span>
+                                    <span class="cap-evidence-tag">Production API</span>
+                                </div>
+                                <span class="cap-desc">XGBoost, feature engineering, data leakage elimination, Scikit-learn</span>
+                            </div>
+                            <div class="capability-item">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Deep Learning &amp; Vision</span>
+                                    <span class="cap-evidence-tag">89.24% Benchmark</span>
+                                </div>
+                                <span class="cap-desc">EfficientNetB0 transfer learning, TensorFlow/Keras, Gradio interfaces</span>
+                            </div>
+                            <div class="capability-item">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">MLOps &amp; Tracking</span>
+                                    <span class="cap-evidence-tag">MLflow Logging</span>
+                                </div>
+                                <span class="cap-desc">Experiment run tracking, metric logging, model artifact management</span>
+                            </div>
+                            <div class="capability-item">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">LLM Integration &amp; APIs</span>
+                                    <span class="cap-evidence-tag">Async Pipelines</span>
+                                </div>
+                                <span class="cap-desc">Groq API streaming, prompt pipelines, IBM Granite (watsonx.ai)</span>
                             </div>
                         </div>
                     </div>
@@ -414,463 +824,213 @@
             </div>
         </section>
 
-        <!-- Expertise Section -->
-        <section id="expertise" class="services section-padding">
+        <!-- ==================================================================
+             SECTION F: ABOUT ME & EDUCATION
+             ================================================================== -->
+        <section class="section-padding" id="about" style="border-top: 1px solid var(--border-hairline);">
             <div class="container">
-                <div class="section-header fade-in">
-                    <span class="section-tag">What I Offer</span>
-                    <h2 class="section-title">Power-Ups &amp; <span class="gradient-text">Abilities</span></h2>
+                <div class="editorial-header">
+                    <div class="header-meta">
+                        <span class="section-index">05 / Background</span>
+                        <span class="section-label">Identity &amp; Trajectory</span>
+                    </div>
+                    <h2 class="editorial-title">About Rakesh G R</h2>
                 </div>
-                <div class="services-grid">
-                    <div class="service-card scale-in" style="animation-delay: 0.1s">
-                        <div class="service-icon">💻</div>
-                        <h3>Full-Stack Web Development</h3>
-                        <p>Building responsive, scalable web applications using modern frameworks like React, Node.js, and Flask with MongoDB integration</p>
+
+                <div class="about-grid">
+                    <div class="about-prose">
+                        <p>
+                            I'm a final-year Computer Science Engineering student specializing in <strong>Data Science</strong> at Alva's Institute of Engineering and Technology, Mangalore. My engineering work is grounded in a simple conviction: <strong>software should be honest about what it can and cannot do.</strong>
+                        </p>
+                        <p>
+                            Instead of inflating projects with buzzwords or stopping at exploratory Jupyter notebooks, I focus on turning algorithms into inspectable, production-ready software systems. That spans writing C11 and OpenMP routines that saturate CPU cache hierarchies, engineering Go developer tools that simulate GitHub Actions in local Docker containers, and building role-aware campus platforms secured with PostgreSQL Row Level Security.
+                        </p>
+                        <div class="about-callout-quote">
+                            "Builds AI-powered systems and honest software: ML paired with real interfaces, not just notebooks."
+                        </div>
+                        <p>
+                            I am actively seeking <strong>AI/ML Engineering, Full-Stack, and Systems internships starting from December 2026</strong>. If your team values clean systems, reproducible benchmarks, and engineers who care about what happens under the hood, I'd love to connect.
+                        </p>
                     </div>
-                    <div class="service-card scale-in" style="animation-delay: 0.2s">
-                        <div class="service-icon">🤖</div>
-                        <h3>Machine Learning &amp; AI</h3>
-                        <p>Developing intelligent solutions using CNN, transfer learning, and AI forecasting models for real-world applications</p>
-                    </div>
-                    <div class="service-card scale-in" style="animation-delay: 0.3s">
-                        <div class="service-icon">☁️</div>
-                        <h3>Cloud Computing</h3>
-                        <p>Deploying and managing cloud-based applications with expertise in cloud infrastructure and scalable architectures</p>
-                    </div>
-                    <div class="service-card scale-in" style="animation-delay: 0.4s">
-                        <div class="service-icon">🗄️</div>
-                        <h3>Database Management</h3>
-                        <p>Designing and implementing efficient databases using MongoDB and SQL for optimal data storage and retrieval</p>
-                    </div>
-                    <div class="service-card scale-in" style="animation-delay: 0.5s">
-                        <div class="service-icon">🔐</div>
-                        <h3>Cybersecurity</h3>
-                        <p>Implementing security best practices and conducting comprehensive security assessments for web applications</p>
-                    </div>
-                    <div class="service-card scale-in" style="animation-delay: 0.6s">
-                        <div class="service-icon">📊</div>
-                        <h3>Data Analysis</h3>
-                        <p>Analyzing complex datasets and creating data-driven insights for informed decision making and predictions</p>
+
+                    <div class="about-sidebar">
+                        <h4 class="sidebar-heading">Education &amp; Milestones</h4>
+                        <div class="education-timeline">
+                            <div class="edu-item">
+                                <span class="edu-period">2023 — Present (Final Year)</span>
+                                <h5 class="edu-degree">B.Tech in Computer Science &amp; Engineering (Data Science)</h5>
+                                <p class="edu-institution">Alva's Institute of Engineering and Technology, Mangalore</p>
+                            </div>
+                            <div class="edu-item">
+                                <span class="edu-period">Pre-University (2021 — 2023)</span>
+                                <h5 class="edu-degree">PCMB (Physics, Chemistry, Mathematics, Biology)</h5>
+                                <p class="edu-institution">Jnana Jyothi PU College, Bangalore (77%)</p>
+                            </div>
+                        </div>
+
+                        <h4 class="sidebar-heading" style="margin-top: 24px;">Key Recognitions</h4>
+                        <ul style="padding-left: 18px; font-size: 0.875rem; color: var(--text-body); line-height: 1.6;">
+                            <li style="margin-bottom: 8px;"><strong>1M1B IBM SkillsBuild AI for Sustainability:</strong> Built AI-EcoSort waste segregation assistant aligned with SDG 12.</li>
+                            <li style="margin-bottom: 8px;"><strong>Edunet Foundation / Shell India / AICTE:</strong> Green Skills &amp; AI internship focused on waste classification transfer learning.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="projects section-padding">
+        <!-- ==================================================================
+             SECTION G: CONTACT & INQUIRIES
+             ================================================================== -->
+        <section class="section-padding" id="contact" style="background: var(--bg-canvas); border-top: 1px solid var(--border-hairline);">
             <div class="container">
-                <div class="section-header fade-in">
-                    <span class="section-tag">My Portfolio</span>
-                    <h2 class="section-title"><span class="gradient-text">Projects</span></h2>
+                <div class="editorial-header">
+                    <div class="header-meta">
+                        <span class="section-index">06 / Inquiries</span>
+                        <span class="section-label">Start a Conversation</span>
+                    </div>
+                    <h2 class="editorial-title">Get in Touch</h2>
+                    <p class="editorial-deck">
+                        Whether you are discussing internship opportunities, engineering roles, or technical collaborations—my inbox is open.
+                    </p>
                 </div>
-                <div class="projects-grid">
-                    <div class="project-card project-featured slide-in-left">
-                        <div class="project-badge">🎯 FEATURED MISSION</div>
-                        <div class="project-image">
-                            <div class="project-placeholder" style="background: linear-gradient(135deg, #00d9ff 0%, #ff006e 100%);">
-                                <div class="project-icon">✈️</div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>Airport Baggage Handling System - RFID Solution</h3>
-                            <p>RFID-based baggage tracking system for Indian airports. Features real-time tracking, flight-specific verification, and instant passenger notifications. Eliminates baggage mishandling through automated verification preventing wrong flight loading. Achieves 99%+ accuracy vs 85-90% barcode systems.</p>
-                            <div class="project-stats">
-                                <div class="stat-item">
-                                    <div class="stat-value">99%+</div>
-                                    <div class="stat-label">Accuracy Rate</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-value">₹1.3B</div>
-                                    <div class="stat-label">Market by 2033</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-value">Real-time</div>
-                                    <div class="stat-label">Tracking</div>
-                                </div>
-                            </div>
-                            <div class="project-impact">
-                                <strong>Impact:</strong> Addresses $500M-$1.3B market gap. Prevents baggage loss, improves passenger satisfaction, reduces recovery costs by preventing misrouting.
-                            </div>
-                            <div class="project-tags">
-                                <span class="tag">RFID</span>
-                                <span class="tag">IoT</span>
-                                <span class="tag">Real-time Tracking</span>
-                                <span class="tag">Encryption</span>
-                                <span class="tag">Mobile Notifications</span>
-                                <span class="tag">System Design</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card slide-in-up">
-                        <div class="project-image">
-                            <div class="project-placeholder" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">🌍</div>
-                        </div>
-                        <div class="project-content">
-                            <h3>Atmos - AQI Dashboard</h3>
-                            <p>Web-based dashboard integrating real-time NASA TEMPO and OpenAQ data with interactive maps and AI forecasting models for pollution predictions.</p>
-                            <div class="project-tags">
-                                <span class="tag">React</span>
-                                <span class="tag">AI/ML</span>
-                                <span class="tag">Cloud Computing</span>
-                                <span class="tag">Data Visualization</span>
-                                <span class="tag">APIs</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card slide-in-up">
-                        <div class="project-image">
-                            <div class="project-placeholder" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">🛒</div>
-                        </div>
-                        <div class="project-content">
-                            <h3>AeroBuy E-Commerce</h3>
-                            <p>Full-stack e-commerce platform featuring product listings, user authentication, shopping cart, and secure order management.</p>
-                            <div class="project-tags">
-                                <span class="tag">Python Flask</span>
-                                <span class="tag">MongoDB</span>
-                                <span class="tag">JavaScript</span>
-                                <span class="tag">REST APIs</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card slide-in-right">
-                        <div class="project-image">
-                            <div class="project-placeholder" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">♻️</div>
-                        </div>
-                        <div class="project-content">
-                            <h3>Garbage Classification AI</h3>
-                            <p>Transfer learning application automating waste sorting into biodegradable, recyclable, and non-recyclable categories using pre-trained CNNs.</p>
-                            <div class="project-tags">
-                                <span class="tag">Python</span>
-                                <span class="tag">TensorFlow</span>
-                                <span class="tag">CNN</span>
-                                <span class="tag">ResNet</span>
-                                <span class="tag">VGG</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card slide-in-up">
-                        <div class="project-image">
-                            <div class="project-placeholder" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">🏥</div>
-                        </div>
-                        <div class="project-content">
-                            <h3>MID - Medical Imaging Detection</h3>
-                            <p>Deep learning binary classification using VGG16 transfer learning. Trained on 5,216 samples with advanced metrics evaluation.</p>
-                            <div class="project-info">
-                                <strong>Dataset:</strong> 5,216 Training | 624 Testing (2 Classes)
-                            </div>
-                            <div class="project-achievements">
-                                <div class="achievement-item">✓ VGG16 Transfer Learning</div>
-                                <div class="achievement-item">✓ Precision, Recall, ROC-AUC</div>
-                                <div class="achievement-item">✓ Large-scale Processing</div>
-                            </div>
-                            <div class="project-tags">
-                                <span class="tag">TensorFlow</span>
-                                <span class="tag">Keras</span>
-                                <span class="tag">VGG16</span>
-                                <span class="tag">Transfer Learning</span>
-                                <span class="tag">Scikit-learn</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="skills section-padding">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <span class="section-tag">Technical Expertise</span>
-                    <h2 class="section-title">My <span class="gradient-text">Skills</span></h2>
-                </div>
-                <div class="skills-container">
-                    <div class="skills-category slide-in-left">
-                        <h3><i class="fas fa-laptop-code"></i> Frontend</h3>
-                        <div class="skill-list">
-                            <span class="skill-badge">HTML/CSS</span>
-                            <span class="skill-badge">JavaScript</span>
-                            <span class="skill-badge">React</span>
-                            <span class="skill-badge">Responsive Design</span>
-                        </div>
-                    </div>
-                    <div class="skills-category slide-in-up">
-                        <h3><i class="fas fa-server"></i> Backend</h3>
-                        <div class="skill-list">
-                            <span class="skill-badge">Python</span>
-                            <span class="skill-badge">Flask</span>
-                            <span class="skill-badge">Node.js</span>
-                            <span class="skill-badge">REST APIs</span>
-                        </div>
-                    </div>
-                    <div class="skills-category slide-in-right">
-                        <h3><i class="fas fa-database"></i> Database</h3>
-                        <div class="skill-list">
-                            <span class="skill-badge">MongoDB</span>
-                            <span class="skill-badge">SQL</span>
-                            <span class="skill-badge">Database Design</span>
-                        </div>
-                    </div>
-                    <div class="skills-category slide-in-up">
-                        <h3><i class="fas fa-cogs"></i> Other</h3>
-                        <div class="skill-list">
-                            <span class="skill-badge">Machine Learning</span>
-                            <span class="skill-badge">TensorFlow &amp; Keras</span>
-                            <span class="skill-badge">Cloud Computing</span>
-                            <span class="skill-badge">Cybersecurity</span>
-                            <span class="skill-badge">Git &amp; Version Control</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                <div class="contact-grid">
+                    <div>
+                        <p style="font-size: 1.0625rem; line-height: 1.65; color: var(--text-body); margin-bottom: 24px;">
+                            I am currently based in Mangalore &amp; Bangalore, India, and open to remote, hybrid, or on-site engineering roles worldwide.
+                        </p>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact section-padding">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <span class="section-tag">Get In Touch</span>
-                    <h2 class="section-title">Contact <span class="gradient-text">Me</span></h2>
-                </div>
-                <div class="contact-content">
-                    <div class="contact-info slide-in-left">
-                        <h3>Let's work together!</h3>
-                        <p>I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!</p>
-                        <div class="contact-details">
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
+                        <div class="contact-meta-list">
+                            <div class="contact-meta-item">
+                                <div class="contact-meta-icon"><i class="fas fa-envelope"></i></div>
                                 <div>
-                                    <h4>Email</h4>
-                                    <p>rakeshgr223@gmail.com</p>
+                                    <div class="contact-meta-label">Primary Email</div>
+                                    <a href="mailto:rakeshgr962@gmail.com" class="contact-meta-val">rakeshgr962@gmail.com</a>
                                 </div>
                             </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-phone"></i>
-                                </div>
+                            <div class="contact-meta-item">
+                                <div class="contact-meta-icon"><i class="fab fa-github"></i></div>
                                 <div>
-                                    <h4>Phone</h4>
-                                    <p>9035402276</p>
+                                    <div class="contact-meta-label">GitHub Account</div>
+                                    <a href="https://github.com/Rakeshgr962" target="_blank" rel="noopener noreferrer" class="contact-meta-val">github.com/Rakeshgr962</a>
                                 </div>
                             </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
+                            <div class="contact-meta-item">
+                                <div class="contact-meta-icon"><i class="fab fa-linkedin"></i></div>
                                 <div>
-                                    <h4>Location</h4>
-                                    <p>Bangalore, India</p>
+                                    <div class="contact-meta-label">LinkedIn Profile</div>
+                                    <a href="https://linkedin.com/in/rakesh-gr" target="_blank" rel="noopener noreferrer" class="contact-meta-val">linkedin.com/in/rakesh-gr</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="contact-social">
-                            <a href="https://github.com/Rakeshgr962" target="_blank" aria-label="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/rakesh-gr-74b3572a2/" target="_blank" aria-label="LinkedIn">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="mailto:rakeshgr223@gmail.com" aria-label="Email">
-                                <i class="fas fa-envelope"></i>
-                            </a>
+
+                        <div style="margin-top: 32px;">
+                            <button type="button" class="btn-secondary action-download-resume" style="width: 100%; justify-content: center;">
+                                <i class="fas fa-download"></i> Download Verified Resume (PDF)
+                            </button>
                         </div>
                     </div>
-                    <form class="contact-form slide-in-right" id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Name *</label>
-                            <input type="text" id="name" name="name" required>
-                            <span class="error-message"></span>
+
+                    <!-- Contact Form connected to Serverless Handler -->
+                    <form class="editorial-form" id="contact-form">
+                        <div class="form-row-2">
+                            <div class="form-field">
+                                <label for="contact-name">Your Name *</label>
+                                <input type="text" id="contact-name" name="name" placeholder="Ada Lovelace" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="contact-email">Email Address *</label>
+                                <input type="email" id="contact-email" name="email" placeholder="ada@company.com" required>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required>
-                            <span class="error-message"></span>
+                        <div class="form-field">
+                            <label for="contact-subject">Subject *</label>
+                            <input type="text" id="contact-subject" name="subject" placeholder="Engineering Internship / Opportunity" required>
                         </div>
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone">
-                            <span class="error-message"></span>
+                        <div class="form-field">
+                            <label for="contact-message">Message *</label>
+                            <textarea id="contact-message" name="message" rows="4" placeholder="Hello Rakesh, we reviewed your YamlAnchor and Matrix projects..." required></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="subject">Subject *</label>
-                            <input type="text" id="subject" name="subject" required>
-                            <span class="error-message"></span>
+                        <div class="form-btn-row">
+                            <button type="submit" class="btn-submit-contact" id="contact-submit-btn">
+                                <span>Send Message</span>
+                                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                            </button>
                         </div>
-                        <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                            <span class="char-count"><span id="charCount">0</span>/500</span>
-                            <span class="error-message"></span>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-submit">
-                            <span>Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                        <div class="success-message" id="successMessage">
-                            <i class="fas fa-check-circle"></i>
-                            <p>Thank you! Your message has been sent successfully.</p>
-                        </div>
+                        <div class="form-status-msg" id="contact-status-msg"></div>
                     </form>
                 </div>
             </div>
         </section>
+    </main>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-brand">
-                        <h3>Rakesh<span class="gradient-text">GR</span></h3>
-                        <p>Building innovative solutions with passion and dedication.</p>
-                    </div>
-                    <div class="footer-links">
-                        <h4>Quick Links</h4>
-                        <ul>
-                            <li><a href="#home">Home</a></li>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#expertise">Expertise</a></li>
-                            <li><a href="#projects">Projects</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-links">
-                        <h4>Connect</h4>
-                        <ul>
-                            <li><a href="https://www.linkedin.com/in/rakesh-gr-74b3572a2/" target="_blank">LinkedIn</a></li>
-                            <li><a href="mailto:rakeshgr223@gmail.com">Email</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-github">
-                        <h4>GitHub</h4>
-                        <a href="https://github.com/Rakeshgr962" target="_blank" class="github-profile-link">
-                            <i class="fab fa-github"></i>
-                            <span>Rakeshgr962</span>
-                        </a>
-                    </div>
+    <!-- ==================================================================
+         SECTION H: EDITORIAL FOOTER & COLOPHON
+         ================================================================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-identity">
+                    <h3>Rakesh G R</h3>
+                    <p>AI/ML Engineer &amp; Full-Stack Systems Developer. Built with editorial clarity, semantic HTML, and verified code.</p>
                 </div>
-                <div class="footer-bottom">
-                    <p>&copy; 2025 Rakesh G R. All rights reserved. Built with ❤️</p>
+
+                <div class="footer-nav-groups">
+                    <div class="footer-col">
+                        <h5>Flagships</h5>
+                        <ul>
+                            <li><a href="https://github.com/Aiet-Unisphere/AIET-UniSphere" target="_blank" rel="noopener noreferrer">AIET-UniSphere</a></li>
+                            <li><a href="https://github.com/Rakeshgr962/YamlAnchor" target="_blank" rel="noopener noreferrer">YamlAnchor</a></li>
+                            <li><a href="https://github.com/Rakeshgr962/Dense-Matrix-Multiplication" target="_blank" rel="noopener noreferrer">Dense Matrix C11</a></li>
+                            <li><a href="https://github.com/Rakeshgr962/Customer-churn-" target="_blank" rel="noopener noreferrer">Customer Churn API</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h5>Navigation</h5>
+                        <ul>
+                            <li><a href="#work">Selected Work</a></li>
+                            <li><a href="#approach">Engineering Approach</a></li>
+                            <li><a href="#capabilities">Capabilities</a></li>
+                            <li><a href="#shelf">Archive Shelf</a></li>
+                            <li><a href="#about">About &amp; Education</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h5>Connect</h5>
+                        <ul>
+                            <li><a href="https://github.com/Rakeshgr962" target="_blank" rel="noopener noreferrer">GitHub Profile</a></li>
+                            <li><a href="https://linkedin.com/in/rakesh-gr" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                            <li><a href="mailto:rakeshgr962@gmail.com">Direct Email</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </footer>
+
+            <div class="footer-bottom">
+                <span>&copy; 2026 Rakesh G R. All rights reserved.</span>
+                <span>Alva's Institute of Engineering &amp; Technology · Mangalore, India</span>
+                <span>Verified Public GitHub Portfolio</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================================================================
+         CASE STUDY SLIDE-OVER MODAL DRAWER
+         ================================================================== -->
+    <div class="case-study-overlay" id="case-study-overlay" role="dialog" aria-modal="true" aria-label="Technical Case Study Detail">
+        <div class="case-study-modal">
+            <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Close Case Study">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="case-study-body">
+                <!-- Dynamically populated by app.js -->
+            </div>
+        </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <!-- Application Script -->
     <script src="app.js"></script>
-    
-    <!-- Loading Screen Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const loadingScreen = document.getElementById('loadingScreen');
-            const progressBar = document.getElementById('loadingProgressBar');
-            const percentageText = document.getElementById('loadingPercentage');
-            const body = document.body;
-            
-            let progress = 0;
-            const targetProgress = 100;
-            const increment = 2;
-            const intervalTime = 30;
-            
-            // Simulate loading progress
-            const progressInterval = setInterval(() => {
-                progress += increment;
-                
-                // Add some randomness to make it feel more natural
-                if (progress > 80) {
-                    progress += Math.random() * 0.5;
-                }
-                
-                if (progress >= targetProgress) {
-                    progress = targetProgress;
-                    clearInterval(progressInterval);
-                    
-                    // Wait a bit then hide loading screen
-                    setTimeout(() => {
-                        loadingScreen.classList.add('hidden');
-                        body.classList.remove('loading');
-                        body.classList.add('loaded');
-                        
-                        // Remove loading screen from DOM after transition
-                        setTimeout(() => {
-                            loadingScreen.style.display = 'none';
-                        }, 500);
-                    }, 300);
-                }
-                
-                // Update progress bar and percentage
-                progressBar.style.width = `${progress}%`;
-                percentageText.textContent = `${Math.min(100, Math.round(progress))}%`;
-                
-            }, intervalTime);
-            
-            // Ensure page loads even if there's an issue with progress simulation
-            window.addEventListener('load', function() {
-                clearInterval(progressInterval);
-                progress = 100;
-                progressBar.style.width = '100%';
-                percentageText.textContent = '100%';
-                
-                setTimeout(() => {
-                    loadingScreen.classList.add('hidden');
-                    body.classList.remove('loading');
-                    body.classList.add('loaded');
-                    
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                    }, 500);
-                }, 500);
-            });
-        });
-    </script>
 </body>
 </html>

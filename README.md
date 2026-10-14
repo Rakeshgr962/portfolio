@@ -3,100 +3,103 @@
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)](https://nodejs.org)
-[![Vercel](https://img.shields.io/badge/Deployed-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://rakeshgr.netlify.app)
+[![Netlify](https://img.shields.io/badge/Deployed-Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white)](https://rakeshgr.netlify.app)
+[![Vercel Backend](https://img.shields.io/badge/Backend-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://rakeshgr.vercel.app)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
-**Live**: [rakeshgr.netlify.app](https://rakeshgr.netlify.app)
+**Live Website**: [rakeshgr.netlify.app](https://rakeshgr.netlify.app)  
+**Primary GitHub**: [github.com/Rakeshgr962](https://github.com/Rakeshgr962)  
+**Campus Org**: [github.com/Aiet-Unisphere](https://github.com/Aiet-Unisphere)
 
 ---
 
-## What it does
+## What it is
 
-This is the source code for my personal developer portfolio website. It serves as a single place that communicates who I am, what I've built, and how to reach me — designed to work for both a recruiter scanning it in 30 seconds and an engineer reading through the technical project details.
+The official personal engineering portfolio of **Rakesh G R** — B.Tech Computer Science (Data Science) final-year engineer at Alva's Institute of Engineering and Technology, Mangalore.
 
-**Sections:**
-- **Hero** — name, role, and a quick professional summary
-- **About** — background, education (B.Tech CSE Data Science, Alva's Institute), and technical focus areas
-- **Projects** — 5 featured projects with tech tags, impact metrics, and descriptions (RFID system, Atmos AQI, AeroBuy, Garbage Classification AI, Medical Imaging Detection)
-- **Skills** — grouped by Frontend, Backend, Database, ML/AI, and Tools
-- **Contact** — email form connected to the Node.js backend that sends messages via a server-side handler
-
----
-
-## Why it matters
-
-A portfolio website is the first thing a hiring manager opens after reading your resume. This one is designed to do two things well:
-
-1. **Not waste their time** — the information hierarchy is deliberate. The most important things (who I am, what I've shipped, how to reach me) are visible within the first scroll.
-2. **Show, don't tell** — each project card includes real metrics (99%+ RFID accuracy, 88% AQI model validation accuracy, 89.24% garbage classifier accuracy) rather than vague descriptions.
-
-The contact form is wired to a real backend — not a mailto link — so messages actually reach me without exposing an email address to scrapers.
+Redesigned with a **Thom Midhi-inspired editorial engineering aesthetic**:
+* **Editorial visual hierarchy**: Newsreader display serif paired with Plus Jakarta Sans and JetBrains Mono.
+* **Warm stone canvas**: High-contrast, typography-first layout with zero generic glowing gamer effects or fabricated metrics.
+* **Inspectable, defensible project case studies**: Deep-dive modals covering architectural trade-offs, direct contributions, and honest limitations.
+* **Interactive engineering demonstrations**:
+  * Live **Dense Matrix Multiplication** compute throughput benchmark chart (ikj vs naive ijk loop ordering).
+  * Live **YamlAnchor** NDJSON terminal simulator dry-running local Docker runner pipelines.
+  * Live **AIET-UniSphere** PostgreSQL Row Level Security (RLS) multi-role architecture visualizer.
 
 ---
 
-## How to run it
+## Verified Project Showcase
 
-### Frontend only
-
-```bash
-git clone https://github.com/Rakeshgr962/rakeshgr.git
-cd rakeshgr/client
-```
-
-Open `index.html` in any browser. All UI is static and works without the backend (the contact form will be non-functional without it).
-
-### Full stack (with contact form)
-
-```bash
-# Backend server
-cd server
-npm install
-npm start
-# Starts on http://localhost:3000
-```
-
-Then open `client/index.html`. The contact form submits to `http://localhost:3000/submit`, which the Node.js server handles.
-
-### Deploying to Vercel
-
-The `server/vercel.json` config routes all requests to the serverless handler. Deploy directly:
-
-```bash
-cd server
-vercel
-```
+| Project | Category | Verified Stack | Defensible Metric / Core Signal |
+| :--- | :--- | :--- | :--- |
+| [**AIET-UniSphere**](https://github.com/Aiet-Unisphere/AIET-UniSphere) | Campus Academic Platform | React 19, TS, Vite, Supabase RLS | **100% Database-enforced authorization** across 4 roles (Student, Faculty, HOD, Admin); zero custom server attack surface |
+| [**YamlAnchor**](https://github.com/Rakeshgr962/YamlAnchor) | Developer Tooling / DevOps | Go, Next.js, TS, Docker SDK | **Zero remote test commits**; AST dependency analysis with live NDJSON Docker log streaming |
+| [**Dense Matrix Multiplication**](https://github.com/Rakeshgr962/Dense-Matrix-Multiplication) | Systems / HPC | C11, OpenMP, Python, GCC `-O3` | **~12.6x speedup** via `ikj` loop reordering alone; optimal 64/128 tile sizes; 81-test validation suite ($\varepsilon < 10^{-9}$) |
+| [**Customer Churn API**](https://github.com/Rakeshgr962/Customer-churn-) | Applied ML / Backend | XGBoost, FastAPI, MLflow, Docker | **81% accuracy, 77% precision, 68% recall** on 7,043 Telco records; strict post-event data leakage elimination |
+| [**Waste Classifier & AI-EcoSort**](https://github.com/Rakeshgr962/GarbageClassfication) | Vision & Responsible AI | TensorFlow, EfficientNetB0, React 19, Vitest | **89.24% test accuracy** on 6-class benchmark; deterministic rule-based assistant (1M1B IBM SkillsBuild) |
 
 ---
 
-## Project structure
+## Supporting Projects Shelf
+
+* [**PriceFlow-Agent**](https://github.com/Rakeshgr962/PriceFlow-Agent) — Dynamic pricing SaaS foundation (FastAPI, React, PostgreSQL, Redis, Docker Compose).
+* [**glitrai-mini-content-engine**](https://github.com/Rakeshgr962/glitrai-mini-content-engine) — Async LLM content pipeline (FastAPI, Groq LLM, Pollinations, Postgres queue).
+* [**AeroBuy**](https://github.com/Rakeshgr962/AeroBuy) — Flask + MongoDB e-commerce store with session-based authentication.
+* [**arthasetu-website**](https://github.com/Rakeshgr962/arthasetu-website) — Client-side SIP calculator and financial portal with monthly iterative compounding.
+* [**AR-World**](https://github.com/Rakeshgr962/AR-World) — Research documentation and system specifications for spatial design applications.
+
+---
+
+## Project Structure
 
 ```
-rakeshgr/
+portfolio/
 ├── client/
-│   ├── index.html         # Full single-page portfolio — all sections inline
-│   ├── style.css          # Design system: CSS variables, dark theme, animations,
-│   │                      # responsive grid, hover effects on project cards
-│   ├── app.js             # Interaction logic: scroll animations, form submission,
-│   │                      # mobile nav toggle, section active-state tracking
+│   ├── index.html         # Single-page editorial portfolio with semantic markup & accessibility
+│   ├── style.css          # Thom Midhi-inspired design system: variables, editorial grid, responsive cards
+│   ├── app.js             # Interactive case studies, benchmark SVG chart, terminal sim & contact form
 │   └── assets/
 │       └── resume/
 │           └── Rakesh_GR_Resume.pdf
 └── server/
-    ├── server.js          # Express.js server — handles POST /submit (contact form)
+    ├── server.js          # Express.js contact endpoint (POST /api/contact)
     ├── package.json
     └── vercel.json        # Vercel serverless routing config
 ```
 
 ---
 
-## Contact
+## How to Run Locally
 
-The portfolio is the fastest way to reach me: [rakeshgr.netlify.app](https://rakeshgr.netlify.app)  
-Or directly: [rakeshgr223@gmail.com](mailto:rakeshgr223@gmail.com)
+### 1. Frontend Client
+```bash
+git clone https://github.com/Rakeshgr962/portfolio.git
+cd portfolio/client
+```
+Open `index.html` in any modern web browser or run with a local static server:
+```bash
+npx serve .
+```
+
+### 2. Backend Server (Optional)
+```bash
+cd ../server
+npm install
+npm start
+# Server listens on http://localhost:3000
+```
+
+---
+
+## Contact & Opportunities
+
+* **Email**: [rakeshgr962@gmail.com](mailto:rakeshgr962@gmail.com)
+* **LinkedIn**: [linkedin.com/in/rakesh-gr](https://linkedin.com/in/rakesh-gr)
+* **GitHub**: [github.com/Rakeshgr962](https://github.com/Rakeshgr962)
+* **Availability**: Open for **AI/ML Engineering, Full-Stack, and Systems Internships from December 2026**.
 
 ---
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT &copy; 2026 Rakesh G R. See [LICENSE](LICENSE) for details.
