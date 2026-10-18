@@ -283,116 +283,20 @@
   }
 
   // ========================================================================
-  // 5. COORDINATED SEAMLESS ROUTE TRANSITIONS (FAST, INTERRUPTIBLE & NON-BLOCKING)
+  // 5. SEAMLESS ROUTE TRANSITIONS (INSTANT, CLEAN, NON-BLOCKING)
   // ========================================================================
   function initPageTransitions() {
-    let overlay = document.querySelector('.page-wipe-overlay');
-    if (!overlay) {
-      overlay = document.createElement('div');
-      overlay.className = 'page-wipe-overlay';
-      overlay.setAttribute('aria-hidden', 'true');
-      overlay.style.pointerEvents = 'none';
-      overlay.style.transform = 'scaleY(0)';
-      overlay.style.opacity = '0';
-      overlay.innerHTML = `
-        <div class="page-wipe-badge">RAKESH G R &bull; AI SYSTEMS</div>
-        <div class="page-wipe-title">Transitioning Route</div>
-        <div class="page-wipe-status">
-          <span>WebGL Engine Active</span>
-          <span>Snappy Navigation 60fps</span>
-        </div>
-      `;
-      document.body.appendChild(overlay);
-    } else {
-      overlay.style.pointerEvents = 'none';
-      overlay.style.transform = 'scaleY(0)';
-      overlay.style.opacity = '0';
+    // Content is rendered immediately by the browser without blocking overlays.
+    // If any legacy overlay element exists in DOM or cache, remove it completely.
+    const overlay = document.querySelector('.page-wipe-overlay');
+    if (overlay) {
+      overlay.remove();
     }
 
-    // Always ensure overlay is cleared and reset on page show (handles Back/Forward cache)
-    const resetOverlay = () => {
-      overlay.style.pointerEvents = 'none';
-      if (typeof gsap !== 'undefined') {
-        gsap.to(overlay, { 
-          scaleY: 0, 
-          opacity: 0, 
-          duration: 0.15, 
-          ease: 'power2.out',
-          onComplete: () => {
-            overlay.style.pointerEvents = 'none';
-          }
-        });
-      } else {
-        overlay.style.transform = 'scaleY(0)';
-        overlay.style.opacity = '0';
-      }
-    };
-
-    resetOverlay();
-
-    window.addEventListener('pageshow', (event) => {
-      resetOverlay();
-      if (typeof ScrollTrigger !== 'undefined') {
-        ScrollTrigger.refresh();
-      }
-    });
-
-    if (REDUCE_MOTION || HAS_TOUCH) {
-      resetOverlay();
-      return;
+    // Refresh ScrollTrigger geometry once DOM is stable
+    if (typeof ScrollTrigger !== 'undefined') {
+      ScrollTrigger.refresh();
     }
-
-    // Snappy page reveal on initial load without blocking content
-    if (typeof gsap !== 'undefined') {
-      gsap.fromTo(document.body, 
-        { opacity: 0.95 }, 
-        { opacity: 1, duration: 0.18, ease: 'power2.out' }
-      );
-    }
-
-    // Intercept internal page links with snappy, fail-safe navigation
-    document.querySelectorAll('a[href]').forEach((link) => {
-      const href = link.getAttribute('href');
-      if (!href) return;
-      if (href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:') || href.startsWith('http://') || href.startsWith('https://') || link.target === '_blank') return;
-
-      link.addEventListener('click', (e) => {
-        // Allow default for modifier keys (Ctrl/Cmd click for new tab)
-        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-
-        const targetUrl = link.href;
-        if (!targetUrl || targetUrl === window.location.href) return;
-
-        e.preventDefault();
-
-        // Fail-safe timeout: navigate anyway if animation stalls
-        const navigateTimeout = setTimeout(() => {
-          window.location.href = targetUrl;
-        }, 220);
-
-        if (typeof gsap !== 'undefined') {
-          const targetTitle = (link.textContent || '').trim().replace(/\s+/g, ' ') || 'Routing';
-          const titleEl = overlay.querySelector('.page-wipe-title');
-          if (titleEl) titleEl.textContent = targetTitle.toUpperCase();
-
-          overlay.style.opacity = '1';
-          gsap.timeline({
-            onComplete: () => {
-              clearTimeout(navigateTimeout);
-              window.location.href = targetUrl;
-            }
-          })
-          .set(overlay, { transformOrigin: 'bottom' })
-          .to(overlay, { scaleY: 1, duration: 0.12, ease: 'power2.inOut' });
-        } else {
-          clearTimeout(navigateTimeout);
-          window.location.href = targetUrl;
-        }
-      });
-    });
-
-    // Also clear overlay on popstate (browser back/forward)
-    window.addEventListener('popstate', resetOverlay);
   }
 
   // ========================================================================

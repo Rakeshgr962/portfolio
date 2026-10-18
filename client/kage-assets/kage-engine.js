@@ -3580,16 +3580,21 @@ void main () {
         makeGrain();
         wireReveals(); wireForegroundStages(); wireNav(); wireHeroExit(); wireFocus(); wireCursor();
         document.body.classList.add('is-locked');
-        // Fail-safe: Ensure preloader always dismisses within 2.5s even if WebGL/fonts stall
+        // Fail-safe: Ensure preloader always dismisses within 1.8s even if WebGL/fonts stall
         const fallbackTimer = setTimeout(() => {
           if (!preEl.classList.contains('done')) {
             console.warn('[kage] Boot timeout reached, forcing preloader completion.');
             preEl.classList.add('done');
+            preEl.style.display = 'none';
             document.body.classList.remove('is-locked');
-            $$('[data-rv], .mask-line').forEach(e => e.classList.add('rv-in'));
+            document.querySelectorAll('[data-rv], .mask-line').forEach(e => {
+              e.classList.add('rv-in');
+              e.style.opacity = '1';
+              e.style.transform = 'none';
+            });
             if (!running) { running = true; tPrev = performance.now(); queue(); }
           }
-        }, 2500);
+        }, 1800);
 
         let i = 0;
         const step = () => {
@@ -3637,8 +3642,15 @@ void main () {
         document.documentElement.classList.add('no-webgl');
         document.body.classList.add('no-webgl');
         document.body.classList.remove('is-locked');
-        preEl.classList.add('done');
-        $$('[data-rv], .mask-line').forEach(e => e.classList.add('rv-in'));
+        if (preEl) {
+          preEl.classList.add('done');
+          preEl.style.display = 'none';
+        }
+        document.querySelectorAll('[data-rv], .mask-line').forEach(e => {
+          e.classList.add('rv-in');
+          e.style.opacity = '1';
+          e.style.transform = 'none';
+        });
         window.__kage = window.__secret = { fallback: true, error: String(err && err.message || err) };
       }
 
