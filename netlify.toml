@@ -1,7 +1,4 @@
-# Netlify Configuration File
 [build]
-  # The directory containing the static files to deploy
+  base = "/"
   publish = "client"
 
-# Redirects and Headers in client/_redirects and client/_headers
-# will automatically be processed when publish is set to "client".
