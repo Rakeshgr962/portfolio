@@ -3215,10 +3215,17 @@ void main () {
           }
         }, { passive: true });
         $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
-          const t = document.querySelector(a.getAttribute('href'));
-          if (!t) return;
+          const href = a.getAttribute('href');
+          const t = href === '#top' ? document.body : document.querySelector(href);
+          if (!t && href !== '#top') return;
           e.preventDefault();
-          scrollTo({ top: a.getAttribute('href') === '#top' ? 0 : t.offsetTop - 40, behavior: REDUCE ? 'auto' : 'smooth' });
+          const targetOffset = href === '#top' ? 0 : (t.offsetTop - 40);
+          const lenis = typeof window.getLenis === 'function' ? window.getLenis() : null;
+          if (lenis) {
+            lenis.scrollTo(href === '#top' ? 0 : t, { offset: -40, duration: 0.8 });
+          } else {
+            window.scrollTo({ top: targetOffset, behavior: REDUCE ? 'auto' : 'smooth' });
+          }
         }));
       }
 

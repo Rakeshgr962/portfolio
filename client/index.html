@@ -939,6 +939,9 @@
     .card {
       position: relative;
       cursor: pointer;
+      display: block;
+      text-decoration: none;
+      color: inherit;
     }
 
     .card:nth-child(1) {
@@ -1307,6 +1310,8 @@
       border-bottom: 1px solid var(--line-soft);
       cursor: pointer;
       transition: padding .5s var(--ease-out);
+      text-decoration: none;
+      color: inherit;
     }
 
     .les::before {
@@ -2879,8 +2884,7 @@
           class="k">PRODUCTION ARCHITECTURES</span>
       </div>
       <div class="cards" id="cards">
-        <article class="card" data-rv="up" data-view="0" data-cursor
-          onclick="window.location.href='/projects/aiet-unisphere'">
+        <a class="card" data-rv="up" data-view="0" data-cursor href="/projects/aiet-unisphere">
           <div class="card-fr" data-frame>
             <span class="card-ar"><svg viewBox="0 0 14 14" fill="none">
                 <path d="M3 11 11 3M5 3h6v6" stroke="#dfe7e0" stroke-width="1.3" />
@@ -2891,9 +2895,8 @@
                 style="font-family:'Onest',sans-serif; letter-spacing:0.1em;">CAMPUS CORE</span></div>
           </div>
           <div class="card-meta"><span>PostgreSQL RLS · Auth · Realtime</span><span>01 / 03</span></div>
-        </article>
-        <article class="card" data-rv="up" data-view="1" data-cursor
-          onclick="window.location.href='/projects/yamlanchor'">
+        </a>
+        <a class="card" data-rv="up" data-view="1" data-cursor href="/projects/yamlanchor">
           <div class="card-fr" data-frame>
             <span class="card-ar"><svg viewBox="0 0 14 14" fill="none">
                 <path d="M3 11 11 3M5 3h6v6" stroke="#dfe7e0" stroke-width="1.3" />
@@ -2904,9 +2907,8 @@
                 style="font-family:'Onest',sans-serif; letter-spacing:0.1em;">CI/CD ENGINE</span></div>
           </div>
           <div class="card-meta"><span>Python AST · Docker SDK · Runner</span><span>02 / 03</span></div>
-        </article>
-        <article class="card" data-rv="up" data-view="2" data-cursor
-          onclick="window.location.href='/projects/dense-matrix-multiplication'">
+        </a>
+        <a class="card" data-rv="up" data-view="2" data-cursor href="/projects/dense-matrix-multiplication">
           <div class="card-fr" data-frame>
             <span class="card-ar"><svg viewBox="0 0 14 14" fill="none">
                 <path d="M3 11 11 3M5 3h6v6" stroke="#dfe7e0" stroke-width="1.3" />
@@ -2917,7 +2919,7 @@
                 style="font-family:'Onest',sans-serif; letter-spacing:0.1em;">HIGH PERF C11</span></div>
           </div>
           <div class="card-meta"><span>Cache Tiling · OpenMP · 12.6x</span><span>03 / 03</span></div>
-        </article>
+        </a>
       </div>
       <div style="margin-top:clamp(40px, 6vh, 80px); text-align:center;">
         <a class="cta" href="/projects" data-rv="fade" data-cursor>
@@ -2955,36 +2957,36 @@
           machine learning pipelines, typed backend frameworks, and secure database layers.</p>
       </div>
       <div class="cur" id="cur">
-        <div class="les" data-les="0" data-cursor onclick="window.location.href='/skills'">
+        <a class="les" data-les="0" data-cursor href="/skills">
           <span class="k">01</span>
           <h3>Languages & Systems<em class="jp" style="font-family:'Onest',sans-serif;">FOUNDATIONS</em></h3>
           <p>Python 3.11+, C11 (GCC/Clang), Go 1.22, TypeScript, SQL, Bash.</p>
           <span class="t">Low-Level & Core</span><i class="bar"></i>
-        </div>
-        <div class="les" data-les="1" data-cursor onclick="window.location.href='/skills'">
+        </a>
+        <a class="les" data-les="1" data-cursor href="/skills">
           <span class="k">02</span>
           <h3>Machine Learning & AI<em class="jp" style="font-family:'Onest',sans-serif;">INTELLIGENCE</em></h3>
           <p>Scikit-Learn, XGBoost, TensorFlow, EfficientNetB0, LangChain, Groq API, MLflow.</p>
           <span class="t">Modeling & Inference</span><i class="bar"></i>
-        </div>
-        <div class="les" data-les="2" data-cursor onclick="window.location.href='/skills'">
+        </a>
+        <a class="les" data-les="2" data-cursor href="/skills">
           <span class="k">03</span>
           <h3>Backend & API Services<em class="jp" style="font-family:'Onest',sans-serif;">SERVICES</em></h3>
           <p>FastAPI, Pydantic v2, Docker SDK, Node.js, Express, Next.js, REST & WebSockets.</p>
           <span class="t">High Throughput</span><i class="bar"></i>
-        </div>
-        <div class="les" data-les="3" data-cursor onclick="window.location.href='/skills'">
+        </a>
+        <a class="les" data-les="3" data-cursor href="/skills">
           <span class="k">04</span>
           <h3>Databases & Data Security<em class="jp" style="font-family:'Onest',sans-serif;">STORAGE</em></h3>
           <p>PostgreSQL, Supabase (Row Level Security), MongoDB, Redis, Schema Migrations.</p>
           <span class="t">ACID & RLS</span><i class="bar"></i>
-        </div>
-        <div class="les" data-les="4" data-cursor onclick="window.location.href='/skills'">
+        </a>
+        <a class="les" data-les="4" data-cursor href="/skills">
           <span class="k">05</span>
           <h3>DevOps, Containers & Tooling<em class="jp" style="font-family:'Onest',sans-serif;">OPERATIONS</em></h3>
           <p>Docker, Docker Compose, Linux Administration, Git, CI/CD, Vite, Oxlint, Vitest.</p>
           <span class="t">Automated Delivery</span><i class="bar"></i>
-        </div>
+        </a>
       </div>
     </section>
 

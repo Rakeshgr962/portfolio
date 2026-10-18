@@ -2106,20 +2106,29 @@ function initSkillsCapabilityMap() {
   const skillItems = document.querySelectorAll('.capability-item');
   if (!skillItems.length) return;
 
-  // Add click listener to show architectural role modal/toast
+  // Add click listener to show architectural role modal/toast or open evidence link
   skillItems.forEach(item => {
     const nameEl = item.querySelector('.cap-name');
     const descEl = item.querySelector('.cap-desc');
     const tagEl = item.querySelector('.cap-evidence-tag');
+    const linkEl = item.querySelector('.cap-evidence-tag a');
 
     if (nameEl) {
       item.style.cursor = 'pointer';
-      item.setAttribute('title', 'Click to view architectural context & project evidence');
+      item.setAttribute('title', linkEl ? 'Click to view project architecture & case study' : 'Click to view architectural context & project evidence');
 
-      item.addEventListener('click', () => {
+      item.addEventListener('click', (e) => {
+        // If clicking directly on or inside an anchor tag, let the browser handle standard navigation
+        if (e.target.closest('a')) return;
+
+        // If the card has a direct case study link and user clicked the card body, navigate to it
+        if (linkEl && linkEl.href) {
+          window.location.href = linkEl.href;
+          return;
+        }
+
         const name = nameEl.textContent.trim();
         const tag = tagEl ? tagEl.textContent.trim() : '';
-        const desc = descEl ? descEl.textContent.trim() : '';
 
         // Display brief spotlight feedback
         const toast = document.getElementById('copy-toast');
