@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-EcoSort — Responsible Waste Classification Assistant — Rakesh G R | AI Engineering Case Study</title>
+    <meta name="description" content="A sustainable waste classification web assistant created for the 1M1B IBM SkillsBuild AI for Sustainability program. Combines deterministic rule-based classific...">
+    <link rel="canonical" href="https://rakeshgr.netlify.app/projects/ai-ecosort">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../kage-assets/fonts.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../motion-system.css">
+</head>
+<body>
+    <canvas id="bg-particle-canvas" aria-hidden="true"></canvas>
+    <div class="film-grain-overlay" aria-hidden="true"></div>
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <header class="site-nav" id="site-nav">
+        <div class="container nav-wrapper">
+            <div class="nav-brand">
+                <a href="../index.html" class="brand-title">Rakesh G R</a>
+                <span class="brand-spec">AI Engineer · Systems</span>
+            </div>
+
+            <nav aria-label="Primary Navigation">
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="../about.html" class="nav-link">About Me</a></li>
+                    <li><a href="../skills.html" class="nav-link">Skills</a></li>
+                    <li><a href="../projects.html" class="nav-link active" aria-current="page">Projects</a></li>
+                    <li><a href="../experience.html" class="nav-link">Education &amp; Experience</a></li>
+                    <li><a href="../contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="../contact.html" class="btn-primary" style="padding: 7px 16px; font-size: 0.8125rem;">
+                    <span>Contact Me</span>
+                </a>
+                <button type="button" class="btn-resume-nav action-download-resume" title="Download Resume (PDF)">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    <span>Resume</span>
+                </button>
+                <button type="button" class="nav-hamburger" id="nav-hamburger" aria-label="Open mobile navigation menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation">
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                <a href="../index.html" class="brand-title" style="text-decoration: none;">Rakesh G R</a>
+                <button type="button" id="mobile-drawer-close" aria-label="Close menu" style="font-size: 1.25rem; color: var(--text-ink); cursor: pointer; background: transparent; border: none;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About Me</a></li>
+                <li><a href="../skills.html">Skills</a></li>
+                <li><a href="../projects.html" class="active">Projects</a></li>
+                <li><a href="../experience.html">Education &amp; Experience</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <a href="../contact.html" class="btn-secondary" style="width: 100%; justify-content: center; margin-bottom: 8px;">
+                <i class="fas fa-envelope"></i> Contact Me
+            </a>
+            <button type="button" class="btn-primary action-download-resume" style="width: 100%; justify-content: center; margin-bottom: 12px;">
+                <i class="fas fa-file-pdf"></i> Download Resume
+            </button>
+            <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-align: center;">
+                Alva's Institute of Engineering &amp; Technology
+            </p>
+        </div>
+    </aside>
+
+    <main id="main-content">
+        <!-- Case Study Header Container -->
+        <header class="case-study-hero" id="cs-hero-container">
+            <div class="container">
+                <!-- Breadcrumbs -->
+                <nav aria-label="Breadcrumb" class="breadcrumbs" style="display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.8125rem; margin-bottom: 16px; flex-wrap: wrap;">
+                    <a href="../index.html" style="color: var(--text-muted); text-decoration: none;">Home</a>
+                    <span style="color: var(--text-muted);">/</span>
+                    <a href="../projects.html" style="color: var(--text-muted); text-decoration: none;">Projects</a>
+                    <span style="color: var(--text-muted);">/</span>
+                    <span style="color: var(--accent-cobalt); font-weight: 600;" aria-current="page">AI-EcoSort (1M1B)</span>
+                </nav>
+
+                <!-- Back to Projects link -->
+                <div style="margin-bottom: 18px;">
+                    <a href="../projects.html" class="btn-secondary" style="font-size: 0.8125rem; padding: 6px 14px; display: inline-flex; align-items: center; gap: 6px;">
+                        <i class="fas fa-arrow-left"></i> <span>Back to Projects</span>
+                    </a>
+                </div>
+
+                <div class="case-study-meta-strip">
+                    <span class="project-tier-tag tier-flagship">Responsible AI · Full-Stack Web App</span>
+                </div>
+                <h1 class="page-title">AI-EcoSort — Responsible Waste Classification Assistant</h1>
+                <p class="page-lead" style="margin-bottom: 24px;">A sustainable waste classification web assistant created for the 1M1B IBM SkillsBuild AI for Sustainability program. Combines deterministic rule-based classification, confidence scoring, and responsible user disclosures.</p>
+                <div class="project-stack-pills">
+                    <span class="stack-pill">React 19</span><span class="stack-pill">TypeScript</span><span class="stack-pill">Vite</span><span class="stack-pill">Vitest</span><span class="stack-pill">Responsible AI Guardrails</span>
+                </div>
+                <div style="display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap;">
+                    <a href="https://github.com/Rakeshgr962/AI-EcoSort" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                        <i class="fab fa-github"></i> <span>View on GitHub</span>
+                    </a>
+                    
+                    <a href="https://ai-ecosort.netlify.app" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                        <i class="fas fa-external-link-alt"></i> <span>Live Demo</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Detailed Article Content Grid -->
+        <section class="section-padding" style="background: var(--bg-canvas);">
+            <div class="container">
+                <div class="case-study-grid">
+                    <!-- Sticky Sidebar Quick Navigation -->
+                    <aside class="case-study-sidebar" aria-label="Article Quick Navigation">
+                        <div class="sidebar-header">
+                            <span class="sidebar-kicker">QUICK NAVIGATION</span>
+                            <h4 class="sidebar-title">Sections</h4>
+                        </div>
+                        <ul class="case-study-sidebar-nav">
+                            <li><a href="#section-overview"><span class="nav-idx">01</span><span class="nav-lbl">Overview</span></a></li>
+                            <li><a href="#section-problem"><span class="nav-idx">02</span><span class="nav-lbl">The Problem</span></a></li>
+                            <li><a href="#section-solution"><span class="nav-idx">03</span><span class="nav-lbl">My Solution</span></a></li>
+                            <li><a href="#section-technologies"><span class="nav-idx">04</span><span class="nav-lbl">Technologies</span></a></li>
+                            <li><a href="#section-how-it-works"><span class="nav-idx">05</span><span class="nav-lbl">Architecture</span></a></li>
+                            <li><a href="#section-results"><span class="nav-idx">06</span><span class="nav-lbl">Results</span></a></li>
+                            <li><a href="#section-learned"><span class="nav-idx">07</span><span class="nav-lbl">What I Learned</span></a></li>
+                            <li><a href="#section-future"><span class="nav-idx">08</span><span class="nav-lbl">Roadmap</span></a></li>
+                        </ul>
+
+                        <div class="sidebar-divider"></div>
+
+                        <div class="sidebar-related-projects">
+                            <span class="sidebar-kicker">OTHER PROJECTS</span>
+                            <div class="sidebar-projects-list">
+                                <a href="aiet-unisphere.html" class="sidebar-project-link">AIET-UniSphere</a><a href="yamlanchor.html" class="sidebar-project-link">YamlAnchor</a><a href="dense-matrix-multiplication.html" class="sidebar-project-link">Dense Matrix C11</a><a href="customer-churn.html" class="sidebar-project-link">Customer Churn API</a><a href="garbage-classification.html" class="sidebar-project-link">Waste Vision</a><a href="ai-ecosort.html" class="sidebar-project-link active">AI-EcoSort (1M1B)</a><a href="glitrai.html" class="sidebar-project-link">GlitrAI Content Engine</a><a href="priceflow-agent.html" class="sidebar-project-link">PriceFlow-Agent</a>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Main Article Body -->
+                    <article class="case-study-main-article">
+                        <!-- 01. Overview -->
+                        <div class="case-study-block" id="section-overview">
+                            <h3>01 / Overview</h3>
+                            <p>A sustainable waste classification web assistant created for the 1M1B IBM SkillsBuild AI for Sustainability program. Combines deterministic rule-based classification, confidence scoring, and responsible user disclosures.</p>
+                        </div>
+
+                        <!-- 02. The Problem -->
+                        <div class="case-study-block" id="section-problem">
+                            <h3>02 / The Problem</h3>
+                            <p>Many AI applications exaggerate capabilities or fabricate high confidence scores on ambiguous inputs. Furthermore, users need clear, actionable guidance on whether an item is recyclable, compostable, or hazardous without depending on heavy cloud GPUs.</p>
+                        </div>
+
+                        <!-- 03. My Solution -->
+                        <div class="case-study-block" id="section-solution">
+                            <h3>03 / My Solution &amp; Architecture</h3>
+                            <p>Built using React 19 + TypeScript with Vite. Implements a multi-stage deterministic classification pipeline that validates keywords against waste category databases, provides disposal instructions, and outputs transparent confidence scores with fallback uncertainty warnings.</p>
+                            <div style="margin-top: 16px;">
+                                <h4 style="font-size: 1rem; color: var(--text-ink); margin-bottom: 12px;">Key Engineering Decisions &amp; Trade-Offs</h4>
+                                
+                                  <div style="background: var(--bg-subtle); padding: 14px; border-radius: var(--radius-sm); border-left: 3px solid var(--accent-cobalt); margin-bottom: 12px;">
+                                    <strong style="color: var(--text-ink); font-size: 0.9375rem; display: block; margin-bottom: 4px;">Deterministic Rule Engine over Hallucinating Prompt Wrapper</strong>
+                                    <p style="font-size: 0.875rem; color: var(--text-body); margin: 0; line-height: 1.55;">Municipal recycling standards require strict predictability. A deterministic rule base guarantees accurate disposal instructions without random generative variance.</p>
+                                  </div>
+                                
+                                  <div style="background: var(--bg-subtle); padding: 14px; border-radius: var(--radius-sm); border-left: 3px solid var(--accent-cobalt); margin-bottom: 12px;">
+                                    <strong style="color: var(--text-ink); font-size: 0.9375rem; display: block; margin-bottom: 4px;">Transparent Uncertainty Disclosures</strong>
+                                    <p style="font-size: 0.875rem; color: var(--text-body); margin: 0; line-height: 1.55;">If an item contains ambiguous or multi-material components (e.g., plastic-lined paper coffee cups), the engine explicitly flags an uncertainty warning instead of guessing.</p>
+                                  </div>
+                                
+                                  <div style="background: var(--bg-subtle); padding: 14px; border-radius: var(--radius-sm); border-left: 3px solid var(--accent-cobalt); margin-bottom: 12px;">
+                                    <strong style="color: var(--text-ink); font-size: 0.9375rem; display: block; margin-bottom: 4px;">Comprehensive Vitest Test Suite</strong>
+                                    <p style="font-size: 0.875rem; color: var(--text-body); margin: 0; line-height: 1.55;">Codified test cases for dozens of common household items, ensuring that refactoring never breaks classification accuracy.</p>
+                                  </div>
+                                
+                            </div>
+                        </div>
+
+                        <!-- 04. Technologies Used -->
+                        <div class="case-study-block" id="section-technologies">
+                            <h3>04 / Technologies Used</h3>
+                            <div class="project-stack-pills" style="margin-bottom: 16px;">
+                                <span class="stack-pill" style="font-size: 0.8125rem; padding: 6px 12px;">React 19</span><span class="stack-pill" style="font-size: 0.8125rem; padding: 6px 12px;">TypeScript</span><span class="stack-pill" style="font-size: 0.8125rem; padding: 6px 12px;">Vite</span><span class="stack-pill" style="font-size: 0.8125rem; padding: 6px 12px;">Vitest</span><span class="stack-pill" style="font-size: 0.8125rem; padding: 6px 12px;">Responsible AI Guardrails</span>
+                            </div>
+                            <p style="font-size: 0.9375rem; color: var(--text-body); line-height: 1.6;">
+                                Every technology in this stack was chosen for direct architectural fitness, verifiable benchmarking ability, and clean maintainability in a production or research setting.
+                            </p>
+                        </div>
+
+                        <!-- 05. How It Works -->
+                        <div class="case-study-block" id="section-how-it-works">
+                            <h3>05 / How It Works &amp; Interactive Visualizer</h3>
+                            <p>Here is a breakdown of how the system functions in practice:</p>
+                            <ul>
+                                <li>Keyword-based waste categorization with instant feedback.</li><li>Confidence scoring with explicit uncertainty notices.</li><li>Disposal instructions aligned with international waste management standards.</li><li>15+ automated unit tests in Vitest.</li><li>Carbon-conscious dark UI with responsive design.</li>
+                            </ul>
+                            
+                            <div style="margin-top: 24px;">
+                                <h4 style="font-size: 1rem; color: var(--text-ink); margin-bottom: 8px;">Interactive Technical Visualizer</h4>
+                                <div id="cs-interactive-visualization-mount" style="margin-top: 12px;"></div>
+                                <div style="margin-top: 12px; font-size: 0.875rem; color: var(--text-body); background: var(--bg-subtle); padding: 12px 16px; border-radius: var(--radius-sm); border-left: 3px solid var(--accent-cobalt);">
+                                    <strong style="color: var(--text-ink); display: block; margin-bottom: 4px;">How to interact:</strong>
+                                    <span>Use the controls above to trigger live states, test inputs, and observe system data flow directly in your browser.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 06. Results -->
+                        <div class="case-study-block" id="section-results">
+                            <h3>06 / Results &amp; Verified Findings</h3>
+                            <ul>
+                                <li><strong>Deployed live on Netlify with 100% client-side execution and zero cold-start latency.</strong></li><li><strong>Zero false claims: Clear user disclosure on rule-based text logic vs experimental vision previews.</strong></li><li><strong>Recognized under the 1M1B IBM SkillsBuild AI for Sustainability initiative.</strong></li>
+                            </ul>
+                        </div>
+
+                        <!-- 07. What I Learned -->
+                        <div class="case-study-block" id="section-learned">
+                            <h3>07 / What I Learned &amp; Direct Contributions</h3>
+                            <p style="margin-bottom: 12px;">Key engineering responsibilities and lessons gained during this project:</p>
+                            <ul>
+                                <li>Built high-performance, accessible UI with carbon-conscious dark styling and responsive layouts.</li><li>Engineered deterministic classification engine with explicit uncertainty handling for ambiguous inputs.</li><li>Separated text classification logic from client-side image preview components (zero false computer vision claims).</li><li>Wrote comprehensive unit test suite in Vitest verifying rule classifications and confidence thresholds.</li>
+                            </ul>
+                        </div>
+
+                        <!-- 08. Future Improvements -->
+                        <div class="case-study-block" id="section-future">
+                            <h3>08 / Future Improvements</h3>
+                            <p>Image upload currently functions as an accessible visual preview; on-device TensorFlow.js client inference is planned for future offline computer vision sorting.</p>
+                        </div>
+
+                        <!-- Previous / Next Project Navigation -->
+                        <nav class="case-study-pagination" aria-label="Case Study Pagination" style="display: flex; justify-content: space-between; gap: 16px; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-hairline); flex-wrap: wrap;">
+                            <a href="garbage-classification.html" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none;">
+                                <i class="fas fa-arrow-left"></i>
+                                <div style="text-align: left;">
+                                    <span style="display: block; font-size: 0.6875rem; text-transform: uppercase; color: var(--text-muted); font-family: var(--font-mono);">Previous Project</span>
+                                    <strong style="color: var(--text-ink); font-size: 0.9375rem;">Waste Vision</strong>
+                                </div>
+                            </a>
+                            <a href="glitrai.html" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; text-align: right;">
+                                <div style="text-align: right;">
+                                    <span style="display: block; font-size: 0.6875rem; text-transform: uppercase; color: var(--text-muted); font-family: var(--font-mono);">Next Project</span>
+                                    <strong style="color: var(--text-ink); font-size: 0.9375rem;">GlitrAI Content Engine</strong>
+                                </div>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </nav>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-identity">
+                    <h3>Rakesh G R</h3>
+                    <p>AI Engineer &amp; Full-Stack Systems Developer. Engineering AI into real-world software.</p>
+                </div>
+                <div class="footer-nav-groups">
+                    <div class="footer-col">
+                        <h5>Pages</h5>
+                        <ul>
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="../about.html">About Me</a></li>
+                            <li><a href="../skills.html">Skills</a></li>
+                            <li><a href="../projects.html">Projects</a></li>
+                            <li><a href="../experience.html">Education &amp; Experience</a></li>
+                            <li><a href="../contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Case Studies</h5>
+                        <ul>
+                            <li><a href="aiet-unisphere.html">AIET-UniSphere</a></li>
+                            <li><a href="yamlanchor.html">YamlAnchor</a></li>
+                            <li><a href="dense-matrix-multiplication.html">Dense Matrix C11</a></li>
+                            <li><a href="customer-churn.html">Customer Churn API</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Connect</h5>
+                        <ul>
+                            <li><a href="https://github.com/Rakeshgr962" target="_blank" rel="noopener noreferrer">GitHub Profile</a></li>
+                            <li><a href="https://www.linkedin.com/in/rakeshgr18" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                            <li><a href="mailto:rakeshgr223@gmail.com">Direct Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Rakesh G R. All rights reserved.</span>
+                <span>Alva's Institute of Engineering &amp; Technology · Mangalore, India</span>
+            </div>
+        </div>
+    </footer>
+
+    <button type="button" class="back-to-top-btn" id="back-to-top-btn" aria-label="Back to Top"><i class="fas fa-arrow-up"></i> <span>Top</span></button>
+    <div class="copy-feedback-toast" id="copy-toast">Email copied to clipboard</div>
+
+    <!-- Motion & Creative Interaction Pipeline -->
+    <script src="../assets/js/three.min.js"></script>
+    <script src="../assets/js/gsap.min.js"></script>
+    <script src="../assets/js/ScrollTrigger.min.js"></script>
+    <script src="../assets/js/lenis.min.js"></script>
+    <script src="../motion-core.js"></script>
+    <script src="../app.js"></script>
+</body>
+</html>

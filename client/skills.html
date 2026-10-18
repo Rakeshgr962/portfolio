@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills — Rakesh G R</title>
+    <meta name="description" content="Technical skills of Rakesh G R across Programming Languages, AI & Machine Learning, Web Development, Backend & APIs, Databases, and Tools & Deployment. Grounded in real GitHub repositories.">
+    <link rel="canonical" href="https://rakeshgr.netlify.app/skills">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="kage-assets/fonts.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="motion-system.css">
+</head>
+<body>
+    <canvas id="bg-particle-canvas" aria-hidden="true"></canvas>
+    <div class="film-grain-overlay" aria-hidden="true"></div>
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <header class="site-nav" id="site-nav">
+        <div class="container nav-wrapper">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-title">Rakesh G R</a>
+                <span class="brand-spec">AI Engineer · Systems</span>
+            </div>
+
+            <nav aria-label="Primary Navigation">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Me</a></li>
+                    <li><a href="skills.html" class="nav-link active" aria-current="page">Skills</a></li>
+                    <li><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li><a href="experience.html" class="nav-link">Education &amp; Experience</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="btn-primary" style="padding: 7px 16px; font-size: 0.8125rem;">
+                    <span>Contact Me</span>
+                </a>
+                <button type="button" class="btn-resume-nav action-download-resume" title="Download Resume (PDF)">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    <span>Resume</span>
+                </button>
+                <button type="button" class="nav-hamburger" id="nav-hamburger" aria-label="Open mobile navigation menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <aside class="mobile-nav-drawer" id="mobile-nav-drawer">
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                <span class="brand-title">Rakesh G R</span>
+                <button type="button" id="mobile-drawer-close" style="font-size: 1.25rem; color: var(--text-ink); cursor: pointer;"><i class="fas fa-times"></i></button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="skills.html" class="active">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="experience.html">Education &amp; Experience</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <a href="contact.html" class="btn-primary" style="width: 100%; justify-content: center; margin-bottom: 12px; display: inline-flex;">
+                <i class="fas fa-paper-plane"></i> Contact Me
+            </a>
+            <button type="button" class="btn-primary action-download-resume" style="width: 100%; justify-content: center; margin-bottom: 12px; background: var(--bg-surface); color: var(--text-ink); border: 1px solid var(--border-hairline);">
+                <i class="fas fa-file-pdf"></i> Download Resume
+            </button>
+            <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-align: center;">
+                Alva's Institute of Engineering &amp; Technology
+            </p>
+        </div>
+    </aside>
+
+    <main id="main-content">
+        <!-- Page Hero -->
+        <section class="page-hero-section">
+            <div class="container">
+                <div class="page-kicker reveal-on-scroll">SKILLS &bull; TECHNOLOGIES</div>
+                <h1 class="page-title reveal-on-scroll">Technical <span class="editorial-italic">Skills</span>.</h1>
+                <p class="page-lead reveal-on-scroll">
+                    A transparent, project-verified overview of the programming languages, AI frameworks, backend tools, and databases I use to build software. Every technology is grounded in real codebases and public GitHub repositories.
+                </p>
+
+                <!-- Search & Filter Controls -->
+                <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+                    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                        <div class="project-search-box" style="flex: 1; min-width: 260px; max-width: 480px; position: relative; display: flex; align-items: center;">
+                            <i class="fas fa-search search-icon" aria-hidden="true" style="position: absolute; left: 16px; color: var(--text-muted); font-size: 0.875rem; pointer-events: none;"></i>
+                            <input type="text" id="skills-search-input" placeholder="Search skills (e.g. Python, FastAPI, Docker, PostgreSQL)..." aria-label="Search skills" style="width: 100%; padding: 10px 18px 10px 42px; border-radius: 9999px; background: var(--bg-surface); border: 1px solid var(--border-hairline); font-size: 0.875rem; color: var(--text-ink);">
+                            <button type="button" class="search-clear-btn" id="skills-clear-search" aria-label="Clear search" style="display: none; position: absolute; right: 14px; color: var(--text-muted); background: transparent; border: none; cursor: pointer; padding: 4px; font-size: 0.875rem;">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            <button type="button" class="filter-btn active" data-skill-status="all" style="border-radius: 9999px; padding: 8px 18px;">
+                                <span>All Statuses</span>
+                            </button>
+                            <button type="button" class="filter-btn" data-skill-status="shipped" style="border-radius: 9999px; padding: 8px 18px;">
+                                <i class="fas fa-check-circle" style="color: var(--accent-emerald); font-size: 0.75rem; margin-right: 4px;"></i>
+                                <span>Shipped in Projects</span>
+                            </button>
+                            <button type="button" class="filter-btn" data-skill-status="learning" style="border-radius: 9999px; padding: 8px 18px;">
+                                <i class="fas fa-flask" style="color: var(--accent-amber); font-size: 0.75rem; margin-right: 4px;"></i>
+                                <span>Active Research</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Domain Switcher (6 Requested Categories) -->
+                    <div class="project-filter-bar" id="skills-filter-bar" style="border-bottom: 1px solid var(--border-hairline); padding-bottom: 1rem; margin-bottom: 2rem;">
+                        <button type="button" class="filter-btn active" data-skill-cat="all" style="border-radius: 9999px; padding: 8px 18px;">
+                            <span>All Categories (6)</span>
+                        </button>
+                        <button type="button" class="filter-btn" data-skill-cat="languages" style="border-radius: 9999px; padding: 8px 18px;">
+                            <span>Programming Languages</span>
+                        </button>
+                        <button type="button" class="filter-btn" data-skill-cat="ai-ml" style="border-radius: 9999px; padding: 8px 18px;">
+                            <span>AI &amp; Machine Learning</span>
+                        </button>
+                        <button type="button" class="filter-btn" data-skill-cat="web" style="border-radius: 9999px; padding: 8px 18px;">
+                            <span>Web Development</span>
+                        </button>
+                        <button type="button" class="filter-btn" data-skill-cat="backend" style="border-radius: 9999px; padding: 8px 18px;">
+                            <span>Backend &amp; APIs</span>
+                        </button>
+                        <button type="button" class="filter-btn" data-skill-cat="databases" style="border-radius: 9999px; padding: 8px 18px;">
+                            <span>Databases</span>
+                        </button>
+                        <button type="button" class="filter-btn" data-skill-cat="tools" style="border-radius: 9999px; padding: 8px 18px;">
+                            <span>Tools &amp; Deployment</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Capabilities Grid -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="capabilities-grid" id="skills-grid">
+
+                    <!-- 1. Programming Languages -->
+                    <div class="capability-group" data-skill-group="languages">
+                        <div class="capability-header">
+                            <i class="fas fa-code capability-icon"></i>
+                            <h2 class="capability-title">Programming Languages</h2>
+                        </div>
+                        <p class="cap-group-desc" style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.5;">
+                            Languages I use to build backend systems, write high-performance numerical routines, train machine learning models, and develop interactive user interfaces.
+                        </p>
+                        <div class="capability-list">
+                            <div class="capability-item" data-status="shipped" data-keywords="python pandas numpy jupyter scripting machine learning fastapi">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Python</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Primary language for ML training scripts, data pipelines, FastAPI servers, and benchmark orchestration across all AI repos.</span>
+                                <div class="cap-evidence-tag">Core Language in 6 Repositories</div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="c c11 openmp hpc cache blocking multithreading gcc performance">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">C / C11</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">High-performance computing: cache tiling, loop stride reordering (ikj), 64-byte aligned memory, and OpenMP multithreading (~12.6x speedup).</span>
+                                <div class="cap-evidence-tag"><a href="projects/dense-matrix-multiplication.html">Dense Matrix Study (~12.6x Speedup) &rarr;</a></div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="go golang ast docker sdk cli systems backend concurrency">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Go (Golang 1.22)</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">AST codebase scanning, Docker Engine SDK process orchestration, NDJSON log buffering, and concurrent CLI execution.</span>
+                                <div class="cap-evidence-tag"><a href="projects/yamlanchor.html">Go Backend Engine in YamlAnchor &rarr;</a></div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="typescript types interfaces generics strict type safety react">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">TypeScript</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Strict type safety across client interfaces, database entities, API contracts, and automated unit test mocks.</span>
+                                <div class="cap-evidence-tag">Applied across 4 Production Repositories</div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="javascript es6 esnext dom vanilla modern js async">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">JavaScript (ES6+)</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Modern asynchronous JavaScript, DOM manipulation, Web Workers, canvas animations, and zero-framework performance optimization.</span>
+                                <div class="cap-evidence-tag">Core Architecture in this Portfolio</div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="sql ddl dml queries indexing aggregations postgresql mysql">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">SQL</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Writing performant analytical queries, window functions, conditional aggregations, and database constraint definitions.</span>
+                                <div class="cap-evidence-tag">PostgreSQL &amp; MySQL Query Suites</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. AI & Machine Learning -->
+                    <div class="capability-group" data-skill-group="ai-ml">
+                        <div class="capability-header">
+                            <i class="fas fa-brain capability-icon"></i>
+                            <h2 class="capability-title">AI &amp; Machine Learning</h2>
+                        </div>
+                        <p class="cap-group-desc" style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.5;">
+                            Frameworks, architectures, and evaluation methods I use to build, train, and test intelligent models on tabular, visual, and text data.
+                        </p>
+                        <div class="capability-list">
+                            <div class="capability-item" data-status="shipped" data-keywords="xgboost gradient boosting decision trees classification scikit-learn">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">XGBoost &amp; Scikit-Learn</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Gradient boosted decision trees, hyperparameter tuning, stratified cross-validation, and strict data leakage elimination.</span>
+                                <div class="cap-evidence-tag"><a href="projects/customer-churn.html">Customer Churn Case Study &rarr;</a></div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="tensorflow keras efficientnet deep learning neural networks cnn">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">TensorFlow &amp; Keras</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Deep learning architectures, global average pooling, dense classification heads, dropout regularization, and early stopping.</span>
+                                <div class="cap-evidence-tag"><a href="projects/garbage-classification.html">Garbage Classification Study &rarr;</a></div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="transfer learning efficientnetb0 imagenet feature extraction">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Transfer Learning</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Fine-tuning pretrained ImageNet weights via EfficientNetB0 backbone for 6-class waste categorization with minimal FLOP overhead.</span>
+                                <div class="cap-evidence-tag">95.8% Test Accuracy on 6 Waste Classes</div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="model evaluation roc auc precision recall f1 score confusion matrix">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Model Evaluation</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Rigorously evaluating class imbalance trade-offs with ROC-AUC, precision-recall curves, confusion matrices, and empirical validation.</span>
+                                <div class="cap-evidence-tag">0.84 ROC-AUC Verified on Churn Dataset</div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="mlflow experiment tracking metrics parameters artifacts">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">MLflow</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Experiment run logging, tracking learning rates, tree depth parameters, validation loss curves, and serialized model artifacts.</span>
+                                <div class="cap-evidence-tag">Artifact Tracking &amp; Parameter Versioning</div>
+                            </div>
+
+                            <div class="capability-item" data-status="learning" data-keywords="pytorch cuda triton distributed training deep learning">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">PyTorch &amp; CUDA Profiling</span>
+                                    <span class="cap-status-learning"><i class="fas fa-flask"></i> Research</span>
+                                </div>
+                                <span class="cap-desc">Ongoing technical deep dive into PyTorch autograd engine, torch.compile, mixed precision (FP16/BF16), and CUDA kernel execution timelines.</span>
+                                <div class="cap-evidence-tag">Active Research / Self-Directed Study</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Web Development -->
+                    <div class="capability-group" data-skill-group="web">
+                        <div class="capability-header">
+                            <i class="fas fa-laptop-code capability-icon"></i>
+                            <h2 class="capability-title">Web Development</h2>
+                        </div>
+                        <p class="cap-group-desc" style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.5;">
+                            Frontend frameworks and modern browser technologies I use to build fast, responsive, and interactive user interfaces.
+                        </p>
+                        <div class="capability-list">
+                            <div class="capability-item" data-status="shipped" data-keywords="react react19 hooks context components frontend ui">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">React (React 19)</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Modern component architecture, custom hooks, role-segregated directories, and responsive state synchronization in AIET-UniSphere.</span>
+                                <div class="cap-evidence-tag"><a href="projects/aiet-unisphere.html">AIET-UniSphere Platform &rarr;</a></div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="nextjs next.js app router server components ssr">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Next.js (App Router)</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Server Components, dynamic routes, streaming NDJSON log renderers, and modern web application structure in YamlAnchor Studio.</span>
+                                <div class="cap-evidence-tag"><a href="projects/yamlanchor.html">YamlAnchor Next.js Studio &rarr;</a></div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="html5 css3 semantics responsive flexbox grid design system">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">HTML5 &amp; Modern CSS3</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Semantic document hierarchy, CSS custom properties, responsive Flexbox and Grid layouts, WCAG contrast compliance, and dark mode.</span>
+                                <div class="cap-evidence-tag">Applied across all Web Applications</div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="threejs three.js webgl 3d canvas particles animations graphics">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Three.js &amp; Canvas</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Interactive 3D particle systems, mathematical vector fields, real-time node graphs, and smooth WebGL canvas animations.</span>
+                                <div class="cap-evidence-tag">Used in this Interactive Portfolio</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Backend & APIs -->
+                    <div class="capability-group" data-skill-group="backend">
+                        <div class="capability-header">
+                            <i class="fas fa-microchip capability-icon"></i>
+                            <h2 class="capability-title">Backend &amp; APIs</h2>
+                        </div>
+                        <p class="cap-group-desc" style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.5;">
+                            Backend architectures, server frameworks, and API integrations I use to deliver fast, reliable, and secure services.
+                        </p>
+                        <div class="capability-list">
+                            <div class="capability-item" data-status="shipped" data-keywords="fastapi rest async pydantic uvicorn swagger openapi python">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">FastAPI Production APIs</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">High-throughput asynchronous REST inference endpoints with typed Pydantic validation schemas and OpenAPI documentation.</span>
+                                <div class="cap-evidence-tag">Deployed on Render Cloud with Live Healthcheck</div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="rest apis http methods endpoints status codes openapi contracts">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">REST APIs</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Designing clean, idempotent, and discoverable REST resources with appropriate HTTP status codes and uniform error payloads.</span>
+                                <div class="cap-evidence-tag">Standardized Across All Backend Endpoints</div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="nodejs node express backend serverless api javascript">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Node.js</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Backend microservices, static HTTP dev servers, build automation scripts, and serverless API endpoints.</span>
+                                <div class="cap-evidence-tag">Dev Servers &amp; Serverless Handlers</div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="asynchronous jobs queues backgroundtasks state machine postgresql">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Asynchronous Job Workflows</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Decoupling long-running AI inference via FastAPI BackgroundTasks and PostgreSQL job tables: pending &rarr; processing &rarr; completed.</span>
+                                <div class="cap-evidence-tag">Non-Blocking Request Lifecycle</div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="llm groq llama3 granite pollinations prompt engineering external apis">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">LLM &amp; AI Service Integrations</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Multi-provider integrations: Groq API (Llama 3 70B/8B), IBM Granite sustainability guidance, and Pollinations generative vision pipelines.</span>
+                                <div class="cap-evidence-tag">Implemented in AI-EcoSort &amp; GlitrAI</div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="responsible ai uncertainty confidence threshold ethics guardrails">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Responsible AI &amp; Guardrails</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Transparent confidence meters, explicit uncertainty notices, and clear user disclosures distinguishing rule-based filters from generative LLMs.</span>
+                                <div class="cap-evidence-tag"><a href="projects/ai-ecosort.html">AI-EcoSort (1M1B Award) &rarr;</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. Databases -->
+                    <div class="capability-group" data-skill-group="databases">
+                        <div class="capability-header">
+                            <i class="fas fa-database capability-icon"></i>
+                            <h2 class="capability-title">Databases</h2>
+                        </div>
+                        <p class="cap-group-desc" style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.5;">
+                            Relational, document, and in-memory storage solutions I use to structure application data, manage identity, and ensure fast query execution.
+                        </p>
+                        <div class="capability-list">
+                            <div class="capability-item" data-status="shipped" data-keywords="postgresql postgres rls sql relations foreign keys indexes">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">PostgreSQL</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Relational schema design, foreign keys, B-tree indexes, migration scripts, and Row Level Security policies evaluated per JWT role.</span>
+                                <div class="cap-evidence-tag"><a href="projects/aiet-unisphere.html">AIET-UniSphere RLS Architecture &rarr;</a></div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="supabase auth baas realtime rls postgres identity">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Supabase</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Backend-as-a-Service integration, JWT claim injection, automated database backups, and fine-grained role-based policies.</span>
+                                <div class="cap-evidence-tag">Production Identity in AIET-UniSphere</div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="mysql relational sql queries tables joins acid transactions">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">MySQL</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Normalized relational schema design (1NF to 3NF), ACID transactions, composite primary keys, and complex multi-table JOIN queries.</span>
+                                <div class="cap-evidence-tag">Academic Coursework &amp; Projects</div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="mongodb nosql documents pymongo collections aerobuy">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">MongoDB</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Document storage for dynamic product catalogs, nested order records, and shopping carts using PyMongo drivers in AeroBuy.</span>
+                                <div class="cap-evidence-tag">AeroBuy E-Commerce Backend</div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="redis cache key value in memory store priceflow rate limit">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Redis (Caching)</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">In-memory caching layer configured via Docker Compose to cache external financial quote responses and rate-limit polling.</span>
+                                <div class="cap-evidence-tag"><a href="projects/priceflow-agent.html">PriceFlow-Agent Architecture &rarr;</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. Tools & Deployment -->
+                    <div class="capability-group" data-skill-group="tools">
+                        <div class="capability-header">
+                            <i class="fas fa-server capability-icon"></i>
+                            <h2 class="capability-title">Tools &amp; Deployment</h2>
+                        </div>
+                        <p class="cap-group-desc" style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.5;">
+                            Development, testing, containerization, and automation tools I use to maintain code reliability and ship software confidently.
+                        </p>
+                        <div class="capability-list">
+                            <div class="capability-item" data-status="shipped" data-keywords="docker containers compose multistage dockerfile deployment">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Docker</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Multi-stage container builds, Docker Compose service definitions (FastAPI + Redis + PostgreSQL), and runner container simulation.</span>
+                                <div class="cap-evidence-tag">Containerized in 4 Repositories</div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="git github version control branches pull requests open source">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Git and GitHub</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Branching workflows, atomic commit discipline, collaborative PR code reviews, and public open-source repository maintenance.</span>
+                                <div class="cap-evidence-tag"><a href="https://github.com/Rakeshgr962" target="_blank" rel="noopener noreferrer">github.com/Rakeshgr962 &rarr;</a></div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="ci cd continuous integration github actions pipelines automation">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">CI/CD Pipelines</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Workflow triggers, matrix test jobs, automated linting, secret detection, and authoring local simulation tooling in YamlAnchor.</span>
+                                <div class="cap-evidence-tag"><a href="projects/yamlanchor.html">YamlAnchor Workflow Tooling &rarr;</a></div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="testing automated vitest pytest unit tests assertions suites">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Automated Testing</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Vitest classifier suites in AI-EcoSort, Pytest smoke testing in PriceFlow-Agent, and 81-test C validation suite comparing against reference algorithms.</span>
+                                <div class="cap-evidence-tag">Verified Test Suites in 3 Repositories</div>
+                            </div>
+
+                            <div class="capability-item" data-status="shipped" data-keywords="linux shell bash terminal posix unix workflow">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Linux &amp; Shell</span>
+                                    <span class="cap-status-shipped"><i class="fas fa-check-circle"></i> Shipped</span>
+                                </div>
+                                <span class="cap-desc">Bash scripting, command-line utilities, process management, POSIX environments, and development workflows.</span>
+                                <div class="cap-evidence-tag">Daily Development Environment</div>
+                            </div>
+
+                            <div class="capability-item" data-status="learning" data-keywords="kubernetes k8s helm cloud native microservices clusters">
+                                <div class="cap-name-row">
+                                    <span class="cap-name">Kubernetes &amp; Cloud Native</span>
+                                    <span class="cap-status-learning"><i class="fas fa-flask"></i> Research</span>
+                                </div>
+                                <span class="cap-desc">Currently learning declarative Kubernetes cluster definitions, pod auto-scaling, ingress controllers, and Helm charts for container fleets.</span>
+                                <div class="cap-evidence-tag">Active Research / Ongoing Study</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Ground Truth Disclosure Box -->
+                <div style="margin-top: 3.5rem; padding: 1.75rem; background: var(--bg-surface); border: 1px solid var(--border-hairline); border-left: 4px solid var(--accent-cobalt); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                    <div style="font-family: var(--font-mono); font-size: 0.6875rem; font-weight: 700; color: var(--accent-cobalt); text-transform: uppercase; margin-bottom: 6px;">
+                        GROUND TRUTH TECHNICAL DISCLOSURE
+                    </div>
+                    <p style="font-size: 0.875rem; color: var(--text-body); line-height: 1.6; margin: 0;">
+                        Every skill labeled <strong>Shipped in Projects</strong> corresponds to inspectable source code, configuration files, or empirical benchmarks committed in public GitHub repositories under <a href="https://github.com/Rakeshgr962" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cobalt); text-decoration: underline;">github.com/Rakeshgr962</a> or <a href="https://github.com/Aiet-Unisphere" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cobalt); text-decoration: underline;">github.com/Aiet-Unisphere</a>. Skills labeled <strong>Active Research</strong> represent ongoing study where fundamentals are investigated before claiming production implementation.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-identity">
+                    <h3>Rakesh G R</h3>
+                    <p>AI Engineer &amp; Full-Stack Systems Developer &bull; B.Tech CSE (Data Science) at AIET Mangalore.</p>
+                </div>
+                <div class="footer-nav-groups">
+                    <div class="footer-col">
+                        <h5>Pages</h5>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Me</a></li>
+                            <li><a href="skills.html">Skills</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="experience.html">Education &amp; Experience</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Featured Projects</h5>
+                        <ul>
+                            <li><a href="projects/aiet-unisphere.html">AIET-UniSphere</a></li>
+                            <li><a href="projects/yamlanchor.html">YamlAnchor</a></li>
+                            <li><a href="projects/dense-matrix-multiplication.html">Dense Matrix C11</a></li>
+                            <li><a href="projects/customer-churn.html">Customer Churn Prediction</a></li>
+                            <li><a href="projects/ai-ecosort.html">AI-EcoSort</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Connect</h5>
+                        <ul>
+                            <li><a href="https://github.com/Rakeshgr962" target="_blank" rel="noopener noreferrer">View GitHub</a></li>
+                            <li><a href="https://www.linkedin.com/in/rakeshgr18" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a></li>
+                            <li><a href="mailto:rakeshgr223@gmail.com">Email Me</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Rakesh G R. All rights reserved.</span>
+                <span>Alva's Institute of Engineering &amp; Technology · Mangalore, India</span>
+            </div>
+        </div>
+    </footer>
+
+    <button type="button" class="back-to-top-btn" id="back-to-top-btn" aria-label="Back to Top"><i class="fas fa-arrow-up"></i> <span>Top</span></button>
+    <div class="copy-feedback-toast" id="copy-toast">Copied to clipboard</div>
+
+    <!-- Motion & Creative Interaction Pipeline -->
+    <script src="assets/js/three.min.js"></script>
+    <script src="assets/js/gsap.min.js"></script>
+    <script src="assets/js/ScrollTrigger.min.js"></script>
+    <script src="assets/js/lenis.min.js"></script>
+    <script src="motion-core.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

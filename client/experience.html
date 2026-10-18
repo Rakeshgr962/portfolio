@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education &amp; Experience — Rakesh G R</title>
+    <meta name="description" content="Education and experience timeline of Rakesh G R, B.Tech CSE (Data Science) student at AIET Mangalore, including internships, university leadership, and open-source software engineering.">
+    <meta name="author" content="Rakesh G R">
+    <link rel="canonical" href="https://rakeshgr.netlify.app/experience">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="kage-assets/fonts.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="motion-system.css">
+</head>
+<body>
+    <!-- Three.js Ambient Particle Field & Film Grain -->
+    <canvas id="bg-particle-canvas" aria-hidden="true"></canvas>
+    <div class="film-grain-overlay" aria-hidden="true"></div>
+
+    <!-- Global Scroll Progress Indicator -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Persistent Site Navigation -->
+    <header class="site-nav" id="site-nav">
+        <div class="container nav-wrapper">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-title">Rakesh G R</a>
+                <span class="brand-spec">AI Engineer · Systems</span>
+            </div>
+
+            <nav aria-label="Primary Navigation">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Me</a></li>
+                    <li><a href="skills.html" class="nav-link">Skills</a></li>
+                    <li><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li><a href="experience.html" class="nav-link active" aria-current="page">Education &amp; Experience</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="btn-primary" style="padding: 7px 16px; font-size: 0.8125rem;">
+                    <span>Contact Me</span>
+                </a>
+                <button type="button" class="btn-resume-nav action-download-resume" title="Download Resume (PDF)">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    <span>Resume</span>
+                </button>
+                <button type="button" class="nav-hamburger" id="nav-hamburger" aria-label="Open mobile navigation menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation">
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                <span class="brand-title">Rakesh G R</span>
+                <button type="button" id="mobile-drawer-close" aria-label="Close menu" style="font-size: 1.25rem; color: var(--text-ink); cursor: pointer;"><i class="fas fa-times"></i></button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="experience.html" class="active">Education &amp; Experience</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <a href="contact.html" class="btn-primary" style="width: 100%; justify-content: center; margin-bottom: 12px; display: inline-flex;">
+                <i class="fas fa-paper-plane"></i> Contact Me
+            </a>
+            <button type="button" class="btn-primary action-download-resume" style="width: 100%; justify-content: center; margin-bottom: 12px; background: var(--bg-surface); color: var(--text-ink); border: 1px solid var(--border-hairline);">
+                <i class="fas fa-file-pdf"></i> Download Resume
+            </button>
+            <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-align: center;">
+                Alva's Institute of Engineering &amp; Technology
+            </p>
+        </div>
+    </aside>
+
+    <main id="main-content">
+        <!-- PAGE HERO -->
+        <section class="page-hero-section">
+            <div class="container">
+                <div class="page-kicker reveal-on-scroll">CAREER PATH &bull; EDUCATION &bull; INTERNSHIPS</div>
+                <h1 class="page-title reveal-on-scroll">Education &amp; <span class="editorial-italic">Experience</span></h1>
+                <p class="page-lead reveal-on-scroll">
+                    A clear chronological record of my academic training in Computer Science &amp; Data Science, applied engineering internships in AI, and core contributions to open-source software systems.
+                </p>
+            </div>
+        </section>
+
+        <!-- TIMELINE SECTION -->
+        <section class="editorial-section">
+            <div class="container">
+        <!-- EXPERIENCE & EDUCATION CONTENT -->
+        <section class="editorial-section">
+            <div class="container" style="max-width: 920px;">
+                
+                <!-- Section 1: Professional Experience -->
+                <div class="timeline-block reveal-on-scroll">
+                    <div class="section-title-wrap" style="margin-bottom: var(--space-2xl);">
+                        <span class="eyebrow-chip">PROFESSIONAL WORK &amp; INTERNSHIPS</span>
+                        <h2 class="timeline-section-title">
+                            Experience
+                        </h2>
+                        <p class="timeline-section-sub">
+                            Industry and virtual internships focused on AI engineering, computer vision workflows, machine learning model evaluation, and sustainability applications.
+                        </p>
+                    </div>
+
+                    <div class="resume-cards-list">
+                        
+                        <!-- Role 1: Edunet Foundation -->
+                        <div class="resume-card reveal-on-scroll">
+                            <div class="resume-card-header">
+                                <div class="resume-role-meta">
+                                    <h3 class="resume-org-title">Edunet Foundation <span class="resume-collab">(in collaboration with Shell India &amp; AICTE)</span></h3>
+                                    <div class="resume-role-title">Data Science &amp; AI Intern</div>
+                                </div>
+                                <div class="resume-place-time">
+                                    <span class="resume-location"><i class="fas fa-map-marker-alt"></i> Remote</span>
+                                    <span class="resume-date-badge">June 2025 — July 2025</span>
+                                </div>
+                            </div>
+                            <ul class="resume-bullets">
+                                <li>Developed Python-based data processing workflows for 2,500+ image records, implementing preprocessing, validation, transformation, and automated processing pipelines.</li>
+                                <li>Built and evaluated machine learning models achieving 94% classification accuracy, debugging model pipelines and optimizing parameters for improved performance.</li>
+                                <li>Used Git for version control and collaborated on development, testing, documentation, and debugging throughout the project lifecycle.</li>
+                            </ul>
+                            <div class="resume-tags">
+                                <span class="resume-tag">Python</span>
+                                <span class="resume-tag">Machine Learning</span>
+                                <span class="resume-tag">Image Preprocessing</span>
+                                <span class="resume-tag">Pipeline Automation</span>
+                                <span class="resume-tag">Git</span>
+                            </div>
+                        </div>
+
+                        <!-- Role 2: 1M1B -->
+                        <div class="resume-card reveal-on-scroll">
+                            <div class="resume-card-header">
+                                <div class="resume-role-meta">
+                                    <h3 class="resume-org-title">1M1B – AI for Sustainability Virtual Internship</h3>
+                                    <div class="resume-role-title">AI for Sustainability Intern</div>
+                                </div>
+                                <div class="resume-place-time">
+                                    <span class="resume-location"><i class="fas fa-map-marker-alt"></i> Remote</span>
+                                    <span class="resume-date-badge">July 2026 — Sep 2026</span>
+                                </div>
+                            </div>
+                            <ul class="resume-bullets">
+                                <li>Applied data-driven AI approaches to real-world sustainability problems through structured technical projects involving data analysis and AI solution development.</li>
+                                <li>Analyzed datasets and explored AI-based solutions, gaining practical exposure to data processing, analytical workflows, and technology-driven problem solving.</li>
+                                <li>Completed technical learning activities through IBM SkillsBuild and applied software and AI concepts to sustainability-focused use cases.</li>
+                            </ul>
+                            <div class="resume-tags">
+                                <span class="resume-tag">AI for Sustainability</span>
+                                <span class="resume-tag">IBM SkillsBuild</span>
+                                <span class="resume-tag">Data Analysis</span>
+                                <span class="resume-tag">Analytical Workflows</span>
+                            </div>
+                        </div>
+
+                        <!-- Role 3: AIET-UniSphere & Open Source (Preserved Technical Leadership) -->
+                        <div class="resume-card reveal-on-scroll">
+                            <div class="resume-card-header">
+                                <div class="resume-role-meta">
+                                    <h3 class="resume-org-title">AIET-UniSphere Campus Platform</h3>
+                                    <div class="resume-role-title">Core Full-Stack Contributor &amp; Database Lead</div>
+                                </div>
+                                <div class="resume-place-time">
+                                    <span class="resume-location"><i class="fas fa-map-marker-alt"></i> Mangalore, India</span>
+                                    <span class="resume-date-badge">2025 — Present</span>
+                                </div>
+                            </div>
+                            <ul class="resume-bullets">
+                                <li>Architected relational PostgreSQL schemas on Supabase with Row-Level Security (RLS) policies to enforce strict data isolation between student and faculty records.</li>
+                                <li>Implemented role-based access control (RBAC), fine-grained permissions, and secure JWT authentication.</li>
+                                <li>Built institutional announcement feeds and campus event management workflows using Next.js and React 19.</li>
+                            </ul>
+                            <div class="resume-tags">
+                                <span class="resume-tag">Next.js</span>
+                                <span class="resume-tag">React 19</span>
+                                <span class="resume-tag">PostgreSQL / Supabase</span>
+                                <span class="resume-tag">Row-Level Security</span>
+                                <span class="resume-tag">TypeScript</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Section 2: Education -->
+                <div class="timeline-block reveal-on-scroll" style="margin-top: var(--space-4xl);">
+                    <div class="section-title-wrap" style="margin-bottom: var(--space-2xl);">
+                        <span class="eyebrow-chip">ACADEMIC BACKGROUND</span>
+                        <h2 class="timeline-section-title">
+                            Education
+                        </h2>
+                        <p class="timeline-section-sub">
+                            Academic foundations from foundational secondary schooling through pre-university science to specialized computer science engineering in data science.
+                        </p>
+                    </div>
+
+                    <div class="resume-cards-list">
+                        
+                        <!-- Education 1: B.Tech -->
+                        <div class="resume-card reveal-on-scroll">
+                            <div class="resume-card-header">
+                                <div class="resume-role-meta">
+                                    <h3 class="resume-org-title">Alva's Institute of Engineering and Technology</h3>
+                                    <div class="resume-role-title">Bachelor of Technology in Computer Science Engineering (Data Science)</div>
+                                </div>
+                                <div class="resume-place-time">
+                                    <span class="resume-location"><i class="fas fa-map-marker-alt"></i> Mangalore, India</span>
+                                    <span class="resume-date-badge">2023 — 2027</span>
+                                </div>
+                            </div>
+                            <p style="font-size: 0.875rem; color: var(--text-body); line-height: 1.6; margin-top: var(--space-xs);">
+                                Focused on computer science core disciplines (Data Structures &amp; Algorithms, Database Management Systems, Operating Systems, Computer Networks) and data science specialization (Machine Learning, Statistical Inference, Deep Learning, High-Performance C11 Computing).
+                            </p>
+                        </div>
+
+                        <!-- Education 2: PUC -->
+                        <div class="resume-card reveal-on-scroll">
+                            <div class="resume-card-header">
+                                <div class="resume-role-meta">
+                                    <h3 class="resume-org-title">Jnana Jyothi Pre-University College</h3>
+                                    <div class="resume-role-title">Pre-University Course in PCMB (Physics, Chemistry, Mathematics, Biology)</div>
+                                </div>
+                                <div class="resume-place-time">
+                                    <span class="resume-location"><i class="fas fa-map-marker-alt"></i> Bangalore, India</span>
+                                    <span class="resume-date-badge">2021 — 2023</span>
+                                </div>
+                            </div>
+                            <p style="font-size: 0.875rem; color: var(--text-body); line-height: 1.6; margin-top: var(--space-xs);">
+                                Rigorous foundation in analytical mathematics, differential calculus, algebra, coordinate geometry, and science methodology.
+                            </p>
+                        </div>
+
+                        <!-- Education 3: High School -->
+                        <div class="resume-card reveal-on-scroll">
+                            <div class="resume-card-header">
+                                <div class="resume-role-meta">
+                                    <h3 class="resume-org-title">Yashas Vidya Kendra</h3>
+                                    <div class="resume-role-title">High School (10th)</div>
+                                </div>
+                                <div class="resume-place-time">
+                                    <span class="resume-location"><i class="fas fa-map-marker-alt"></i> Bangalore, India</span>
+                                    <span class="resume-date-badge">2020 — 2021</span>
+                                </div>
+                            </div>
+                            <p style="font-size: 0.875rem; color: var(--text-body); line-height: 1.6; margin-top: var(--space-xs);">
+                                Secondary school education emphasizing foundational mathematics, sciences, and computer literacy.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Call to Action Card -->
+                <div style="margin-top: var(--space-4xl); padding: var(--space-2xl); background: var(--bg-surface); border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm);" class="reveal-on-scroll">
+                    <span class="eyebrow-chip" style="margin-bottom: var(--space-sm);">LOOKING FORWARD</span>
+                    <h3 style="font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 400; color: var(--text-ink); margin-bottom: var(--space-sm);">
+                        Available for AI Engineering Opportunities
+                    </h3>
+                    <p style="max-width: 600px; margin: 0 auto var(--space-xl); color: var(--text-body); font-size: 0.9375rem; line-height: 1.6;">
+                        Interested in AI engineering, machine learning deployment, and backend software engineering roles where software reliability and engineering discipline matter.
+                    </p>
+                    <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
+                        <a href="contact.html" class="btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Contact Me</span>
+                        </a>
+                        <a href="projects.html" class="btn-secondary">
+                            <i class="fas fa-code-branch"></i>
+                            <span>View Projects</span>
+                        </a>
+                        <button type="button" class="btn-secondary action-download-resume">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>Download Resume</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-identity">
+                    <h3>Rakesh G R</h3>
+                    <p>AI Engineer &amp; Full-Stack Systems Developer &bull; B.Tech CSE (Data Science) at AIET Mangalore.</p>
+                </div>
+                <div class="footer-nav-groups">
+                    <div class="footer-col">
+                        <h5>Pages</h5>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Me</a></li>
+                            <li><a href="skills.html">Skills</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="experience.html">Education &amp; Experience</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Featured Projects</h5>
+                        <ul>
+                            <li><a href="projects/aiet-unisphere.html">AIET-UniSphere</a></li>
+                            <li><a href="projects/customer-churn.html">Customer Churn Prediction</a></li>
+                            <li><a href="projects/dense-matrix-multiplication.html">Dense Matrix C11</a></li>
+                            <li><a href="projects/yamlanchor.html">YamlAnchor</a></li>
+                            <li><a href="projects/ai-ecosort.html">AI-EcoSort</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Connect</h5>
+                        <ul>
+                            <li><a href="https://github.com/Rakeshgr962" target="_blank" rel="noopener noreferrer">View GitHub</a></li>
+                            <li><a href="https://www.linkedin.com/in/rakeshgr18" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a></li>
+                            <li><a href="mailto:rakeshgr223@gmail.com">Email Me</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Rakesh G R. All rights reserved.</span>
+                <span>Alva's Institute of Engineering &amp; Technology · Mangalore, India</span>
+            </div>
+        </div>
+    </footer>
+
+    <button type="button" class="back-to-top-btn" id="back-to-top-btn" aria-label="Back to Top"><i class="fas fa-arrow-up"></i> <span>Top</span></button>
+    <div class="copy-feedback-toast" id="copy-toast">Copied to clipboard</div>
+
+    <!-- Scripts -->
+    <!-- Motion & Creative Interaction Pipeline -->
+    <script src="assets/js/three.min.js"></script>
+    <script src="assets/js/gsap.min.js"></script>
+    <script src="assets/js/ScrollTrigger.min.js"></script>
+    <script src="assets/js/lenis.min.js"></script>
+    <script src="motion-core.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

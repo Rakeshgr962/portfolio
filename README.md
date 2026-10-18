@@ -1,8 +1,9 @@
-# Personal Portfolio — Rakesh G R
+# Personal Engineering Portfolio — Rakesh G R
 
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Three.js](https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=three.js&logoColor=white)](https://threejs.org/)
 [![Netlify](https://img.shields.io/badge/Deployed-Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white)](https://rakeshgr.netlify.app)
 [![Vercel Backend](https://img.shields.io/badge/Backend-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://rakeshgr.vercel.app)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
@@ -13,93 +14,92 @@
 
 ---
 
-## What it is
+## Engineering Focus & Positioning
 
-The official personal engineering portfolio of **Rakesh G R** — B.Tech Computer Science (Data Science) final-year engineer at Alva's Institute of Engineering and Technology, Mangalore.
+The official engineering portfolio of **Rakesh G R** — Computer Science & Data Science engineering student at Alva's Institute of Engineering and Technology (AIET), Mangalore.
 
-Redesigned with a **Thom Midhi-inspired editorial engineering aesthetic**:
-* **Editorial visual hierarchy**: Newsreader display serif paired with Plus Jakarta Sans and JetBrains Mono.
-* **Warm stone canvas**: High-contrast, typography-first layout with zero generic glowing gamer effects or fabricated metrics.
-* **Inspectable, defensible project case studies**: Deep-dive modals covering architectural trade-offs, direct contributions, and honest limitations.
-* **Interactive engineering demonstrations**:
-  * Live **Dense Matrix Multiplication** compute throughput benchmark chart (ikj vs naive ijk loop ordering).
-  * Live **YamlAnchor** NDJSON terminal simulator dry-running local Docker runner pipelines.
-  * Live **AIET-UniSphere** PostgreSQL Row Level Security (RLS) multi-role architecture visualizer.
+Specifically engineered to position for three target roles:
+1. **AI Engineer**
+2. **AI Developer**
+3. **AI Software Engineer**
 
----
-
-## Verified Project Showcase
-
-| Project | Category | Verified Stack | Defensible Metric / Core Signal |
-| :--- | :--- | :--- | :--- |
-| [**AIET-UniSphere**](https://github.com/Aiet-Unisphere/AIET-UniSphere) | Campus Academic Platform | React 19, TS, Vite, Supabase RLS | **100% Database-enforced authorization** across 4 roles (Student, Faculty, HOD, Admin); zero custom server attack surface |
-| [**YamlAnchor**](https://github.com/Rakeshgr962/YamlAnchor) | Developer Tooling / DevOps | Go, Next.js, TS, Docker SDK | **Zero remote test commits**; AST dependency analysis with live NDJSON Docker log streaming |
-| [**Dense Matrix Multiplication**](https://github.com/Rakeshgr962/Dense-Matrix-Multiplication) | Systems / HPC | C11, OpenMP, Python, GCC `-O3` | **~12.6x speedup** via `ikj` loop reordering alone; optimal 64/128 tile sizes; 81-test validation suite ($\varepsilon < 10^{-9}$) |
-| [**Customer Churn API**](https://github.com/Rakeshgr962/Customer-churn-) | Applied ML / Backend | XGBoost, FastAPI, MLflow, Docker | **81% accuracy, 77% precision, 68% recall** on 7,043 Telco records; strict post-event data leakage elimination |
-| [**Waste Classifier & AI-EcoSort**](https://github.com/Rakeshgr962/GarbageClassfication) | Vision & Responsible AI | TensorFlow, EfficientNetB0, React 19, Vitest | **89.24% test accuracy** on 6-class benchmark; deterministic rule-based assistant (1M1B IBM SkillsBuild) |
+### Core Philosophy
+> *"Engineering intelligence into real-world software."*  
+Building AI-powered applications, machine learning systems, intelligent APIs, and full-stack software products with hardware empathy, strict data integrity, and zero fabricated claims.
 
 ---
 
-## Supporting Projects Shelf
+## Multi-Page Information Architecture
 
-* [**PriceFlow-Agent**](https://github.com/Rakeshgr962/PriceFlow-Agent) — Dynamic pricing SaaS foundation (FastAPI, React, PostgreSQL, Redis, Docker Compose).
-* [**glitrai-mini-content-engine**](https://github.com/Rakeshgr962/glitrai-mini-content-engine) — Async LLM content pipeline (FastAPI, Groq LLM, Pollinations, Postgres queue).
-* [**AeroBuy**](https://github.com/Rakeshgr962/AeroBuy) — Flask + MongoDB e-commerce store with session-based authentication.
-* [**arthasetu-website**](https://github.com/Rakeshgr962/arthasetu-website) — Client-side SIP calculator and financial portal with monthly iterative compounding.
-* [**AR-World**](https://github.com/Rakeshgr962/AR-World) — Research documentation and system specifications for spatial design applications.
+The website is architected as a true multi-page application with direct clean routes, deep-linkable URLs, and static pre-rendering:
 
----
-
-## Project Structure
-
-```
-portfolio/
-├── client/
-│   ├── index.html         # Single-page editorial portfolio with semantic markup & accessibility
-│   ├── style.css          # Thom Midhi-inspired design system: variables, editorial grid, responsive cards
-│   ├── app.js             # Interactive case studies, benchmark SVG chart, terminal sim & contact form
-│   └── assets/
-│       └── resume/
-│           └── Rakesh_GR_Resume.pdf
-└── server/
-    ├── server.js          # Express.js contact endpoint (POST /api/contact)
-    ├── package.json
-    └── vercel.json        # Vercel serverless routing config
-```
+* **Page 1 — Home (`/`, `index.html`)**: Cinematic animated hero with split-line typography, Three.js atmospheric dust particle field, 3D interactive tech constellation, flagship project teasers, philosophy, and recruiter CTAs.
+* **Page 2 — About (`/about`, `about.html`)**: Personal narrative, engineering approach, academic credentials at AIET Mangalore, verified milestones, and target roles.
+* **Page 3 — Skills (`/skills`, `skills.html`)**: Interactive technical capability map across 5 structured domains (AI & ML, AI App Dev, Software Engineering, Data & Databases, Systems & Tools). Explicitly partitions **Shipped in Projects** from **Active Research**. Includes real-time search and domain filter tabs.
+* **Page 4 — Projects (`/projects`, `projects.html`)**: Searchable, filterable catalog across 5 domains (AI/ML, Full Stack, Backend, Systems, DevOps) with live search and editorial cards.
+* **Page 5 — Dedicated Case Studies (`/projects/<slug>` and `case-study.html?id=<slug>`)**:
+  * [`/projects/aiet-unisphere`](client/projects/aiet-unisphere.html) — Campus academic platform with PostgreSQL Row Level Security (RLS).
+  * [`/projects/yamlanchor`](client/projects/yamlanchor.html) — Local CI/CD pipeline simulator in Go and Docker.
+  * [`/projects/dense-matrix-multiplication`](client/projects/dense-matrix-multiplication.html) — High-performance C11/OpenMP kernel (~12.6x speedup).
+  * [`/projects/customer-churn`](client/projects/customer-churn.html) — Production MLOps XGBoost API with MLflow and Docker.
+  * [`/projects/garbage-classification`](client/projects/garbage-classification.html) — EfficientNetB0 transfer learning (95.8% test accuracy).
+  * [`/projects/ai-ecosort`](client/projects/ai-ecosort.html) — Responsible AI text classifier with confidence guardrails (1M1B Award).
+  * [`/projects/glitrai`](client/projects/glitrai.html) — Async LLM + generative vision content engine with fallback handling.
+  * [`/projects/priceflow-agent`](client/projects/priceflow-agent.html) — Real-time price tracking foundation with Redis caching.
+* **Page 6 — Education & Experience (`/experience`, `experience.html`)**: Chronological timeline of academic milestones at AIET Mangalore (2023–2027), Green AI internships (Edunet/Shell/AICTE), and open-source leadership.
+* **Page 7 — Contact (`/contact`, `contact.html`)**: Recruitment intake with verified coordinates, copy-to-clipboard email, PDF resume download, and a validated contact form with serverless submission and mailto fallback.
 
 ---
 
-## How to Run Locally
+## 8 Tailored Interactive Engineering Visualizations
 
-### 1. Frontend Client
+Each flagship project features an interactive, inspectable technical widget:
+1. **AIET-UniSphere**: Multi-role PostgreSQL Row Level Security (RLS) Policy Inspector.
+2. **YamlAnchor**: Simulated local Docker workflow runner terminal with streaming NDJSON logs.
+3. **Dense Matrix Multiplication**: Interactive GFLOPS compute throughput benchmark chart comparing `ijk` vs `ikj` cache blocking.
+4. **Customer Churn API**: Interactive decision boundary and churn probability tester with tenure and monthly charges sliders.
+5. **Garbage Classification**: 6-waste category classification inspector with confidence scores.
+6. **AI-EcoSort**: Rule-based vs LLM waste recycling assistant with uncertainty notices and confidence meters.
+7. **GlitrAI Engine**: Multi-step asynchronous job lifecycle state machine (Prompt Generation &rarr; Image Synthesis &rarr; Persistence).
+8. **PriceFlow-Agent**: Real-time moving average threshold simulation with price drop detection.
+
+---
+
+## Design System & Motion
+
+* **Aesthetic**: Thom Midhi-inspired warm stone editorial look (`#FBF9F5` light canvas, `#111215` obsidian dark mode, Newsreader display serif, Plus Jakarta Sans, JetBrains Mono).
+* **Atmospheric Motion**: Lightweight Three.js GPU particle system with natural turbulence, pointer parallax, and dark/light mode reactivity.
+* **Accessibility**: Full `prefers-reduced-motion` support, semantic landmarks, high-contrast text ratios, and keyboard navigable controls.
+
+---
+
+## Local Development & Testing
+
+### Run Local Clean-URL Dev Server
 ```bash
-git clone https://github.com/Rakeshgr962/portfolio.git
-cd portfolio/client
-```
-Open `index.html` in any modern web browser or run with a local static server:
-```bash
-npx serve .
+node dev-server.js
+# Serves at http://localhost:4173 with clean routes matching Netlify _redirects
 ```
 
-### 2. Backend Server (Optional)
+### Regenerate Static Case Studies
 ```bash
-cd ../server
+node scripts/generate-case-studies.js
+# Pre-renders standalone HTML files into client/projects/
+```
+
+### Backend Serverless API (Optional)
+```bash
+cd server
 npm install
 npm start
-# Server listens on http://localhost:3000
+# Listens on http://localhost:3000 (deployed on Vercel)
 ```
 
 ---
 
-## Contact & Opportunities
+## Contact
 
 * **Email**: [rakeshgr962@gmail.com](mailto:rakeshgr962@gmail.com)
-* **LinkedIn**: [linkedin.com/in/rakesh-gr](https://linkedin.com/in/rakesh-gr)
+* **LinkedIn**: [linkedin.com/in/rakeshgr18](https://www.linkedin.com/in/rakeshgr18)
 * **GitHub**: [github.com/Rakeshgr962](https://github.com/Rakeshgr962)
-* **Availability**: Open for **AI/ML Engineering, Full-Stack, and Systems Internships from December 2026**.
-
----
-
-## License
-
-MIT &copy; 2026 Rakesh G R. See [LICENSE](LICENSE) for details.
+* **Availability**: Open for **AI Engineer, AI Developer, and AI Software Engineer internships starting December 2026**.

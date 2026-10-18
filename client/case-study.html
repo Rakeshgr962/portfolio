@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Case Study — Rakesh G R</title>
+    <meta name="description" content="In-depth technical architecture case study by Rakesh G R covering problem framing, engineering trade-offs, and verified results.">
+    <link rel="canonical" href="https://rakeshgr.netlify.app/case-study">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="kage-assets/fonts.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="motion-system.css">
+</head>
+<body>
+    <canvas id="bg-particle-canvas" aria-hidden="true"></canvas>
+    <div class="film-grain-overlay" aria-hidden="true"></div>
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <header class="site-nav" id="site-nav">
+        <div class="container nav-wrapper">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-title">Rakesh G R</a>
+                <span class="brand-spec">AI Engineer · Systems</span>
+            </div>
+
+            <nav aria-label="Primary Navigation">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Me</a></li>
+                    <li><a href="skills.html" class="nav-link">Skills</a></li>
+                    <li><a href="projects.html" class="nav-link active" aria-current="page">Projects</a></li>
+                    <li><a href="experience.html" class="nav-link">Education &amp; Experience</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="btn-primary" style="padding: 7px 16px; font-size: 0.8125rem;">
+                    <span>Contact Me</span>
+                </a>
+                <button type="button" class="btn-resume-nav action-download-resume" title="Download Resume (PDF)">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    <span>Resume</span>
+                </button>
+                <button type="button" class="nav-hamburger" id="nav-hamburger" aria-label="Open mobile navigation menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation">
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                <a href="index.html" class="brand-title" style="text-decoration: none;">Rakesh G R</a>
+                <button type="button" id="mobile-drawer-close" aria-label="Close menu" style="font-size: 1.25rem; color: var(--text-ink); cursor: pointer; background: transparent; border: none;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="experience.html">Education &amp; Experience</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <a href="contact.html" class="btn-secondary" style="width: 100%; justify-content: center; margin-bottom: 8px;">
+                <i class="fas fa-envelope"></i> Contact Me
+            </a>
+            <button type="button" class="btn-primary action-download-resume" style="width: 100%; justify-content: center; margin-bottom: 12px;">
+                <i class="fas fa-file-pdf"></i> Download Resume
+            </button>
+            <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-align: center;">
+                Alva's Institute of Engineering &amp; Technology
+            </p>
+        </div>
+    </aside>
+
+    <main id="main-content">
+        <!-- Dynamic Case Study Header Container -->
+        <header class="case-study-hero" id="cs-hero-container">
+            <div class="container">
+                <!-- Breadcrumbs -->
+                <nav aria-label="Breadcrumb" class="breadcrumbs" style="display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.8125rem; margin-bottom: 16px; flex-wrap: wrap;">
+                    <a href="index.html" style="color: var(--text-muted); text-decoration: none;">Home</a>
+                    <span style="color: var(--text-muted);">/</span>
+                    <a href="projects.html" style="color: var(--text-muted); text-decoration: none;">Projects</a>
+                    <span style="color: var(--text-muted);">/</span>
+                    <span style="color: var(--accent-cobalt); font-weight: 600;" id="cs-breadcrumb-title" aria-current="page">Case Study</span>
+                </nav>
+
+                <!-- Back to Projects link -->
+                <div style="margin-bottom: 18px;">
+                    <a href="projects.html" class="btn-secondary" style="font-size: 0.8125rem; padding: 6px 14px; display: inline-flex; align-items: center; gap: 6px;">
+                        <i class="fas fa-arrow-left"></i> <span>Back to Projects</span>
+                    </a>
+                </div>
+
+                <div class="case-study-meta-strip" id="cs-meta-strip">
+                    <span class="project-tier-tag tier-flagship" id="cs-role-tag">Loading case study...</span>
+                </div>
+                <h1 class="page-title" id="cs-title">Technical Case Study</h1>
+                <p class="page-lead" id="cs-overview" style="margin-bottom: 24px;">Loading architectural specifications...</p>
+                <div class="project-stack-pills" id="cs-stack-pills"></div>
+                <div style="display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap;">
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="btn-primary" id="cs-repo-btn">
+                        <i class="fab fa-github"></i> <span>View on GitHub</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="btn-secondary" id="cs-demo-btn" style="display: none;">
+                        <i class="fas fa-external-link-alt"></i> <span>Live Demo</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Detailed Article Content Grid -->
+        <section class="section-padding" style="background: var(--bg-canvas);">
+            <div class="container">
+                <div class="case-study-grid">
+                    <!-- Sticky Sidebar Quick Navigation -->
+                    <aside class="case-study-sidebar" aria-label="Article Quick Navigation">
+                        <div class="sidebar-header">
+                            <span class="sidebar-kicker">QUICK NAVIGATION</span>
+                            <h4 class="sidebar-title">Sections</h4>
+                        </div>
+                        <ul class="case-study-sidebar-nav">
+                            <li><a href="#section-overview"><span class="nav-idx">01</span><span class="nav-lbl">Overview</span></a></li>
+                            <li><a href="#section-problem"><span class="nav-idx">02</span><span class="nav-lbl">The Problem</span></a></li>
+                            <li><a href="#section-solution"><span class="nav-idx">03</span><span class="nav-lbl">My Solution</span></a></li>
+                            <li><a href="#section-technologies"><span class="nav-idx">04</span><span class="nav-lbl">Technologies</span></a></li>
+                            <li><a href="#section-how-it-works"><span class="nav-idx">05</span><span class="nav-lbl">Architecture</span></a></li>
+                            <li><a href="#section-results"><span class="nav-idx">06</span><span class="nav-lbl">Results</span></a></li>
+                            <li><a href="#section-learned"><span class="nav-idx">07</span><span class="nav-lbl">What I Learned</span></a></li>
+                            <li><a href="#section-future"><span class="nav-idx">08</span><span class="nav-lbl">Roadmap</span></a></li>
+                        </ul>
+
+                        <div class="sidebar-divider"></div>
+
+                        <div class="sidebar-related-projects">
+                            <span class="sidebar-kicker">OTHER PROJECTS</span>
+                            <div class="sidebar-projects-list">
+                                <a href="case-study.html?id=aiet-unisphere" class="sidebar-project-link">AIET-UniSphere</a>
+                                <a href="case-study.html?id=yamlanchor" class="sidebar-project-link">YamlAnchor</a>
+                                <a href="case-study.html?id=dense-matrix-multiplication" class="sidebar-project-link">Dense Matrix C11</a>
+                                <a href="case-study.html?id=customer-churn" class="sidebar-project-link">Customer Churn API</a>
+                                <a href="case-study.html?id=garbage-classification" class="sidebar-project-link">Waste Vision</a>
+                                <a href="case-study.html?id=ai-ecosort" class="sidebar-project-link">AI-EcoSort (1M1B)</a>
+                                <a href="case-study.html?id=glitrai" class="sidebar-project-link">GlitrAI Content Engine</a>
+                                <a href="case-study.html?id=priceflow-agent" class="sidebar-project-link">PriceFlow-Agent</a>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Main Article Body -->
+                    <article class="case-study-main-article">
+                        <!-- 01. Overview -->
+                        <div class="case-study-block" id="section-overview">
+                            <h3>01 / Overview</h3>
+                            <p id="cs-overview-text">Loading...</p>
+                        </div>
+
+                        <!-- 02. The Problem -->
+                        <div class="case-study-block" id="section-problem">
+                            <h3>02 / The Problem</h3>
+                            <p id="cs-problem-text">Loading...</p>
+                        </div>
+
+                        <!-- 03. My Solution -->
+                        <div class="case-study-block" id="section-solution">
+                            <h3>03 / My Solution &amp; Architecture</h3>
+                            <p id="cs-architecture-text">Loading...</p>
+                            <div class="case-study-callout-box" id="cs-callout-box">
+                                <strong id="cs-callout-title" style="display: block; margin-bottom: 4px; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--accent-cobalt); text-transform: uppercase;">Architecture Principle</strong>
+                                <span id="cs-callout-text">Verified against repository file tree and commit history.</span>
+                            </div>
+                            <div style="margin-top: 16px;">
+                                <h4 style="font-size: 1rem; color: var(--text-ink); margin-bottom: 12px;">Key Engineering Decisions &amp; Trade-Offs</h4>
+                                <div id="cs-decisions-list"></div>
+                            </div>
+                        </div>
+
+                        <!-- 04. Technologies Used -->
+                        <div class="case-study-block" id="section-technologies">
+                            <h3>04 / Technologies Used</h3>
+                            <div class="project-stack-pills" id="cs-tech-pills" style="margin-bottom: 16px;"></div>
+                            <p style="font-size: 0.9375rem; color: var(--text-body); line-height: 1.6;">
+                                Each technology was selected for architectural stability, production safety, and defensible benchmarking.
+                            </p>
+                        </div>
+
+                        <!-- 05. How It Works -->
+                        <div class="case-study-block" id="section-how-it-works">
+                            <h3>05 / How It Works &amp; Interactive Visualizer</h3>
+                            <p>Implemented technical features and system behavior:</p>
+                            <ul id="cs-features-list"></ul>
+                            <div style="margin-top: 24px;">
+                                <h4 style="font-size: 1rem; color: var(--text-ink); margin-bottom: 8px;">Interactive Technical Visualizer</h4>
+                                <div id="cs-interactive-visualization-mount" style="margin-top: 12px;"></div>
+                                <div style="margin-top: 12px; font-size: 0.875rem; color: var(--text-body); background: var(--bg-subtle); padding: 12px 16px; border-radius: var(--radius-sm); border-left: 3px solid var(--accent-cobalt);">
+                                    <strong style="color: var(--text-ink); display: block; margin-bottom: 4px;">Interactive Demo Explanation:</strong>
+                                    <span>Interact with the controls above to explore the live technical architecture and data flow in real time.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 06. Results -->
+                        <div class="case-study-block" id="section-results">
+                            <h3>06 / Results &amp; Verified Findings</h3>
+                            <ul id="cs-results-list"></ul>
+                        </div>
+
+                        <!-- 07. What I Learned -->
+                        <div class="case-study-block" id="section-learned">
+                            <h3>07 / What I Learned &amp; Direct Contributions</h3>
+                            <p style="margin-bottom: 12px;">Direct contributions and engineering takeaways from this implementation:</p>
+                            <ul id="cs-contributions-list"></ul>
+                        </div>
+
+                        <!-- 08. Future Improvements -->
+                        <div class="case-study-block" id="section-future">
+                            <h3>08 / Future Improvements</h3>
+                            <p id="cs-limitations-text">Loading...</p>
+                        </div>
+
+                        <!-- Previous / Next Pagination -->
+                        <nav class="case-study-pagination" aria-label="Case Study Pagination" style="display: flex; justify-content: space-between; gap: 16px; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-hairline); flex-wrap: wrap;">
+                            <a href="#" id="cs-prev-btn" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none;">
+                                <i class="fas fa-arrow-left"></i>
+                                <div style="text-align: left;">
+                                    <span style="display: block; font-size: 0.6875rem; text-transform: uppercase; color: var(--text-muted); font-family: var(--font-mono);">Previous Project</span>
+                                    <strong id="cs-prev-title" style="color: var(--text-ink); font-size: 0.9375rem;">Previous</strong>
+                                </div>
+                            </a>
+                            <a href="#" id="cs-next-btn" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; text-align: right;">
+                                <div style="text-align: right;">
+                                    <span style="display: block; font-size: 0.6875rem; text-transform: uppercase; color: var(--text-muted); font-family: var(--font-mono);">Next Project</span>
+                                    <strong id="cs-next-title" style="color: var(--text-ink); font-size: 0.9375rem;">Next</strong>
+                                </div>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </nav>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-identity">
+                    <h3>Rakesh G R</h3>
+                    <p>AI Engineer &amp; Full-Stack Systems Developer. Engineering AI into real-world software.</p>
+                </div>
+                <div class="footer-nav-groups">
+                    <div class="footer-col">
+                        <h5>Pages</h5>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Me</a></li>
+                            <li><a href="skills.html">Skills</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="experience.html">Education &amp; Experience</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Case Studies</h5>
+                        <ul>
+                            <li><a href="projects/aiet-unisphere.html">AIET-UniSphere</a></li>
+                            <li><a href="projects/yamlanchor.html">YamlAnchor</a></li>
+                            <li><a href="projects/dense-matrix-multiplication.html">Dense Matrix C11</a></li>
+                            <li><a href="projects/customer-churn.html">Customer Churn API</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Connect</h5>
+                        <ul>
+                            <li><a href="https://github.com/Rakeshgr962" target="_blank" rel="noopener noreferrer">GitHub Profile</a></li>
+                            <li><a href="https://www.linkedin.com/in/rakeshgr18" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                            <li><a href="mailto:rakeshgr223@gmail.com">Direct Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Rakesh G R. All rights reserved.</span>
+                <span>Alva's Institute of Engineering &amp; Technology · Mangalore, India</span>
+            </div>
+        </div>
+    </footer>
+
+    <button type="button" class="back-to-top-btn" id="back-to-top-btn" aria-label="Back to Top"><i class="fas fa-arrow-up"></i> <span>Top</span></button>
+    <div class="copy-feedback-toast" id="copy-toast">Email copied to clipboard</div>
+
+    <!-- Motion & Creative Interaction Pipeline -->
+    <script src="assets/js/three.min.js"></script>
+    <script src="assets/js/gsap.min.js"></script>
+    <script src="assets/js/ScrollTrigger.min.js"></script>
+    <script src="assets/js/lenis.min.js"></script>
+    <script src="motion-core.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

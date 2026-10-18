@@ -1,0 +1,20 @@
+/*
+  # Enforce HTTPS and HSTS (Strict-Transport-Security: 1 year, includes subdomains, preload)
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  # Prevent MIME-type sniffing
+  X-Content-Type-Options: nosniff
+  # Prevent embedding in frames / clickjacking
+  X-Frame-Options: DENY
+  # Control referrer information passed to other sites
+  Referrer-Policy: strict-origin-when-cross-origin
+  # Restrict browser features and APIs (Permissions Policy)
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), vr=(), interest-cohort=()
+  # Content Security Policy:
+  # - script-src: 'self' 'unsafe-inline' 'sha256-Jw5HVNDi2GJS2TKkIQ37p3ql05IeGqZCdQ+uYoasHGE=' (all scripts are self-hosted)
+  # - style-src: 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com (for fontawesome)
+  # - font-src: 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:
+  # - img-src: 'self' data: blob:
+  # - connect-src: 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'sha256-Jw5HVNDi2GJS2TKkIQ37p3ql05IeGqZCdQ+uYoasHGE='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: blob:; connect-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;
+  # Cross-Origin Policies
+  Cross-Origin-Opener-Policy: same-origin

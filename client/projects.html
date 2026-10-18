@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects Directory &amp; Systems — Rakesh G R</title>
+    <meta name="description" content="Explore software projects and systems engineered by Rakesh G R across Applied AI, Computer Vision, High-Performance Computing, and Developer Tooling.">
+    <link rel="canonical" href="https://rakeshgr.netlify.app/projects">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="kage-assets/fonts.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="motion-system.css">
+</head>
+<body>
+    <canvas id="bg-particle-canvas" aria-hidden="true"></canvas>
+    <div class="film-grain-overlay" aria-hidden="true"></div>
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <header class="site-nav" id="site-nav">
+        <div class="container nav-wrapper">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-title">Rakesh G R</a>
+                <span class="brand-spec">AI Engineer · Systems</span>
+            </div>
+
+            <nav aria-label="Primary Navigation">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Me</a></li>
+                    <li><a href="skills.html" class="nav-link">Skills</a></li>
+                    <li><a href="projects.html" class="nav-link active" aria-current="page">Projects</a></li>
+                    <li><a href="experience.html" class="nav-link">Education &amp; Experience</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="btn-primary" style="padding: 7px 16px; font-size: 0.8125rem;">
+                    <span>Contact Me</span>
+                </a>
+                <button type="button" class="btn-resume-nav action-download-resume" title="Download Resume (PDF)">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    <span>Resume</span>
+                </button>
+                <button type="button" class="nav-hamburger" id="nav-hamburger" aria-label="Open mobile navigation menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation">
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                <a href="index.html" class="brand-title" style="text-decoration: none;">Rakesh G R</a>
+                <button type="button" id="mobile-drawer-close" aria-label="Close menu" style="font-size: 1.25rem; color: var(--text-ink); cursor: pointer; background: transparent; border: none;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="experience.html">Education &amp; Experience</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <a href="contact.html" class="btn-secondary" style="width: 100%; justify-content: center; margin-bottom: 8px;">
+                <i class="fas fa-envelope"></i> Contact Me
+            </a>
+            <button type="button" class="btn-primary action-download-resume" style="width: 100%; justify-content: center; margin-bottom: 12px;">
+                <i class="fas fa-file-pdf"></i> Download Resume
+            </button>
+            <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-align: center;">
+                Alva's Institute of Engineering &amp; Technology
+            </p>
+        </div>
+    </aside>
+
+    <main id="main-content">
+        <!-- Page Hero -->
+        <section class="page-hero-section">
+            <div class="container">
+                <div class="page-hero-meta">
+                    <span>Portfolio / Directory</span>
+                </div>
+                <h1 class="page-title">My Projects</h1>
+                <p class="page-lead">
+                    Explore the AI applications, software systems, and developer tools I've built.
+                </p>
+            </div>
+        </section>
+
+        <!-- Search, Filters, & Project Matrix -->
+        <section class="section-padding">
+            <div class="container">
+                <!-- Search & Filters Toolbar -->
+                <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px;">
+                    <div class="projects-search-bar" style="margin-bottom: 0;">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="project-search-input" placeholder="Search by name, technology (e.g. FastAPI, Go, Docker)..." aria-label="Search projects">
+                        <span class="clear-search-btn" id="clear-search-btn"><i class="fas fa-times-circle"></i></span>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-muted);" id="projects-match-counter">
+                        Showing all projects
+                    </div>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="project-filter-bar" id="project-filter-bar" style="margin-bottom: 2.5rem;">
+                    <button type="button" class="filter-btn active" data-filter="all">
+                        <span>All Projects</span>
+                    </button>
+                    <button type="button" class="filter-btn" data-filter="ai-ml">
+                        <span>AI &amp; Machine Learning</span>
+                    </button>
+                    <button type="button" class="filter-btn" data-filter="web">
+                        <span>Web Applications</span>
+                    </button>
+                    <button type="button" class="filter-btn" data-filter="backend">
+                        <span>Backend &amp; APIs</span>
+                    </button>
+                    <button type="button" class="filter-btn" data-filter="systems">
+                        <span>Systems &amp; DevOps</span>
+                    </button>
+                </div>
+
+                <!-- Empty State -->
+                <div class="projects-empty-state" id="projects-empty-state" style="display: none; text-align: center; padding: 48px 24px; background: var(--bg-surface); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); margin-bottom: 32px;">
+                    <i class="fas fa-search" style="font-size: 2rem; color: var(--text-muted); margin-bottom: 12px; display: inline-block;"></i>
+                    <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-ink); margin-bottom: 6px;">No projects match your filter</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9375rem; margin-bottom: 16px;">Try searching for a different keyword or reset the category filter.</p>
+                    <button type="button" class="btn-secondary" id="reset-projects-filter" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-redo"></i> Reset Filters
+                    </button>
+                </div>
+
+                <!-- Project Grid -->
+                <div id="projects-directory-list">
+                    <!-- Project 01: AIET-UniSphere -->
+                    <article class="featured-project-card project-item" data-category="web backend" data-keywords="aiet-unisphere react typescript vite supabase postgresql rls academic campus fullstack">
+                        <div class="project-card-grid">
+                            <div class="project-narrative" style="border-right: none;">
+                                <div>
+                                    <div class="project-prehead">
+                                        <span class="project-tier-tag tier-flagship">Campus Platform</span>
+                                        <span class="project-role-tag">Full-Stack &amp; Security Architecture</span>
+                                    </div>
+                                    <h3 class="project-name">AIET-UniSphere</h3>
+                                    <p class="project-one-liner">
+                                        A role-aware campus academic platform for Alva's Institute of Engineering &amp; Technology built with React 19, TypeScript, and database-enforced Row Level Security (RLS).
+                                    </p>
+                                    <div class="project-defense-metric">
+                                        <div class="metric-heading">Key Implementation</div>
+                                        <div class="metric-body">100% Database-Enforced Row-Level Security · 4 Distinct Role Workspaces · Zero Custom Server Attack Surface</div>
+                                    </div>
+                                    <div class="project-stack-pills">
+                                        <span class="stack-pill">React 19</span>
+                                        <span class="stack-pill">TypeScript</span>
+                                        <span class="stack-pill">Vite</span>
+                                        <span class="stack-pill">Supabase Auth</span>
+                                        <span class="stack-pill">PostgreSQL RLS</span>
+                                        <span class="stack-pill">Oxlint CI</span>
+                                    </div>
+                                </div>
+                                <div class="project-card-actions">
+                                    <a href="projects/aiet-unisphere.html" class="btn-case-study">
+                                        <span>View Project</span> <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                    <a href="https://github.com/Aiet-Unisphere/AIET-UniSphere" target="_blank" rel="noopener noreferrer" class="btn-repo-link">
+                                        <i class="fab fa-github"></i> <span>View on GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 02: YamlAnchor -->
+                    <article class="featured-project-card project-item" data-category="systems backend" data-keywords="yamlanchor go next.js docker ast ci/cd github actions devops simulator">
+                        <div class="project-card-grid">
+                            <div class="project-narrative" style="border-right: none;">
+                                <div>
+                                    <div class="project-prehead">
+                                        <span class="project-tier-tag tier-flagship">Developer Tooling</span>
+                                        <span class="project-role-tag">Go Backend &amp; Container Orchestration</span>
+                                    </div>
+                                    <h3 class="project-name">YamlAnchor</h3>
+                                    <p class="project-one-liner">
+                                        Local CI/CD pipeline simulator that scans repositories via AST parsing, synthesizes GitHub Actions workflows, and dry-runs them in local Docker containers.
+                                    </p>
+                                    <div class="project-defense-metric">
+                                        <div class="metric-heading">Key Implementation</div>
+                                        <div class="metric-body">Zero Remote Test Commits · Sub-Second AST Dependency Analysis · Local Docker Runner Simulation</div>
+                                    </div>
+                                    <div class="project-stack-pills">
+                                        <span class="stack-pill">Go 1.22</span>
+                                        <span class="stack-pill">Next.js App Router</span>
+                                        <span class="stack-pill">TypeScript</span>
+                                        <span class="stack-pill">Docker SDK</span>
+                                        <span class="stack-pill">AST Analysis</span>
+                                    </div>
+                                </div>
+                                <div class="project-card-actions">
+                                    <a href="projects/yamlanchor.html" class="btn-case-study">
+                                        <span>View Project</span> <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                    <a href="https://github.com/Rakeshgr962/YamlAnchor" target="_blank" rel="noopener noreferrer" class="btn-repo-link">
+                                        <i class="fab fa-github"></i> <span>View on GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 03: Dense Matrix Multiplication -->
+                    <article class="featured-project-card project-item" data-category="systems" data-keywords="dense matrix multiplication c11 openmp cache blocking hpc gcc python benchmarking">
+                        <div class="project-card-grid">
+                            <div class="project-narrative" style="border-right: none;">
+                                <div>
+                                    <div class="project-prehead">
+                                        <span class="project-tier-tag tier-flagship">Systems &amp; High-Performance Computing</span>
+                                        <span class="project-role-tag">C11, Cache Tiling &amp; OpenMP</span>
+                                    </div>
+                                    <h3 class="project-name">Dense Matrix Multiplication</h3>
+                                    <p class="project-one-liner">
+                                        An empirical high-performance computing study of CPU cache hierarchies, loop reordering, cache blocking, and OpenMP collapse(2) parallelization.
+                                    </p>
+                                    <div class="project-defense-metric">
+                                        <div class="metric-heading">Measured Performance</div>
+                                        <div class="metric-body">~12.6x Speedup via ikj Reordering · Optimal Tile Sizes 64 &amp; 128 · 46.8 GFLOPS OpenMP Throughput</div>
+                                    </div>
+                                    <div class="project-stack-pills">
+                                        <span class="stack-pill">C11</span>
+                                        <span class="stack-pill">OpenMP collapse(2)</span>
+                                        <span class="stack-pill">GCC -O3</span>
+                                        <span class="stack-pill">Python Benchmarking</span>
+                                        <span class="stack-pill">Hardware Locality</span>
+                                    </div>
+                                </div>
+                                <div class="project-card-actions">
+                                    <a href="projects/dense-matrix-multiplication.html" class="btn-case-study">
+                                        <span>View Project</span> <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                    <a href="https://github.com/Rakeshgr962/Dense-Matrix-Multiplication" target="_blank" rel="noopener noreferrer" class="btn-repo-link">
+                                        <i class="fab fa-github"></i> <span>View on GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 04: Customer Churn API -->
+                    <article class="featured-project-card project-item" data-category="ai-ml backend" data-keywords="customer churn prediction xgboost fastapi mlflow docker render python classification ml">
+                        <div class="project-card-grid">
+                            <div class="project-narrative" style="border-right: none;">
+                                <div>
+                                    <div class="project-prehead">
+                                        <span class="project-tier-tag tier-strong">Machine Learning in Production</span>
+                                        <span class="project-role-tag">Applied ML &amp; FastAPI Backend</span>
+                                    </div>
+                                    <h3 class="project-name">Customer Churn Prediction API</h3>
+                                    <p class="project-one-liner">
+                                        Production XGBoost classifier on 7,043 Telco records served via containerized FastAPI, tracked with MLflow, and deployed as a cloud Docker service.
+                                    </p>
+                                    <div class="project-defense-metric">
+                                        <div class="metric-heading">Measured Results</div>
+                                        <div class="metric-body">81% Accuracy · 77% Precision · 68% Recall (Disclosed Trade-off) · Leakage-Free Pipeline</div>
+                                    </div>
+                                    <div class="project-stack-pills">
+                                        <span class="stack-pill">Python</span>
+                                        <span class="stack-pill">XGBoost</span>
+                                        <span class="stack-pill">FastAPI</span>
+                                        <span class="stack-pill">MLflow</span>
+                                        <span class="stack-pill">Docker</span>
+                                        <span class="stack-pill">Render</span>
+                                    </div>
+                                </div>
+                                <div class="project-card-actions">
+                                    <a href="projects/customer-churn.html" class="btn-case-study">
+                                        <span>View Project</span> <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                    <a href="https://github.com/Rakeshgr962/Customer-churn-" target="_blank" rel="noopener noreferrer" class="btn-repo-link">
+                                        <i class="fab fa-github"></i> <span>View on GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 05: Garbage Classification & AI-EcoSort -->
+                    <article class="featured-project-card project-item" data-category="ai-ml web" data-keywords="garbage classification ai-ecosort efficientnetb0 tensorflow gradio react vitest vision sustainability ml">
+                        <div class="project-card-grid">
+                            <div class="project-narrative" style="border-right: none;">
+                                <div>
+                                    <div class="project-prehead">
+                                        <span class="project-tier-tag tier-strong">Computer Vision &amp; Sustainability</span>
+                                        <span class="project-role-tag">Deep Learning &amp; Web Assistant</span>
+                                    </div>
+                                    <h3 class="project-name">Waste Classification &amp; AI-EcoSort</h3>
+                                    <p class="project-one-liner">
+                                        EfficientNetB0 transfer-learning classifier for 6 waste categories paired with AI-EcoSort, an accessible sustainability assistant built for the 1M1B IBM SkillsBuild program.
+                                    </p>
+                                    <div class="project-defense-metric">
+                                        <div class="metric-heading">Measured Results</div>
+                                        <div class="metric-body">89.24% Benchmark Accuracy · 6 Discrete Waste Categories · Deterministic Rule Engine with Vitest Coverage</div>
+                                    </div>
+                                    <div class="project-stack-pills">
+                                        <span class="stack-pill">TensorFlow</span>
+                                        <span class="stack-pill">EfficientNetB0</span>
+                                        <span class="stack-pill">Gradio</span>
+                                        <span class="stack-pill">React 19</span>
+                                        <span class="stack-pill">Vitest</span>
+                                    </div>
+                                </div>
+                                <div class="project-card-actions">
+                                    <a href="projects/garbage-classification.html" class="btn-case-study">
+                                        <span>View Project</span> <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                    <a href="projects/ai-ecosort.html" class="btn-case-study" style="background: var(--bg-surface); color: var(--text-ink); border: 1px solid var(--border-medium);">
+                                        <span>AI-EcoSort Study</span> <i class="fas fa-leaf"></i>
+                                    </a>
+                                    <a href="https://github.com/Rakeshgr962/GarbageClassfication" target="_blank" rel="noopener noreferrer" class="btn-repo-link">
+                                        <i class="fab fa-github"></i> <span>View on GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 06: PriceFlow-Agent -->
+                    <article class="featured-project-card project-item" data-category="backend web ai-ml" data-keywords="priceflow-agent fastapi react postgresql redis docker compose saas foundation pricing agent ml">
+                        <div class="project-card-grid">
+                            <div class="project-narrative" style="border-right: none;">
+                                <div>
+                                    <div class="project-prehead">
+                                        <span class="shelf-status-tag tag-foundation">SaaS Foundation</span>
+                                        <span class="project-role-tag">Backend &amp; Agentic Workflow</span>
+                                    </div>
+                                    <h3 class="project-name">PriceFlow-Agent</h3>
+                                    <p class="project-one-liner">
+                                        Dynamic pricing SaaS foundation: FastAPI + SQLAlchemy backend, React Vite frontend, and PostgreSQL + Redis orchestrated via Docker Compose.
+                                    </p>
+                                    <div class="project-defense-metric">
+                                        <div class="metric-heading">Key Implementation</div>
+                                        <div class="metric-body">Global error middleware, versioned API routers, Alembic migrations, and Pytest/Vitest smoke testing suites.</div>
+                                    </div>
+                                    <div class="project-stack-pills">
+                                        <span class="stack-pill">FastAPI</span>
+                                        <span class="stack-pill">React TS</span>
+                                        <span class="stack-pill">PostgreSQL</span>
+                                        <span class="stack-pill">Redis</span>
+                                        <span class="stack-pill">Docker Compose</span>
+                                    </div>
+                                </div>
+                                <div class="project-card-actions">
+                                    <a href="projects/priceflow-agent.html" class="btn-case-study">
+                                        <span>View Project</span> <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                    <a href="https://github.com/Rakeshgr962/PriceFlow-Agent" target="_blank" rel="noopener noreferrer" class="btn-repo-link">
+                                        <i class="fab fa-github"></i> <span>View on GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 07: GlitrAI Mini Content Engine -->
+                    <article class="featured-project-card project-item" data-category="ai-ml backend web" data-keywords="glitrai mini content engine fastapi groq llm pollinations postgresql async pipeline ai">
+                        <div class="project-card-grid">
+                            <div class="project-narrative" style="border-right: none;">
+                                <div>
+                                    <div class="project-prehead">
+                                        <span class="shelf-status-tag tag-active">AI Content Engine</span>
+                                        <span class="project-role-tag">Backend / AI Pipeline</span>
+                                    </div>
+                                    <h3 class="project-name">GlitrAI Mini Content Engine</h3>
+                                    <p class="project-one-liner">
+                                        Asynchronous LLM content pipeline: Groq API writes tailored image prompts, Pollinations.ai synthesizes images with fallback handlers, and jobs are tracked in PostgreSQL.
+                                    </p>
+                                    <div class="project-defense-metric">
+                                        <div class="metric-heading">Key Implementation</div>
+                                        <div class="metric-body">FastAPI BackgroundTasks decoupling long-running generation jobs from HTTP response times with status polling.</div>
+                                    </div>
+                                    <div class="project-stack-pills">
+                                        <span class="stack-pill">FastAPI</span>
+                                        <span class="stack-pill">Groq LLM</span>
+                                        <span class="stack-pill">PostgreSQL</span>
+                                        <span class="stack-pill">Pollinations API</span>
+                                    </div>
+                                </div>
+                                <div class="project-card-actions">
+                                    <a href="projects/glitrai.html" class="btn-case-study">
+                                        <span>View Project</span> <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                    <a href="https://github.com/Rakeshgr962/glitrai-mini-content-engine" target="_blank" rel="noopener noreferrer" class="btn-repo-link">
+                                        <i class="fab fa-github"></i> <span>View on GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 08: AeroBuy -->
+                    <article class="featured-project-card project-item" data-category="web backend" data-keywords="aerobuy flask mongodb python e-commerce bootstrap jinja2 web">
+                        <div class="project-card-grid">
+                            <div class="project-narrative" style="border-right: none;">
+                                <div>
+                                    <div class="project-prehead">
+                                        <span class="shelf-status-tag tag-active">E-Commerce Application</span>
+                                        <span class="project-role-tag">Full-Stack Web App</span>
+                                    </div>
+                                    <h3 class="project-name">AeroBuy E-Commerce</h3>
+                                    <p class="project-one-liner">
+                                        E-commerce platform featuring product listings by category, session-based authentication, cart management, and order checkouts across 4 MongoDB collections.
+                                    </p>
+                                    <div class="project-stack-pills">
+                                        <span class="stack-pill">Python Flask</span>
+                                        <span class="stack-pill">MongoDB</span>
+                                        <span class="stack-pill">Jinja2</span>
+                                        <span class="stack-pill">Bootstrap</span>
+                                    </div>
+                                </div>
+                                <div class="project-card-actions">
+                                    <a href="https://github.com/Rakeshgr962/AeroBuy" target="_blank" rel="noopener noreferrer" class="btn-repo-link">
+                                        <i class="fab fa-github"></i> <span>View on GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 09: Arthasetu -->
+                    <article class="featured-project-card project-item" data-category="web" data-keywords="arthasetu static web calculator sip compounding vercel javascript financial portal">
+                        <div class="project-card-grid">
+                            <div class="project-narrative" style="border-right: none;">
+                                <div>
+                                    <div class="project-prehead">
+                                        <span class="shelf-status-tag tag-active">Financial Tool</span>
+                                        <span class="project-role-tag">Client-Side Web Application</span>
+                                    </div>
+                                    <h3 class="project-name">Arthasetu Financial Portal</h3>
+                                    <p class="project-one-liner">
+                                        Static client-side investment portal providing mutual fund SIP calculation via monthly iterative compounding, fund category explorer, and portfolio asset allocation.
+                                    </p>
+                                    <div class="project-stack-pills">
+                                        <span class="stack-pill">Vanilla JS</span>
+                                        <span class="stack-pill">HTML5/CSS3</span>
+                                        <span class="stack-pill">Vercel Deploy</span>
+                                    </div>
+                                </div>
+                                <div class="project-card-actions">
+                                    <a href="https://arthasetu-website.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-case-study" style="background: var(--accent-cobalt); color: #fff;">
+                                        <i class="fas fa-external-link-alt"></i> <span>Live Demo</span>
+                                    </a>
+                                    <a href="https://github.com/Rakeshgr962/arthasetu-website" target="_blank" rel="noopener noreferrer" class="btn-repo-link">
+                                        <i class="fab fa-github"></i> <span>View on GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 10: AR-World -->
+                    <article class="featured-project-card project-item" data-category="systems" data-keywords="ar-world spatial ui research documentation ppt docx architecture">
+                        <div class="project-card-grid">
+                            <div class="project-narrative" style="border-right: none;">
+                                <div>
+                                    <div class="project-prehead">
+                                        <span class="shelf-status-tag tag-docs">Research &amp; Documentation</span>
+                                        <span class="project-role-tag">Spatial Design Systems</span>
+                                    </div>
+                                    <h3 class="project-name">AR-World Builder Documentation</h3>
+                                    <p class="project-one-liner">
+                                        Comprehensive spatial-design architecture proposal, system report (.docx), and presentation video for interactive 3D world creation tools.
+                                    </p>
+                                    <div class="project-stack-pills">
+                                        <span class="stack-pill">Spatial UI Design</span>
+                                        <span class="stack-pill">Architecture Specs</span>
+                                    </div>
+                                </div>
+                                <div class="project-card-actions">
+                                    <a href="https://github.com/Rakeshgr962/AR-World" target="_blank" rel="noopener noreferrer" class="btn-repo-link">
+                                        <i class="fab fa-github"></i> <span>View Documentation</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-identity">
+                    <h3>Rakesh G R</h3>
+                    <p>AI Engineer &amp; Full-Stack Systems Developer. Engineering AI into real-world software.</p>
+                </div>
+                <div class="footer-nav-groups">
+                    <div class="footer-col">
+                        <h5>Pages</h5>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Me</a></li>
+                            <li><a href="skills.html">Skills</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="experience.html">Education &amp; Experience</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Case Studies</h5>
+                        <ul>
+                            <li><a href="projects/aiet-unisphere.html">AIET-UniSphere</a></li>
+                            <li><a href="projects/yamlanchor.html">YamlAnchor</a></li>
+                            <li><a href="projects/dense-matrix-multiplication.html">Dense Matrix C11</a></li>
+                            <li><a href="projects/customer-churn.html">Customer Churn API</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Connect</h5>
+                        <ul>
+                            <li><a href="https://github.com/Rakeshgr962" target="_blank" rel="noopener noreferrer">GitHub Profile</a></li>
+                            <li><a href="https://www.linkedin.com/in/rakeshgr18" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                            <li><a href="mailto:rakeshgr223@gmail.com">Direct Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Rakesh G R. All rights reserved.</span>
+                <span>Alva's Institute of Engineering &amp; Technology · Mangalore, India</span>
+            </div>
+        </div>
+    </footer>
+
+    <button type="button" class="back-to-top-btn" id="back-to-top-btn" aria-label="Back to Top"><i class="fas fa-arrow-up"></i> <span>Top</span></button>
+    <div class="copy-feedback-toast" id="copy-toast">Email copied to clipboard</div>
+
+    <!-- Motion & Creative Interaction Pipeline -->
+    <script src="assets/js/three.min.js"></script>
+    <script src="assets/js/gsap.min.js"></script>
+    <script src="assets/js/ScrollTrigger.min.js"></script>
+    <script src="assets/js/lenis.min.js"></script>
+    <script src="motion-core.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+/* ==========================================================================
+   MOTION-SYSTEM.CSS — AWARD-WORTHY CINEMATIC MOTION & INTERACTION TOKENS
+   Inspired by Noa Vale, Morrow, Halvorsen, 21st.dev & Animaster Lib
+   ========================================================================== */
+
+/* 1. Interactive Custom Cursor System */
+.custom-cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 38px;
+  height: 38px;
+  border: 1.5px solid rgba(223, 231, 224, 0.45);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.3s ease;
+  mix-blend-mode: difference;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+}
+
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-cobalt, #e0231c);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, opacity 0.2s ease;
+  box-shadow: 0 0 10px rgba(224, 35, 28, 0.8);
+  opacity: 0;
+}
+
+.custom-cursor-label {
+  font-family: var(--font-mono, monospace);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+/* Cursor State Modifiers */
+.custom-cursor-follower.is-hovering {
+  width: 64px;
+  height: 64px;
+  background: rgba(224, 35, 28, 0.25);
+  border-color: rgba(224, 35, 28, 0.8);
+  backdrop-filter: blur(2px);
+  mix-blend-mode: normal;
+}
+
+.custom-cursor-follower.is-hovering .custom-cursor-label {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.custom-cursor-follower.is-active {
+  transform: translate(-50%, -50%) scale(0.85);
+}
+
+@media (hover: none) or (pointer: coarse) {
+  .custom-cursor-follower,
+  .custom-cursor-dot {
+    display: none !important;
+  }
+}
+
+/* 2. Seamless Page Transition Overlay */
+.page-wipe-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100svh;
+  max-height: 100vh;
+  background: #05070a;
+  z-index: 99999;
+  pointer-events: none;
+  transform: scaleY(0);
+  transform-origin: top;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(16px, 4vw, 48px);
+  border-bottom: 2px solid var(--accent-cobalt, #e0231c);
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.95);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.page-wipe-badge {
+  font-family: var(--font-mono, monospace);
+  font-size: clamp(9px, 1.8vw, 11px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-cobalt, #e0231c);
+}
+
+.page-wipe-title {
+  font-family: var(--font-sans, sans-serif);
+  font-size: clamp(22px, 5vw, 56px);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: #dfe7e0;
+  line-height: 1.15;
+  word-break: break-word;
+}
+
+.page-wipe-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono, monospace);
+  font-size: clamp(8px, 1.6vw, 10px);
+  color: #78837c;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-top: 1px solid rgba(223, 231, 224, 0.1);
+  padding-top: 14px;
+}
+
+/* 3. Kinetic Typography & Reveal Utilities */
+.kinetic-header {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.kinetic-char {
+  display: inline-block;
+  transform: translate3d(0, 115%, 0) rotate(3deg);
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kinetic-header.is-in-view .kinetic-char {
+  transform: translate3d(0, 0, 0) rotate(0deg);
+  opacity: 1;
+}
+
+/* Editorial Index Counters */
+.editorial-index-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  background: rgba(10, 14, 18, 0.7);
+  border: 1px solid rgba(223, 231, 224, 0.14);
+  border-radius: 100px;
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #b4bfb7;
+  margin-bottom: 12px;
+}
+
+.editorial-index-pill .index-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-cobalt, #e0231c);
+  box-shadow: 0 0 8px var(--accent-cobalt, #e0231c);
+}
+
+/* 4. Marquee Band Component (Inspired by RenderLab / Morrow) */
+.marquee-band {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 16px 0;
+  border-top: 1px solid rgba(223, 231, 224, 0.08);
+  border-bottom: 1px solid rgba(223, 231, 224, 0.08);
+  background: rgba(5, 7, 10, 0.5);
+  backdrop-filter: blur(8px);
+  position: relative;
+  z-index: 10;
+  user-select: none;
+}
+
+.marquee-track {
+  display: inline-flex;
+  gap: 40px;
+  animation: marquee-scroll 32s linear infinite;
+  will-change: transform;
+}
+
+.marquee-band:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #78837c;
+  transition: color 0.3s ease;
+}
+
+.marquee-item:hover {
+  color: #dfe7e0;
+}
+
+.marquee-item i {
+  color: var(--accent-cobalt, #e0231c);
+  font-size: 8px;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* 5. Magnetic Button Wrapper */
+.magnetic-wrap {
+  display: inline-block;
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 6. Route-Specific Ambient Atmosphere */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle at 80% 20%, rgba(224, 35, 28, 0.04) 0%, transparent 60%),
+              radial-gradient(circle at 20% 80%, rgba(30, 58, 138, 0.04) 0%, transparent 60%);
+}
+
+/* 7. Enhanced Accessibility / Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none !important;
+  }
+  .kinetic-char {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+  .page-wipe-overlay {
+    display: none !important;
+  }
+  .custom-cursor-follower,
+  .custom-cursor-dot {
+    display: none !important;
+  }
+}

@@ -1,0 +1,22 @@
+# Netlify Redirects & Rewrites for Clean URLs
+/about                                  /about.html                                   200
+/skills                                 /skills.html                                  200
+/projects                               /projects.html                                200
+/experience                             /experience.html                              200
+/contact                                /contact.html                                 200
+
+# Pre-rendered Dedicated Case Study Routes
+/projects/aiet-unisphere                /projects/aiet-unisphere.html                 200
+/projects/yamlanchor                    /projects/yamlanchor.html                     200
+/projects/dense-matrix-multiplication   /projects/dense-matrix-multiplication.html    200
+/projects/dense-matrix                  /projects/dense-matrix-multiplication.html    200
+/projects/customer-churn                /projects/customer-churn.html                 200
+/projects/garbage-classification        /projects/garbage-classification.html         200
+/projects/ai-ecosort                    /projects/ai-ecosort.html                     200
+/projects/priceflow-agent               /projects/priceflow-agent.html                200
+/projects/glitrai                       /projects/glitrai.html                        200
+/projects/glitrai-content-engine        /projects/glitrai.html                        200
+/projects/glitrai-mini-content-engine   /projects/glitrai.html                        200
+
+# Dynamic Case Study Fallback
+/projects/:id                           /case-study.html?id=:id                       200

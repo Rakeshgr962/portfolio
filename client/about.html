@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Rakesh G R — AI Engineer &amp; Software Developer</title>
+    <meta name="description" content="Learn about Rakesh G R, a Computer Science and Data Science student engineering AI-powered systems, high-performance C11/OpenMP kernels, and production software.">
+    <link rel="canonical" href="https://rakeshgr.netlify.app/about">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="kage-assets/fonts.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="motion-system.css">
+</head>
+<body>
+    <canvas id="bg-particle-canvas" aria-hidden="true"></canvas>
+    <div class="film-grain-overlay" aria-hidden="true"></div>
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <header class="site-nav" id="site-nav">
+        <div class="container nav-wrapper">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-title">Rakesh G R</a>
+                <span class="brand-spec">AI Engineer · Systems</span>
+            </div>
+
+            <nav aria-label="Primary Navigation">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link active" aria-current="page">About Me</a></li>
+                    <li><a href="skills.html" class="nav-link">Skills</a></li>
+                    <li><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li><a href="experience.html" class="nav-link">Education &amp; Experience</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="btn-primary" style="padding: 7px 16px; font-size: 0.8125rem;">
+                    <span>Contact Me</span>
+                </a>
+                <button type="button" class="btn-resume-nav action-download-resume" title="Download Resume (PDF)">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    <span>Resume</span>
+                </button>
+                <button type="button" class="nav-hamburger" id="nav-hamburger" aria-label="Open mobile navigation menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation">
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                <a href="index.html" class="brand-title" style="text-decoration: none;">Rakesh G R</a>
+                <button type="button" id="mobile-drawer-close" aria-label="Close menu" style="font-size: 1.25rem; color: var(--text-ink); cursor: pointer; background: transparent; border: none;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About Me</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="experience.html">Education &amp; Experience</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <a href="contact.html" class="btn-secondary" style="width: 100%; justify-content: center; margin-bottom: 8px;">
+                <i class="fas fa-envelope"></i> Contact Me
+            </a>
+            <button type="button" class="btn-primary action-download-resume" style="width: 100%; justify-content: center; margin-bottom: 12px;">
+                <i class="fas fa-file-pdf"></i> Download Resume
+            </button>
+            <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-align: center;">
+                Alva's Institute of Engineering &amp; Technology
+            </p>
+        </div>
+    </aside>
+
+    <main id="main-content">
+        <!-- Page Hero -->
+        <section class="page-hero-section">
+            <div class="container">
+                <div class="page-hero-meta">
+                    <span>01 / Identity &amp; Philosophy</span>
+                </div>
+                <h1 class="page-title">Engineering AI into <span class="editorial-italic">reliable software</span>.</h1>
+                <p class="page-lead">
+                    I am a final-year CS (Data Science) student at Alva's Institute of Engineering and Technology, Mangalore. My focus is turning machine learning algorithms and intelligent capabilities into robust, inspectable production software systems.
+                </p>
+            </div>
+        </section>
+
+        <!-- Main Narrative Section -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-prose">
+                        <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--text-ink); margin-bottom: 1rem;">Who I Am &amp; What I Build</h2>
+                        <p>
+                            Most machine learning education stops where the real engineering challenge begins: inside exploratory Jupyter notebooks with hardcoded paths, uncontrolled data leakage, and zero consideration for production latency, security, or error recovery.
+                        </p>
+                        <p>
+                            My trajectory as an <strong>AI Engineer &amp; Software Developer</strong> is defined by bridging this divide. When I train an XGBoost model, I don't just inspect validation curves—I eliminate target leakage columns, wrap it in a typed <strong>FastAPI</strong> microservice, track training runs with <strong>MLflow</strong>, and package it into a reproducible <strong>Docker</strong> container deployed to the cloud.
+                        </p>
+                        <div class="about-callout-quote">
+                            "Builds AI-powered systems and honest software: ML paired with real interfaces, not just notebooks."
+                        </div>
+                        <p>
+                            Beyond applied AI, I dive deep into low-level systems. My empirical research in <strong>C11 and OpenMP</strong> demonstrated that restructuring loop memory strides (<code>ikj</code> over <code>ijk</code>) delivers an immediate <strong>~12.6x speedup</strong> by maximizing hardware L1/L2 cache locality—proving that hardware empathy matters just as much as throwing more compute at an algorithm.
+                        </p>
+                        <p>
+                            In full-stack engineering, I architected the security layer for <strong>AIET-UniSphere</strong>, our campus platform for Alva's Institute. By baking authorization rules directly into <strong>PostgreSQL Row Level Security (RLS)</strong> policies evaluated on authenticated JWT sessions, we eliminated an entire class of API authorization bypass bugs without needing custom backend server proxies.
+                        </p>
+
+                        <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--text-ink); margin-top: 2.5rem; margin-bottom: 1rem;">Target Roles &amp; Availability</h2>
+                        <p>
+                            I am actively interviewing for <strong>AI Engineer, AI Developer, Applied ML, and Full-Stack Systems internships starting from December 2026</strong>. I bring clean coding discipline, reproducible benchmarking rigor, and an uncompromising attitude toward honest technical communication.
+                        </p>
+                        <div style="display: flex; gap: 14px; margin-top: 24px; flex-wrap: wrap;">
+                            <a href="projects.html" class="btn-primary">
+                                <span>View Projects</span> <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="contact.html" class="btn-secondary">
+                                <span>Contact Me</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="about-sidebar">
+                        <h4 class="sidebar-heading">Academic &amp; Profile Summary</h4>
+                        <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px;">
+                            <div>
+                                <span class="spec-kicker">Education &amp; Academic Path</span>
+                                <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+                                    <div>
+                                        <div style="font-weight: 600; font-size: 0.875rem; color: var(--text-ink);">Alva's Institute of Engineering &amp; Technology</div>
+                                        <div style="font-size: 0.75rem; color: var(--accent-cobalt);">B.Tech in CSE (Data Science) · Mangalore (2023 — 2027)</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: 600; font-size: 0.875rem; color: var(--text-ink);">Jnana Jyothi Pre-University College</div>
+                                        <div style="font-size: 0.75rem; color: var(--text-muted);">Pre-University Course (PCMB) · Bangalore (2021 — 2023)</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: 600; font-size: 0.875rem; color: var(--text-ink);">Yashas Vidya Kendra</div>
+                                        <div style="font-size: 0.75rem; color: var(--text-muted);">High School (10th) · Bangalore (2020 — 2021)</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="spec-kicker">Verified GitHub</span>
+                                <a href="https://github.com/Rakeshgr962" target="_blank" rel="noopener noreferrer" style="font-family: var(--font-mono); font-size: 0.875rem; color: var(--accent-cobalt); text-decoration: underline;">
+                                    github.com/Rakeshgr962
+                                </a>
+                            </div>
+                        </div>
+
+                        <h4 class="sidebar-heading">Core Engineering Pillars</h4>
+                        <ul style="padding-left: 18px; font-size: 0.875rem; color: var(--text-body); line-height: 1.65;">
+                            <li style="margin-bottom: 8px;"><strong>Applied AI &amp; ML:</strong> XGBoost, EfficientNetB0, FastAPI, MLflow, Docker.</li>
+                            <li style="margin-bottom: 8px;"><strong>Systems &amp; DevOps:</strong> C11, OpenMP, Go AST parsing, container simulation.</li>
+                            <li style="margin-bottom: 8px;"><strong>Full-Stack Architecture:</strong> React 19, TypeScript, PostgreSQL Row Level Security.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-identity">
+                    <h3>Rakesh G R</h3>
+                    <p>AI Engineer &amp; Full-Stack Systems Developer. Engineering AI into real-world software.</p>
+                </div>
+                <div class="footer-nav-groups">
+                    <div class="footer-col">
+                        <h5>Pages</h5>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Me</a></li>
+                            <li><a href="skills.html">Skills</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="experience.html">Education &amp; Experience</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Case Studies</h5>
+                        <ul>
+                            <li><a href="projects/aiet-unisphere.html">AIET-UniSphere</a></li>
+                            <li><a href="projects/yamlanchor.html">YamlAnchor</a></li>
+                            <li><a href="projects/dense-matrix-multiplication.html">Dense Matrix C11</a></li>
+                            <li><a href="projects/customer-churn.html">Customer Churn API</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Connect</h5>
+                        <ul>
+                            <li><a href="https://github.com/Rakeshgr962" target="_blank" rel="noopener noreferrer">GitHub Profile</a></li>
+                            <li><a href="https://www.linkedin.com/in/rakeshgr18" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                            <li><a href="mailto:rakeshgr223@gmail.com">Direct Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Rakesh G R. All rights reserved.</span>
+                <span>Alva's Institute of Engineering &amp; Technology · Mangalore, India</span>
+            </div>
+        </div>
+    </footer>
+
+    <button type="button" class="back-to-top-btn" id="back-to-top-btn" aria-label="Back to Top"><i class="fas fa-arrow-up"></i> <span>Top</span></button>
+    <div class="copy-feedback-toast" id="copy-toast">Email copied to clipboard</div>
+
+    <!-- Motion & Creative Interaction Pipeline -->
+    <script src="assets/js/three.min.js"></script>
+    <script src="assets/js/gsap.min.js"></script>
+    <script src="assets/js/ScrollTrigger.min.js"></script>
+    <script src="assets/js/lenis.min.js"></script>
+    <script src="motion-core.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
